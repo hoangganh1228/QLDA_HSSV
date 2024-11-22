@@ -2,10 +2,11 @@
 class Index{
     function __construct()
     {
+        redirect("test");
     }
 
     function index()
     {
-        redirect('client');
+
     }
 }
