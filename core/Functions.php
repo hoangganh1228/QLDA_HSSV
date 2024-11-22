@@ -7,8 +7,7 @@ function loadError($error)
 
 function redirect($path = 'index')
 {
-    echo "<script>window.location.href = '" . _WEB_HOST . "/" . "$path" . "'</script>";
-    exit;
+    echo '<script type="text/javascript">window.location.href = "'. $path .'"; </script>';
 }
 
 function isPost()
