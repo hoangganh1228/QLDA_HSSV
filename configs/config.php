@@ -2,6 +2,6 @@
 
 //database
 const _HOST = 'localhost';
-const _DB = 'QLDA_HSSV';
+const _DB = 'qlda_hssv';
 const _USER = 'root';
 const _PASS = '';

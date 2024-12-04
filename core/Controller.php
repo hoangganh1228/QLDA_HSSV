@@ -1,17 +1,22 @@
 <?php
  class Controller{
     //goi model
-    function model($model){
-        if (file_exists('app/models/' . $model . '.php'))
-        {
-            require_once 'app/models/' . $model . '.php';
-            if (class_exists($model))
-            {
-                $model = new $model();
-                return $model;
+    function model($model) {
+        // Đường dẫn tới file model
+        $modelPath = 'app/models/' . $model . '.php';
+    
+        // Kiểm tra file tồn tại
+        if (file_exists($modelPath)) {
+            require_once $modelPath;
+    
+            // Lấy tên class từ tên file
+            $modelClass = basename($model); // Lấy phần cuối cùng sau dấu `/`
+            if (class_exists($modelClass)) {
+                return new $modelClass();
             }
         }
-        return false;
+    
+        return false; // Nếu không tồn tại
     }
 
     //goi view
