@@ -45,6 +45,34 @@ class Users extends Controller
         $this->view('/admin/users/create', ['user' => $user]);
     }
 
+    public function edit($id = '') {
+        if (isPost()) {
+            $filteredPost = filter(); 
+            $this->model->updateUser($id, $filteredPost); 
+            echo "<script>alert('Sửa người dùng thành công')</script>";
+            echo "<script>window.location.href = '/QLDA_HSSV/admin/users'</script>";
+        } else {
+            $result = $this->model->getUserById($id); 
+            if (!$result) {
+                die("Không tìm thấy người dùng.");
+            }
+            $users = $this->model->getAllUsers();
+            $this->view('/admin/users/edit', [
+                'data' => $result,
+                'users' => $users
+            ]);
+        }
+    }
+
+    public function delete($id = '') {
+        if ($this->model->deleteUser($id)) {
+            echo "<script>alert('Xóa thành công')</script>";
+        } else {
+            echo "<script>alert('Xóa thất bại')</script>";
+        }
+        echo "<script>window.location.href = '/QLDA_HSSV/admin/nganh/list_nganh'</script>";
+    }
+
     public function login() {
         $this->view('/admin/users/login', []);
     }

@@ -16,7 +16,7 @@
             <ul class="list-group list-group-flush">
                 <!-- Chỉ hiển thị nếu là Quản lý -->
                 <?php if ($role === 'Quản lý') : ?>
-                    <li class="list-group-item"><a href="/QLDA_HSSV/admin/manage_users">Quản lý người dùng</a></li>
+                    <li class="list-group-item"><a href="/QLDA_HSSV/admin/users">Quản lý người dùng</a></li>
                     <li class="list-group-item"><a href="/QLDA_HSSV/admin/manage_courses">Quản lý môn học</a></li>
                     <li class="list-group-item"><a href="/QLDA_HSSV/admin/manage_fees">Quản lý học phí</a></li>
                     <li class="list-group-item"><a href="/QLDA_HSSV/admin/manage_grades">Nhập điểm</a></li>

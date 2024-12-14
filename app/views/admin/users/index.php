@@ -56,8 +56,8 @@
                             <td><?php echo $row['email'] ?></td> 
                             <td><?php echo $row['phone'] ?></td> 
                             <td>
-                                <a href="/QLDA_HSSV/admin/nganh/edit_nganh/<?= $row['id'] ?>" class="btn btn-outline-secondary">Sửa</a>
-                                <a href="/QLDA_HSSV/admin/nganh/delete_nganh/<?= $row['id'] ?>" class="btn btn-outline-secondary" onclick="return confirm('Xác nhận xóa!')">Xóa</a>
+                                <a href="/QLDA_HSSV/admin/users/edit/<?= $row['id'] ?>" class="btn btn-outline-secondary">Sửa</a>
+                                <a href="/QLDA_HSSV/admin/users/delete/<?= $row['id'] ?>" class="btn btn-outline-secondary" onclick="return confirm('Xác nhận xóa!')">Xóa</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
