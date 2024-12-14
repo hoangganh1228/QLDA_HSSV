@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 28, 2024 at 03:59 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th12 13, 2024 lúc 02:53 PM
+-- Phiên bản máy phục vụ: 10.4.32-MariaDB
+-- Phiên bản PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `qlda_hssv`
+-- Cơ sở dữ liệu: `qlda_hssv`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `classes`
+-- Cấu trúc bảng cho bảng `classes`
 --
 
 CREATE TABLE `classes` (
@@ -36,7 +36,7 @@ CREATE TABLE `classes` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `class_subject`
+-- Cấu trúc bảng cho bảng `class_subject`
 --
 
 CREATE TABLE `class_subject` (
@@ -53,7 +53,7 @@ CREATE TABLE `class_subject` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `credit_registration`
+-- Cấu trúc bảng cho bảng `credit_registration`
 --
 
 CREATE TABLE `credit_registration` (
@@ -68,19 +68,27 @@ CREATE TABLE `credit_registration` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `departments`
+-- Cấu trúc bảng cho bảng `departments`
 --
 
 CREATE TABLE `departments` (
   `id` int(9) NOT NULL,
   `department_id` varchar(9) NOT NULL,
-  `name` varchar(30) NOT NULL
+  `department_name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `departments`
+--
+
+INSERT INTO `departments` (`id`, `department_id`, `department_name`) VALUES
+(4, 'MK01', 'CNTT'),
+(5, 'MK02', 'KT');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `grades`
+-- Cấu trúc bảng cho bảng `grades`
 --
 
 CREATE TABLE `grades` (
@@ -98,7 +106,7 @@ CREATE TABLE `grades` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `khoa_hoc`
+-- Cấu trúc bảng cho bảng `khoa_hoc`
 --
 
 CREATE TABLE `khoa_hoc` (
@@ -111,20 +119,27 @@ CREATE TABLE `khoa_hoc` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `majors`
+-- Cấu trúc bảng cho bảng `majors`
 --
 
 CREATE TABLE `majors` (
   `id` int(9) NOT NULL,
   `major_id` varchar(9) NOT NULL,
-  `name` varchar(30) NOT NULL,
+  `major_name` varchar(30) NOT NULL,
   `department_id` varchar(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `majors`
+--
+
+INSERT INTO `majors` (`id`, `major_id`, `major_name`, `department_id`) VALUES
+(2, 'MN01', 'CNTT', 'MK01');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `semesters`
+-- Cấu trúc bảng cho bảng `semesters`
 --
 
 CREATE TABLE `semesters` (
@@ -137,7 +152,7 @@ CREATE TABLE `semesters` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `students`
+-- Cấu trúc bảng cho bảng `students`
 --
 
 CREATE TABLE `students` (
@@ -155,7 +170,7 @@ CREATE TABLE `students` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `student_subject`
+-- Cấu trúc bảng cho bảng `student_subject`
 --
 
 CREATE TABLE `student_subject` (
@@ -167,7 +182,7 @@ CREATE TABLE `student_subject` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `studies`
+-- Cấu trúc bảng cho bảng `studies`
 --
 
 CREATE TABLE `studies` (
@@ -180,13 +195,13 @@ CREATE TABLE `studies` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `subjects`
+-- Cấu trúc bảng cho bảng `subjects`
 --
 
 CREATE TABLE `subjects` (
   `id` int(9) NOT NULL,
   `subject_id` varchar(9) NOT NULL,
-  `name` varchar(30) NOT NULL,
+  `subject_name` varchar(30) NOT NULL,
   `credits` int(3) NOT NULL,
   `major_id` varchar(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -194,7 +209,7 @@ CREATE TABLE `subjects` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `subject_teacher`
+-- Cấu trúc bảng cho bảng `subject_teacher`
 --
 
 CREATE TABLE `subject_teacher` (
@@ -206,7 +221,7 @@ CREATE TABLE `subject_teacher` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `teachers`
+-- Cấu trúc bảng cho bảng `teachers`
 --
 
 CREATE TABLE `teachers` (
@@ -223,7 +238,7 @@ CREATE TABLE `teachers` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tuitions`
+-- Cấu trúc bảng cho bảng `tuitions`
 --
 
 CREATE TABLE `tuitions` (
@@ -237,7 +252,7 @@ CREATE TABLE `tuitions` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tuition_fee`
+-- Cấu trúc bảng cho bảng `tuition_fee`
 --
 
 CREATE TABLE `tuition_fee` (
@@ -250,7 +265,7 @@ CREATE TABLE `tuition_fee` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Cấu trúc bảng cho bảng `users`
 --
 
 CREATE TABLE `users` (
@@ -267,7 +282,7 @@ CREATE TABLE `users` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `years`
+-- Cấu trúc bảng cho bảng `years`
 --
 
 CREATE TABLE `years` (
@@ -278,239 +293,239 @@ CREATE TABLE `years` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `classes`
+-- Chỉ mục cho bảng `classes`
 --
 ALTER TABLE `classes`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `uq_classId` (`class_id`);
 
 --
--- Indexes for table `class_subject`
+-- Chỉ mục cho bảng `class_subject`
 --
 ALTER TABLE `class_subject`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `uq_classSubjectId` (`class_subject_id`);
 
 --
--- Indexes for table `credit_registration`
+-- Chỉ mục cho bảng `credit_registration`
 --
 ALTER TABLE `credit_registration`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `uq_regId` (`reg_id`);
 
 --
--- Indexes for table `departments`
+-- Chỉ mục cho bảng `departments`
 --
 ALTER TABLE `departments`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `uq_departmentId` (`department_id`);
 
 --
--- Indexes for table `grades`
+-- Chỉ mục cho bảng `grades`
 --
 ALTER TABLE `grades`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `uq_gradeId` (`grade_id`);
 
 --
--- Indexes for table `khoa_hoc`
+-- Chỉ mục cho bảng `khoa_hoc`
 --
 ALTER TABLE `khoa_hoc`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `uq_khoaHocId` (`khoa_hoc_id`);
 
 --
--- Indexes for table `majors`
+-- Chỉ mục cho bảng `majors`
 --
 ALTER TABLE `majors`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `uq_majorId` (`major_id`);
 
 --
--- Indexes for table `semesters`
+-- Chỉ mục cho bảng `semesters`
 --
 ALTER TABLE `semesters`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `uq_semesterId` (`semester_id`);
 
 --
--- Indexes for table `students`
+-- Chỉ mục cho bảng `students`
 --
 ALTER TABLE `students`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `uq_studentId` (`student_id`);
 
 --
--- Indexes for table `student_subject`
+-- Chỉ mục cho bảng `student_subject`
 --
 ALTER TABLE `student_subject`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `studies`
+-- Chỉ mục cho bảng `studies`
 --
 ALTER TABLE `studies`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `subjects`
+-- Chỉ mục cho bảng `subjects`
 --
 ALTER TABLE `subjects`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY ` uq_subjectId` (`subject_id`);
 
 --
--- Indexes for table `subject_teacher`
+-- Chỉ mục cho bảng `subject_teacher`
 --
 ALTER TABLE `subject_teacher`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `teachers`
+-- Chỉ mục cho bảng `teachers`
 --
 ALTER TABLE `teachers`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `uq_teacherId` (`teacher_id`);
 
 --
--- Indexes for table `tuitions`
+-- Chỉ mục cho bảng `tuitions`
 --
 ALTER TABLE `tuitions`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tuition_fee`
+-- Chỉ mục cho bảng `tuition_fee`
 --
 ALTER TABLE `tuition_fee`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `uq_tuitionFeeId` (`tuition_fee_id`);
 
 --
--- Indexes for table `users`
+-- Chỉ mục cho bảng `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `uq_userId` (`user_id`);
 
 --
--- Indexes for table `years`
+-- Chỉ mục cho bảng `years`
 --
 ALTER TABLE `years`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `uq_yearId` (`year_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `classes`
+-- AUTO_INCREMENT cho bảng `classes`
 --
 ALTER TABLE `classes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `class_subject`
+-- AUTO_INCREMENT cho bảng `class_subject`
 --
 ALTER TABLE `class_subject`
   MODIFY `id` int(9) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `credit_registration`
+-- AUTO_INCREMENT cho bảng `credit_registration`
 --
 ALTER TABLE `credit_registration`
   MODIFY `id` int(9) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `departments`
+-- AUTO_INCREMENT cho bảng `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `grades`
+-- AUTO_INCREMENT cho bảng `grades`
 --
 ALTER TABLE `grades`
   MODIFY `id` int(9) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `khoa_hoc`
+-- AUTO_INCREMENT cho bảng `khoa_hoc`
 --
 ALTER TABLE `khoa_hoc`
   MODIFY `id` int(9) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `majors`
+-- AUTO_INCREMENT cho bảng `majors`
 --
 ALTER TABLE `majors`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `semesters`
+-- AUTO_INCREMENT cho bảng `semesters`
 --
 ALTER TABLE `semesters`
   MODIFY `id` int(9) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `students`
+-- AUTO_INCREMENT cho bảng `students`
 --
 ALTER TABLE `students`
   MODIFY `id` int(9) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `student_subject`
+-- AUTO_INCREMENT cho bảng `student_subject`
 --
 ALTER TABLE `student_subject`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `studies`
+-- AUTO_INCREMENT cho bảng `studies`
 --
 ALTER TABLE `studies`
   MODIFY `id` int(9) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `subjects`
+-- AUTO_INCREMENT cho bảng `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `subject_teacher`
+-- AUTO_INCREMENT cho bảng `subject_teacher`
 --
 ALTER TABLE `subject_teacher`
   MODIFY `id` int(9) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `teachers`
+-- AUTO_INCREMENT cho bảng `teachers`
 --
 ALTER TABLE `teachers`
   MODIFY `id` int(9) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tuitions`
+-- AUTO_INCREMENT cho bảng `tuitions`
 --
 ALTER TABLE `tuitions`
   MODIFY `id` int(9) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tuition_fee`
+-- AUTO_INCREMENT cho bảng `tuition_fee`
 --
 ALTER TABLE `tuition_fee`
   MODIFY `id` int(9) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(9) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `years`
+-- AUTO_INCREMENT cho bảng `years`
 --
 ALTER TABLE `years`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;

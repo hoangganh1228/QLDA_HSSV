@@ -14,6 +14,7 @@ class Khoa extends Controller {
     }
 
     function list_khoa() {
+        
         $search = isGet() ? (!empty($_GET['search']) ? $_GET['search'] : '') : '';
         $result = $this->model->getAll($search);
     
