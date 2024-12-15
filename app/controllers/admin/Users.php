@@ -16,8 +16,8 @@ class Users extends Controller
     }
 
     function list_user() {
-        $result = $this->model->getAllUsers();
-
+        $search = isGet() ? (!empty($_GET['search']) ? $_GET['search'] : '') : '';
+        $result = $this->model->getAllUsers($search);
         if ($result === false) {
             die("Lỗi truy vấn cơ sở dữ liệu.");
         }

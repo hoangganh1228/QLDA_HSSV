@@ -1,17 +1,8 @@
 <?php
 class UsersModel extends Model {
-    public function getAll($search = '') {
-        $condition = !empty($search) ? "WHERE users.user_id LIKE '%$search%' OR users.username LIKE '%$search%' OR users.email LIKE '%$search%'" : '';
-        $query = "
-            SELECT * 
-            FROM users 
-            $condition
-        ";
-        return $this->database->query($query)->fetchAll(PDO::FETCH_ASSOC);
-    }
 
-    public function getAllUsers() {
-        return $this->database->select([], 'users', '');
+    public function getAllUsers($search = '') {
+        return $this->database->select([], 'users', "WHERE username LIKE '%$search%' OR email LIKE '%$search%'");
     }
 
     public function isDuplicateKhoaId($users_id) {
@@ -38,7 +29,6 @@ class UsersModel extends Model {
         return $result ? $result[0] : null;
     }
     
-
     // Xóa khoa theo id
     public function deleteUser($id) {
         return $this->database->delete('users', "WHERE id = '$id'");
