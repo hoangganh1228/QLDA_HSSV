@@ -16,7 +16,7 @@
             <input type="text" name="user_id" id="user_id" class="form-control" required>
         </div>
         <div class="form-group mt-3">
-            <label for="username">Tên người dùng:</label>
+            <label for="username">Tên đăng nhập:</label>
             <input type="text" name="username" id="username" class="form-control" required>
         </div>
         <div class="form-group mt-3">
@@ -32,6 +32,23 @@
             <input type="tel" name="phone" id="phone" class="form-control" required>
         </div>
         <div class="form-group mt-3">
+            <label for="phone">Họ tên người dùng:</label>
+            <input type="text" name="fullname" id="fullname" class="form-control" required>
+        </div>
+        <div class="form-group mt-3">
+            <label for="dob">Ngày tháng năm sinh:</label>
+            <input type="date" name="date_of_birth" id="date_of_birth" class="form-control" required>
+        </div>
+        <div class="form-group mt-3">
+            <label for="sex">Giới tính:</label>
+            <select name="sex" id="sex" class="form-control" required>
+                <option value="">Chọn giới tính</option>
+                <option value="Nam">Nam</option>
+                <option value="Nữ">Nữ</option>
+            </select>
+        </div>
+
+        <div class="form-group mt-3">
             <label for="role">Vai trò:</label>
             <select name="role" id="role" class="form-control" required>
                 <option value="">Chọn vai trò</option>
@@ -40,6 +57,37 @@
                 <option value="Sinh viên">Sinh viên</option>
             </select>
         </div>
+        <div class="form-group mt-3" id="teacher-fields" style="display: none;">
+            <label for="department_id">Khoa:</label>
+            <select name="department_id" id="department_id" class="form-control">
+                <option value="">Chọn khoa</option>
+                <?php foreach ($departments as $department): ?>
+                    <option value="<?= $department['department_id']; ?>"><?= $department['department_name']; ?></option>
+                <?php endforeach; ?>
+                <!-- Thêm các khoa khác -->
+            </select>
+        </div>
+        <div class="form-group mt-3" id="student-fields" style="display: none;">
+            <div class="form-group mt-3">
+                <label for="class_id">Chọn lớp:</label>
+                <select name="class_id" id="class_id" class="form-control">
+                    <option value="">Chọn vai trò</option>
+                    <?php foreach ($classes as $class): ?>
+                        <option value="<?= $class['class_id']; ?>"><?= $class['class_id'] ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <div class="form-group mt-3">
+                <label for="class_id"> Khóa học:</label>
+                <select name="khoa_hoc_id" id="khoa_hoc_id" class="form-control">
+                    <option value="">Chọn khóa học</option>
+                    <?php foreach ($khoahocs as $khoahoc): ?>
+                        <option value="<?= $khoahoc['khoa_hoc_id']; ?>"><?= $khoahoc['start_year'] . ' - ' . $khoahoc['end_year']; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
         <br>
         <div>
             <button type="submit" id="btnThem" class="btn btn-outline-secondary">Thêm</button>
@@ -47,5 +95,6 @@
         </div>
     </form>
   </div>
+  <script src="/QLDA_HSSV/app/public/js/script.js"></script>
 </body>
 </html>

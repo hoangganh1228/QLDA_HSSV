@@ -30,11 +30,46 @@ class Users extends Controller
 
     public function create() {
         if (isPost()) {
-            $filteredPost = filter();
-            
+            $filter = filter();
+            $user_id = $filter['user_id'];
+            $role = $filter['role'];
 
-            if (!$this->model->isDuplicateKhoaId($filteredPost['user_id'])) {
-                $this->model->addUser($filteredPost);
+            if (!$this->model->isDuplicateKhoaId($user_id)) {
+                // Lưu vào bảng users trước
+                $userData = [
+                    'user_id' => $user_id,
+                    'username' => $filter['username'],
+                    'password' => $filter['password'],  
+                    'role' => $role,
+                    'email' => $filter['email'],
+                    'phone' => $filter['phone'],
+                    'created_date' => date('Y-m-d')
+                ];
+                $this->model->addUser($userData);
+                if ($role === 'Giảng viên') {
+                    $teacherData = [
+                        'teacher_id' => uniqid('T'), // Tạo ID tự động cho teacher
+                        'user_id' => $user_id,
+                        'fullname' => $filter['fullname'],
+                        'date_of_birth' => $filter['date_of_birth'],
+                        'sex' => $filter['sex'],
+                        'address' => $filter['address'] ?? '',
+                        'department_id' => $filter['department_id']
+                    ];
+                    $this->model->addTeacher($teacherData);
+                } else if ($role === 'Sinh viên') {
+                    $studentData = [
+                        'student_id' => uniqid('S'), // Tạo ID tự động cho student
+                        'user_id' => $user_id,
+                        'fullname' => $filter['fullname'],
+                        'date_of_birth' => $filter['date_of_birth'],
+                        'sex' => $filter['sex'],
+                        'address' => $filter['address'] ?? '',
+                        'class_id' => $filter['class_id'],
+                        'khoa_hoc_id' => $filter['khoa_hoc_id']
+                    ];
+                    $this->model->addStudent($studentData);
+                }
                 echo "<script>alert('Thêm người dùng thành công!')</script>";
                 echo "<script>window.location.href = '/QLDA_HSSV/admin/users/index'</script>";
             } else {
@@ -42,7 +77,18 @@ class Users extends Controller
             }
         }
         $user = $this->model->getAllUsers();
-        $this->view('/admin/users/create', ['user' => $user]);
+        $khoahocs = $this->model->getAllKhoaHoc(); 
+        $departments = $this->model->getAllDepartments(); 
+        // echo '<pre>';   
+        // print_r($departments);
+        // echo '</pre>';
+        $classes = $this->model->getAllClasses(); 
+        $this->view('/admin/users/create', [
+            'user' => $user,
+            'khoahocs' => $khoahocs,
+            'departments' => $departments,
+            'classes' => $classes
+        ]);
     }
 
     public function edit($id = '') {

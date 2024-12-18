@@ -13,6 +13,14 @@ class UsersModel extends Model {
         return $this->database->insert('users', $data);
     }
 
+    public function addTeacher($data) {
+        return $this->database->insert('teachers', $data);
+    }
+    
+    public function addStudent($data) {
+        return $this->database->insert('students', $data);
+    }
+
     public function getUserByUsername($username) {
         $result = $this->database->select(['*'], 'users', "WHERE username = '$username'");
         return $result ? $result[0] : null;
@@ -29,6 +37,21 @@ class UsersModel extends Model {
         return $result ? $result[0] : null;
     }
     
+    public function getAllKhoaHoc() {
+        $result = $this->database->select([], 'khoa_hoc', "");
+        return $result ?: []; // Trả về toàn bộ mảng hoặc mảng rỗng nếu không có dữ liệu
+    }
+    
+    public function getAllDepartments() {
+        $result = $this->database->select(['*'], 'departments', "");
+        return $result ?: []; // Trả về toàn bộ mảng hoặc mảng rỗng nếu không có dữ liệu
+    }
+    
+    public function getAllClasses() {
+        $result = $this->database->select([], 'classes', "");
+        return $result ?: []; // Trả về toàn bộ mảng hoặc mảng rỗng nếu không có dữ liệu
+    }
+
     // Xóa khoa theo id
     public function deleteUser($id) {
         return $this->database->delete('users', "WHERE id = '$id'");
