@@ -28,7 +28,7 @@ class UsersModel extends Model {
 
     // Cập nhật khoa theo id
     public function updateUser($id, $data) {
-        return $this->database->update('users', $data, "WHERE id = '$id'");
+        return $this->database->update('users', $data, "WHERE user_id = '$id'");
     }
     
     public function updateTeacher($user_id, $data) {
@@ -75,5 +75,13 @@ class UsersModel extends Model {
     // Xóa khoa theo id
     public function deleteUser($id) {
         return $this->database->delete('users', "WHERE user_id = '$id'");
+    }
+
+    public function deleteTeacherByUserId($id) {
+        return $this->database->delete('teachers', "WHERE user_id = '$id'");
+    }
+
+    public function deleteStudentByUserId($id) {
+        return $this->database->delete('students', "WHERE user_id = '$id'");
     }
 }

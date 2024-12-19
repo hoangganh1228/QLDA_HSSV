@@ -4,7 +4,9 @@ function checkPermission(array $allowedRoles) {
   if (session_status() === PHP_SESSION_NONE) {
     session_start();
   }
-  
+  // echo '<pre>';   
+  // print_r($_SESSION);
+  // echo '</pre>';
   // Kiểm tra nếu người dùng chưa đăng nhập
   if (!isset($_SESSION['role'])) {
       header('Location: /QLDA_HSSV/admin/users/login'); // Chuyển hướng đến trang đăng nhập
