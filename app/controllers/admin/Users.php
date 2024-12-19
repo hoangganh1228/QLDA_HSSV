@@ -48,7 +48,7 @@ class Users extends Controller
                 $this->model->addUser($userData);
                 if ($role === 'Giảng viên') {
                     $teacherData = [
-                        'teacher_id' => uniqid('T'), // Tạo ID tự động cho teacher
+                        'teacher_id' => 'T' . time() . mt_rand(1000, 9999), // Tạo ID tự động cho teacher
                         'user_id' => $user_id,
                         'fullname' => $filter['fullname'],
                         'date_of_birth' => $filter['date_of_birth'],
@@ -59,12 +59,12 @@ class Users extends Controller
                     $this->model->addTeacher($teacherData);
                 } else if ($role === 'Sinh viên') {
                     $studentData = [
-                        'student_id' => uniqid('S'), // Tạo ID tự động cho student
+                        'student_id' => 'S' . time() . mt_rand(1000, 9999), // Tạo ID tự động cho student
                         'user_id' => $user_id,
                         'fullname' => $filter['fullname'],
                         'date_of_birth' => $filter['date_of_birth'],
                         'sex' => $filter['sex'],
-                        'address' => $filter['address'] ?? '',
+                        'address' => $filter['address'],
                         'class_id' => $filter['class_id'],
                         'khoa_hoc_id' => $filter['khoa_hoc_id']
                     ];
@@ -93,19 +93,69 @@ class Users extends Controller
 
     public function edit($id = '') {
         if (isPost()) {
-            $filteredPost = filter(); 
-            $this->model->updateUser($id, $filteredPost); 
-            echo "<script>alert('Sửa người dùng thành công')</script>";
-            echo "<script>window.location.href = '/QLDA_HSSV/admin/users'</script>";
-        } else {
-            $result = $this->model->getUserById($id); 
-            if (!$result) {
-                die("Không tìm thấy người dùng.");
+            $filter = filter(); // Lọc dữ liệu form
+            $role = $filter['role']; // Vai trò hiện tại của người dùng
+            echo '<pre>';   
+            print_r($filter);
+            echo '</pre>';
+            // Cập nhật thông tin chung trong bảng users
+            $userData = [
+                'username' => $filter['username'],
+                'password' => $filter['password'],
+                'email' => $filter['email'],
+                'phone' => $filter['phone'],
+                'role' => $role
+            ];
+            $this->model->updateUser($id, $userData);
+            // Cập nhật vào bảng phụ dựa vào vai trò
+            if ($role === 'Giảng viên') {
+                $teacherData = [
+                    'fullname' => $filter['fullname'],
+                    'date_of_birth' => $filter['date_of_birth'],
+                    'sex' => $filter['sex'],
+                    'address' => $filter['address'],
+                    'department_id' => $filter['department_id']
+                ];
+                $this->model->updateTeacher($id, $teacherData);
+            } elseif ($role === 'Sinh viên') {
+                $studentData = [
+                    'fullname' => $filter['fullname'],
+                    'date_of_birth' => $filter['date_of_birth'],
+                    'sex' => $filter['sex'],
+                    'address' => $filter['address'],
+                    'class_id' => $filter['class_id'],
+                    'khoa_hoc_id' => $filter['khoa_hoc_id']
+                ];
+                $this->model->updateStudent($id, $studentData);
             }
-            $users = $this->model->getAllUsers();
+    
+            echo "<script>alert('Cập nhật người dùng thành công!')</script>";
+            echo "<script>window.location.href = '/QLDA_HSSV/admin/users/index'</script>";
+        } else {
+            // Lấy dữ liệu hiện tại của người dùng
+            $user = $this->model->getUserById($id);
+            // Lấy thông tin từ bảng phụ theo vai trò
+            if ($user['role'] === 'Giảng viên') {
+                $extraData = $this->model->getTeacherByUserId($id);
+
+            } else if ($user['role'] === 'Sinh viên') {
+                $extraData = $this->model->getStudentByUserId($id);
+            } else {
+                $extraData = $this->model->getUser($id);
+            }
+    
+            // Lấy dữ liệu phụ trợ (khoa, lớp, khóa học)
+            $khoahocs = $this->model->getAllKhoaHoc();
+            $departments = $this->model->getAllDepartments();
+            $classes = $this->model->getAllClasses();
+           
+            // Gửi dữ liệu đến View
             $this->view('/admin/users/edit', [
-                'data' => $result,
-                'users' => $users
+                'user' => $user,
+                'extraData' => $extraData[0],
+                'khoahocs' => $khoahocs,
+                'departments' => $departments,
+                'classes' => $classes
             ]);
         }
     }
@@ -128,6 +178,9 @@ class Users extends Controller
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();
             }
+            echo '<pre>';   
+            print_r($_SESSION);
+            echo '</pre>';
             $filter = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING); // Lọc dữ liệu để tránh XSS
             $username = $filter['username'];
             $password = $filter['password'];
@@ -141,9 +194,6 @@ class Users extends Controller
                 $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['role'] = $user['role'];
-                echo '<pre>';   
-                print_r($_SESSION);
-                echo '</pre>';
                
                 header('Location: /QLDA_HSSV/admin/dashboard/index');
             } else {

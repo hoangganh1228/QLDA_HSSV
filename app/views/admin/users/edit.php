@@ -14,41 +14,64 @@
     <div class="container p-3 my-3">
         <div class="display-6 text-center">Sửa người dùng</div>
         <form action="" method="post">
-          <div class="form-group mt-3">
-              <label for="user_id">ID:</label>
-              <input type="text" name="user_id" id="user_id" value="<?= $data['user_id']; ?>" class="form-control " required>
-          </div>
-          <div class="form-group mt-3">
-            <label for="username">Tên người dùng:</label>
-            <input type="text" name="username" id="username" value="<?= $data['username']; ?>" class="form-control" required>
-          </div>
-          <div class="form-group mt-3">
-            <label for="password">Mật khẩu:</label>
-            <input type="password" name="password" id="password" value="<?= $data['password']; ?>" class="form-control" required>
-          </div>
-          <div class="form-group mt-3">
-            <label for="email">Email:</label>
-            <input type="email" name="email" id="email" value="<?= $data['email']; ?>" class="form-control" required>
-        </div>
-        <div class="form-group mt-3">
-            <label for="phone">SĐT:</label>
-            <input type="tel" name="phone" id="phone" value="<?= $data['phone']; ?>" class="form-control" required>
-        </div>
-        <div class="form-group mt-3">
-          <label for="role">Vai trò:</label>
-          <select name="role" id="role" class="form-control" required>
-              <option value="">Chọn vai trò</option>
-              <option value="Quản lý" <?= $data['role'] === 'Quản lý' ? 'selected' : '' ?>>Quản lý</option>
-              <option value="Giảng viên" <?= $data['role'] === 'Giảng viên' ? 'selected' : '' ?>>Giảng viên</option>
-              <option value="Sinh viên" <?= $data['role'] === 'Sinh viên' ? 'selected' : '' ?>>Sinh viên</option>
-          </select>
-        </div>
-    <br>
-    <div>
-        <button type="submit" id="btnThem" class="btn btn-outline-secondary">Sửa</button>
-        <a href="/QLDA_HSSV/admin/users" class="btn btn-outline-secondary">Quay lại</a>
-    </div>
-</form>
+            <!-- Thông tin chung -->
+            <div class="form-group mt-3">
+                <label for="username">Tên đăng nhập:</label>
+                <input type="text" name="username" value="<?= $user['username']; ?>" class="form-control" required>
+            </div>
+            <div class="form-group mt-3">
+                <label for="role">Vai trò:</label>
+                <select name="role" id="role" class="form-control" required>
+                    <option value="Quản lý" <?= $user['role'] === 'Quản lý' ? 'selected' : ''; ?>>Quản lý</option>
+                    <option value="Giảng viên" <?= $user['role'] === 'Giảng viên' ? 'selected' : ''; ?>>Giảng viên</option>
+                    <option value="Sinh viên" <?= $user['role'] === 'Sinh viên' ? 'selected' : ''; ?>>Sinh viên</option>
+                </select>
+            </div>
+
+            <!-- Trường cho Giảng viên -->
+            <?php if ($user['role'] === 'Giảng viên'): ?>
+                <div class="form-group mt-3">
+                    <label for="department_id">Khoa:</label>
+                    <select name="department_id" class="form-control">
+                        <?php foreach ($departments as $dept): ?>
+                            <option value="<?= $dept['department_id']; ?>" 
+                                <?= $dept['department_id'] == $extraData['department_id'] ? 'selected' : ''; ?>>
+                                <?= $dept['department_name']; ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            <?php endif; ?>
+
+            <!-- Trường cho Sinh viên -->
+            <?php if ($user['role'] === 'Sinh viên'): ?>
+                <div class="form-group mt-3">
+                    <label for="class_id">Lớp:</label>
+                    <select name="class_id" class="form-control">
+                        <?php foreach ($classes as $class): ?>
+                            <option value="<?= $class['class_id']; ?>" 
+                                <?= $class['class_id'] == $extraData['class_id'] ? 'selected' : ''; ?>>
+                                <?= $class['class_id']; ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="form-group mt-3">
+                    <label for="khoa_hoc_id">Khóa học:</label>
+                    <select name="khoa_hoc_id" class="form-control">
+                        <?php foreach ($khoahocs as $khoahoc): ?>
+                            <option value="<?= $khoahoc['khoa_hoc_id']; ?>" 
+                                <?= $khoahoc['khoa_hoc_id'] == $extraData['khoa_hoc_id'] ? 'selected' : ''; ?>>
+                                <?= $khoahoc['start_year'] . ' - ' . $khoahoc['end_year']; ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            <?php endif; ?>
+
+            <!-- Nút Submit -->
+            <button type="submit" class="btn btn-outline-secondary mt-3">Cập nhật</button>
+        </form>
     </div>
 </body>
 

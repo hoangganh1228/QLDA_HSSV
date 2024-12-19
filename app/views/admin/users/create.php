@@ -32,6 +32,10 @@
             <input type="tel" name="phone" id="phone" class="form-control" required>
         </div>
         <div class="form-group mt-3">
+            <label for="phone">Địa chỉ:</label>
+            <input type="text" name="address" id="address" class="form-control" required>
+        </div>
+        <div class="form-group mt-3">
             <label for="phone">Họ tên người dùng:</label>
             <input type="text" name="fullname" id="fullname" class="form-control" required>
         </div>
