@@ -161,12 +161,19 @@ class Users extends Controller
             } else {
                 $extraData = [];
             }
-
+            // echo '<pre>';   
+            // print_r($extraData);
+            // echo '</pre>';
     
             // Lấy dữ liệu phụ trợ (khoa, lớp, khóa học)
             $khoahocs = $this->model->getAllKhoaHoc();
             $departments = $this->model->getAllDepartments();
             $classes = $this->model->getAllClasses();
+            
+            // echo '<pre>';   
+            // print_r($departments);
+            // echo '</pre>';
+
             // Gửi dữ liệu đến View
             $this->view('/admin/users/edit', [
                 'user' => $user,

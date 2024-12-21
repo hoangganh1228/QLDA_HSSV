@@ -80,7 +80,7 @@
                         <option value="">Chọn khoa</option>
                         <?php foreach ($departments as $dept): ?>
                             <option value="<?= $dept['department_id']; ?>" 
-                                <?= $dept['department_id'] == ($extraData['department_id'] ?? '') ? 'selected' : ''; ?>>
+                                <?= $extraData[0]['department_id'] == $dept['department_id'] ? 'selected' : ''; ?>>
                                 <?= $dept['department_name']; ?>
                             </option>
                         <?php endforeach; ?>
@@ -96,7 +96,7 @@
                         <option value="">Chọn lớp</option>
                         <?php foreach ($classes as $class): ?>
                             <option value="<?= $class['class_id']; ?>" 
-                                <?= $class['class_id'] == ($extraData['class_id'] ?? '') ? 'selected' : ''; ?>>
+                                <?= $class['class_id'] == ($extraData[0]['class_id'] ?? '') ? 'selected' : ''; ?>>
                                 <?= $class['class_id']; ?>
                             </option>
                         <?php endforeach; ?>
@@ -108,7 +108,7 @@
                         <option value="">Chọn khóa học</option>
                         <?php foreach ($khoahocs as $khoahoc): ?>
                             <option value="<?= $khoahoc['khoa_hoc_id']; ?>" 
-                                <?= $khoahoc['khoa_hoc_id'] == ($extraData['khoa_hoc_id'] ?? '') ? 'selected' : ''; ?>>
+                                <?= $khoahoc['khoa_hoc_id'] == ($extraData[0]['khoa_hoc_id'] ?? '') ? 'selected' : ''; ?>>
                                 <?= $khoahoc['start_year'] . ' - ' . $khoahoc['end_year']; ?>
                             </option>
                         <?php endforeach; ?>
