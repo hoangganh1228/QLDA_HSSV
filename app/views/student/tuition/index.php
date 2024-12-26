@@ -6,128 +6,19 @@
     <title>Trang chủ</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        button {
-            border: none;
-            background: none;
-        }
-        a {
-            text-decoration: none;
-            cursor: pointer;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        .custom-icon {
-            font-size: 30px;
-            transition: transform 0.3s;
-        }
-        .custom-icon:hover {
-            transform: scale(1.2);
-        }
-        .sidebar {
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 250px;
-            background-color: #343a40;
-            padding-top: 20px;
-        }
-        .sidebar h4 {
-            color: white;
-            padding: 15px 20px;
-        }
-        .sidebar li a {
-            color: white;
-            padding: 15px 20px;
-            display: block;
-            font-size: 18px;
-        }
-        .sidebar li a:hover {
-            background-color: #575d63;
-        }
-        .main-content {
-            margin-left: 250px;
-            padding: 20px;
-        }
-        .table-container {
-            margin-top: 30px;
-            overflow-x: auto;
-        }
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .table th, .table td {
-            padding: 12px;
-            text-align: center;
-            border: 1px solid #dee2e6;
-        }
-        .table th {
-            background-color: #343a40;
-            color: white;
-        }
-        .table td {
-            background-color: #f8f9fa;
-        }
-        .table td a {
-            text-decoration: none;
-            color: #007bff;
-        }
-        .table td a:hover {
-            text-decoration: underline;
-        }
-    </style>
+   
 </head>
 <body>
    
     <div class="container-fluid mt-4">
         <div class="d-flex">
             <!-- Sidebar -->
-            <div class="sidebar">
-                <h4><a href="javascript:void(0)" onclick="window.history.back();">Hệ thống</a></h4>
-                <ul class="list-unstyled">
-                    <li><a href="Trang_chu">Trang Chủ</a></li>
-                    <li><a href="ThongtinSinhVien">Thông tin sinh viên</a></li>
-                    <li><a href="DiemSo">Góc Học Tập</a></li>
-                    <li><a href="DangKyMonHoc">Đăng Ký Học</a></li>
-                    <li><a href="#">Thời Khóa Biểu</a></li>
-                    <li><a href="#">Tài Chính</a></li>
-                </ul>
-            </div>
+            <?php require_once __DIR__ . '/../layouts/sider.php' ;?>
 
             <!-- Main Content -->
             <div class="main-content flex-grow-1">
                 <!-- Header -->
-                <div class="d-flex align-items-center justify-content-between mb-4">
-                    <!-- Search Bar -->
-                    <div class="col-md-6 search-bar">
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="bi bi-search"></i></span>
-                            <input type="text" class="form-control" placeholder="Tìm kiếm...">
-                        </div>
-                    </div>
-
-                    <!-- User Profile -->
-                    <div class="dropdown">
-                        <button class="dropdown-toggle d-flex flex-nowrap align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <div class="d-flex align-items-center justify-content-center gap-3">
-                                <div><i class="bi bi-person-circle custom-icon"></i></div>
-                            </div>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><button class="dropdown-item" type="button">Thay đổi mật khẩu</button></li>
-                            <li><button class="dropdown-item" type="button">Đăng xuất</button></li>
-                        </ul>
-                    </div>
-                </div>
-
+                <?php require_once __DIR__ . '/../layouts/header.php' ;?>
                 <!-- Dropdown chọn học kỳ -->
                 <div class="dropdown mt-4">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="hocKyDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -229,13 +120,15 @@
                         <input type="text" class="form-control" id="studentCourse" name="student_course" 
                             value="<?php echo $infoUser['start_year'] . ' - ' . $infoUser['end_year']; ?>" readonly>
 
-                        <h5>Tiền còn thiếu: <?php echo number_format($remainingAmount); ?> VND</h5>
+                            <div class="alert alert-warning text-center p-3" style="font-size: 1.5rem; font-weight: bold; color: #ff5722; background-color: #fff3cd; border: 2px solid #ffc107; border-radius: 8px; margin-top: 12px;">
+                                Tiền còn thiếu: <?php echo number_format($remainingAmount); ?> VND
+                            </div>
                     </div>
 
                     <!-- Form nhập số tiền thanh toán -->
                     <div class="mb-3">
                         <label for="paymentAmount" class="form-label">Số tiền thanh toán</label>
-                        <input type="number" class="form-control" id="paymentAmount" name="payment_amount" required>
+                        <input type="number" class="form-control" id="paymentAmount" name="payment_amount" value="<?php echo $remainingAmount; ?>" readonly required>
                     </div>
 
                     <input type="hidden" id="paymentSemesterId" name="semester_id" value="">
