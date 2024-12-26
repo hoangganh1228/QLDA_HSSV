@@ -11,6 +11,7 @@
             width: 25%;
             word-wrap: break-word;
         }
+<<<<<<< HEAD
         * {
             margin: 0;
             padding: 0;
@@ -86,10 +87,13 @@
             border: none;
             background: none;
         }
+=======
+>>>>>>> 20d5b6113a184064ec286d9924a7136765448931
     </style>
 </head>
 
 <body>
+<<<<<<< HEAD
 <div class="container-fluid">
         <div class="row">
             <div class="col-md-3 col-lg-2 sidebar">
@@ -97,6 +101,8 @@
             </div>
             <div class="col-md-9 col-lg-10 main-content">
                 <?php $this->view("admin/layout/topHead", []) ?>
+=======
+>>>>>>> 20d5b6113a184064ec286d9924a7136765448931
     <div class="container">
         <div class="display-6 text-center">Danh sách môn</div>
         <form action="" method="get" class="row justify-content-center mt-3 mb-3">
@@ -133,7 +139,11 @@
                         <tr>
                             <td><?php echo (++$i); ?></td>
                             <td><?php echo $row['subject_id'] ?></td> 
+<<<<<<< HEAD
                             <td><?php echo $row['name'] ?></td> 
+=======
+                            <td><?php echo $row['subject_name'] ?></td> 
+>>>>>>> 20d5b6113a184064ec286d9924a7136765448931
                             <td><?php echo $row['credits'] ?></td> 
                             <td><?php echo $row['major_name'] ?></td> 
                             <td>
@@ -146,9 +156,12 @@
             </tbody>
         </table>
     </div>
+<<<<<<< HEAD
                     </div>
                     </div>
                     </div>
+=======
+>>>>>>> 20d5b6113a184064ec286d9924a7136765448931
 </body>
 
 </html>

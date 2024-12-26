@@ -14,6 +14,10 @@ class Nganh extends Controller {
     }
 
     function list_nganh() {
+<<<<<<< HEAD
+=======
+        checkPermission(['Quản lý']);
+>>>>>>> 20d5b6113a184064ec286d9924a7136765448931
         $search = isGet() ? (!empty($_GET['search']) ? $_GET['search'] : '') : '';
         $result = $this->model->getAll($search);
     
@@ -28,6 +32,10 @@ class Nganh extends Controller {
     }
 
     public function add_nganh() {
+<<<<<<< HEAD
+=======
+        checkPermission(['Quản lý']);
+>>>>>>> 20d5b6113a184064ec286d9924a7136765448931
         if (isPost()) {
             $filteredPost = filter();
             if (!$this->model->isDuplicateNganhId($filteredPost['major_id'])) {
@@ -43,6 +51,10 @@ class Nganh extends Controller {
     }
 
     public function edit_nganh($id = '') {
+<<<<<<< HEAD
+=======
+        checkPermission(['Quản lý']);
+>>>>>>> 20d5b6113a184064ec286d9924a7136765448931
         if (isPost()) {
             $filteredPost = filter(); 
             $this->model->updateNganh($id, $filteredPost); 
@@ -64,6 +76,10 @@ class Nganh extends Controller {
     
 
     public function delete_nganh($id = '') {
+<<<<<<< HEAD
+=======
+        checkPermission(['Quản lý']);
+>>>>>>> 20d5b6113a184064ec286d9924a7136765448931
         if ($this->model->deleteNganh($id)) {
             echo "<script>alert('Xóa thành công')</script>";
         } else {
