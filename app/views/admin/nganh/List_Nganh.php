@@ -88,6 +88,8 @@
             background: none;
         }
 
+
+
     </style>
 </head>
 
@@ -100,7 +102,6 @@
             </div>
             <div class="col-md-9 col-lg-10 main-content">
                 <?php $this->view("admin/layout/topHead", []) ?>
-
 
     <div class="container">
         <div class="display-6 text-center">Danh sách ngành</div>
@@ -149,6 +150,12 @@
             </tbody>
         </table>
     </div>
+
+
+                    </div>
+                    </div>
+                    </div>
+
 
                     </div>
                     </div>

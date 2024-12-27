@@ -5,48 +5,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
+
 </head>
+
 <body>
-    <a href="/QLDA_HSSV/admin/users/logout">Đăng xuất</a>
 
     <div class="d-flex">
         <!-- Sidebar -->
-        <div class="bg-light border-end" style="width: 250px; height: 100vh;">
-            <h5 class="p-3">Chức năng</h5>
-            <ul class="list-group list-group-flush">
-                <!-- Chỉ hiển thị nếu là Quản lý -->
-                <?php if ($role === 'Quản lý') : ?>
-                    <li class="list-group-item"><a href="/QLDA_HSSV/admin/users">Quản lý người dùng</a></li>
-                    <li class="list-group-item"><a href="/QLDA_HSSV/admin/manage_courses">Quản lý môn học</a></li>
-                    <li class="list-group-item"><a href="/QLDA_HSSV/admin/manage_fees">Quản lý học phí</a></li>
-                    <li class="list-group-item"><a href="/QLDA_HSSV/admin/manage_grades">Nhập điểm</a></li>
-                    <li class="list-group-item"><a href="/QLDA_HSSV/admin/view_info">Quản lý thông tin cá nhân</a></li>
-                    <li class="list-group-item"><a href="/QLDA_HSSV/admin/manage_fees">Quản lý học phí</a></li>
-                    <li class="list-group-item"><a href="/QLDA_HSSV/admin/nganh">Quản lý ngành</a></li>
-
-                <?php endif; ?>
-
-                <!-- Chỉ hiển thị nếu là Giảng viên -->
-                <?php if ($role === 'Giảng viên') : ?>
-                    <li class="list-group-item"><a href="/QLDA_HSSV/admin/manage_grades">Nhập điểm</a></li>
-                    <li class="list-group-item"><a href="/QLDA_HSSV/admin/view_info">Quản lý thông tin cá nhân</a></li>
-                <?php endif; ?>
-
-                <!-- Chỉ hiển thị nếu là Sinh viên -->
-                <?php if ($role === 'Sinh viên') : ?>
-                    <li class="list-group-item"><a href="/QLDA_HSSV/admin/register_courses">Đăng ký môn học</a></li>
-                    <li class="list-group-item"><a href="/QLDA_HSSV/admin/view_grades">Xem điểm</a></li>
-                    <li class="list-group-item"><a href="/QLDA_HSSV/admin/manage_fees">Quản lý học phí</a></li>
-                <?php endif; ?>
-            </ul>
+        <div class="col-md-3 col-lg-2 sidebar">
+            <?php $this->view("admin/layout/sidebar", []) ?>
         </div>
+        <div class="col-md-9 col-lg-10 main-content">
+                <?php $this->view("admin/layout/topHead", []) ?>
+            <div class="main-content flex-grow-1">
 
+                <div class="p-4" style="flex-grow: 1;">
+                    <h2>Dashboard</h2>
+                    <p><?= $message ?></p>
+                </div>
+            </div>
+        </div>
+        
         <!-- Content -->
-        <div class="p-4" style="flex-grow: 1;">
-            <h2>Dashboard</h2>
-            <p><?= $message ?></p>
-        </div>
 
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
+<style>
+     * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .sidebar {
+            background-color: #343a40;
+            color: white;
+            height: auto;
+            padding: 20px 0;
+            overflow-y: auto;
+            position: sticky;
+            top:0;
+        }
+        .sidebar h4{
+          text-align:center;
+          
+        }
+
+        .sidebar h4 a {
+            color: blue;
+            text-decoration: none;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            padding: 10px 15px;
+            display: block;
+            border-radius: 5px;
+            
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #6c757d;
+        }
+
+        .main-content {
+            padding: 20px;
+            background-color: #f8f9fa;
+            min-height: 100vh;
+        }
+
+        .main-content h2 {
+            margin-bottom: 20px;
+        }
+
+        .search-bar .form-control {
+            border-radius: 20px;
+        }
+
+        .dropdown button {
+            border: none;
+            background: none;
+        }
+</style>
 </html>
+

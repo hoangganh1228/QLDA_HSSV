@@ -141,7 +141,11 @@ INSERT INTO `majors` (`id`, `major_id`, `major_name`, `department_id`) VALUES
 --
 -- Cấu trúc bảng cho bảng `semesters`
 --
+<<<<<<< HEAD
+-- hoc ky
+=======
 
+>>>>>>> d2a1f1f15bfcddb260b48e41c5b5b7b115614ed3
 CREATE TABLE `semesters` (
   `id` int(9) NOT NULL,
   `semester_id` varchar(9) NOT NULL,

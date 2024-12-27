@@ -19,6 +19,7 @@ class UsersModel extends Model {
     
     public function addStudent($data) {
 
+
         return $this->database->insert('student', $data);
     }
 
@@ -28,7 +29,9 @@ class UsersModel extends Model {
     public function updateUser($id, $data) {
         return $this->database->update('users', $data, "WHERE id = '$id'");
 
-        return $this->database->insert('students', $data);
+
+
+        return $this->database->insert('users', $data);
     }
 
     public function getUserByUsername($username) {
@@ -55,13 +58,14 @@ class UsersModel extends Model {
 
     public function getUser($user_id) {
         return $this->database->select([], 'users', "WHERE user_id = '$user_id'");
-
     }
 
     // Lấy thông tin khoa theo id
     public function getUserById($id) {
 
-        $result = $this->database->select([], 'users', "WHERE id = '$id'");
+
+
+
 
         $result = $this->database->select([], 'users', "WHERE user_id = '$id'");
 
@@ -86,6 +90,7 @@ class UsersModel extends Model {
     // Xóa khoa theo id
     public function deleteUser($id) {
 
+
         return $this->database->delete('users', "WHERE id = '$id'");
     }
     public function escapeString($string) {
@@ -104,6 +109,7 @@ class UsersModel extends Model {
     
 
     
+
 
     public function deleteTeacherByUserId($id) {
         return $this->database->delete('teachers', "WHERE user_id = '$id'");

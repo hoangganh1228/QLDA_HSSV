@@ -7,6 +7,12 @@
     <title>Danh sách khoa</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <style>
+
+    .column {
+        width: 25%;
+        word-wrap: break-word;
+    }
+
         .column {
             width: 25%;
             word-wrap: break-word;
@@ -125,27 +131,39 @@
             </thead>
             <tbody>
                 <?php if (empty($table)) : ?>
-                    <tr>
-                        <td colspan="4">
-                            <div class="alert alert-danger text-center">Không tìm thấy khoa</div>
-                        </td>
-                    </tr>
+
+                <tr>
+                    <td colspan="4">
+                        <div class="alert alert-danger text-center">Không tìm thấy khoa</div>
+                    </td>
+                </tr>
                 <?php else : ?>
-                    <?php $i = 0; foreach ($table as $row) : ?>
-                        <tr>
-                            <td><?php echo (++$i); ?></td>
-                            <td><?php echo $row['department_id'] ?></td> 
-                            <td><?php echo $row['department_name'] ?></td> 
-                            <td>
-                                <a href="/QLDA_HSSV/admin/khoa/edit_khoa/<?= $row['id'] ?>" class="btn btn-outline-secondary">Sửa</a>
-                                <a href="/QLDA_HSSV/admin/khoa/delete_khoa/<?= $row['id'] ?>" class="btn btn-outline-secondary" onclick="return confirm('Xác nhận xóa!')">Xóa</a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
+                <?php $i = 0; foreach ($table as $row) : ?>
+                <tr>
+                    <td><?php echo (++$i); ?></td>
+                    <td><?php echo $row['department_id'] ?></td>
+                    <td><?php echo $row['department_name'] ?></td>
+                    <td>
+                        <a href="/QLDA_HSSV/admin/khoa/edit_khoa/<?= $row['id'] ?>"
+                            class="btn btn-outline-secondary">Sửa</a>
+                        <a href="/QLDA_HSSV/admin/khoa/delete_khoa/<?= $row['id'] ?>" class="btn btn-outline-secondary"
+                            onclick="return confirm('Xác nhận xóa!')">Xóa</a>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+
+                   
+
                 <?php endif; ?>
             </tbody>
         </table>
     </div>
+
+
+
+</body>
+
+</html>
 
                     </div>
                     </div>

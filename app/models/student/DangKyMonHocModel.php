@@ -13,14 +13,14 @@ class DangKyMonHocModel extends Model {
             SELECT 
                 credit_registration.*, 
                 majors.major_name,
-                subjects.name,
+                subjects.subject_name,
                 semesters.name,
                 khoa_hoc.start_year
                
             FROM credit_registration
             LEFT JOIN majors ON credit_registration.major_id = majors.major_id
-            LEFT JOIN subjects ON credit_registration.subject_id = subjects.subject_id
-            LEFT JOIN semesters ON credit_registration.semester_id = semesters.semester_id
+            LEFT JOIN subjects ON credit_registration.subject_id = subjects.subject_name
+            LEFT JOIN semesters ON credit_registration.semester_id = semesters.name
             LEFT JOIN khoa_hoc ON credit_registration.khoa_hoc_id = khoa_hoc.khoa_hoc_id
 
            

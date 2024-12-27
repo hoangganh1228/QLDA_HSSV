@@ -26,7 +26,7 @@ class ThongtinSinhVienModel extends Model {
 
     // Lấy thông tin sinh viên theo id
     public function getSinhVienById($id) {
-        $result = $this->database->select([], 'students', "WHERE id = '$id'");
+        $result = $this->database->select([], 'students', "WHERE user_id = '$id'");
         return $result ? $result[0] : null;
     }
 

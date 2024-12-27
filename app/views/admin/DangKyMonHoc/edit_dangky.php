@@ -41,7 +41,7 @@
                     <?php foreach ($subjects as $subject): ?>
                         <option value="<?= $subject['subject_id']; ?>"
                             <?= $data['subject_id'] == $subject['subject_id'] ? 'selected' : ''; ?>>
-                            <?= $subject['name']; ?>
+                            <?= $subject['subject_name']; ?>
                         </option>
                     <?php endforeach; ?>
                 </select>

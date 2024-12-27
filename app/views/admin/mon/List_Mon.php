@@ -136,11 +136,18 @@
                     <?php $i = 0; foreach ($table as $row) : ?>
                         <tr>
                             <td><?php echo (++$i); ?></td>
-                            <td><?php echo $row['subject_id'] ?></td> 
+
 
                             <td><?php echo $row['name'] ?></td> 
 
                             <td><?php echo $row['name'] ?></td> 
+
+
+                            <td><?php echo $row['subject_name'] ?></td> 
+
+                            <td><?php echo $row['name'] ?></td> 
+
+                            <td><?php echo $row['subject_name'] ?></td> 
 
                             <td><?php echo $row['credits'] ?></td> 
                             <td><?php echo $row['major_name'] ?></td> 
@@ -153,7 +160,12 @@
                 <?php endif; ?>
             </tbody>
         </table>
-    </div>
+
+
+                    </div>
+                    </div>
+                    </div>
+
 
                     </div>
                     </div>

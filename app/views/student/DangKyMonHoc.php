@@ -112,6 +112,7 @@
     </style>
 </head>
 <body>
+    <?php var_dump($DangKyData)?>
 <div class="container-fluid">
    <div class="row">
    <div class="col-md-3 col-lg-2 sidebar "> 
@@ -125,7 +126,7 @@
         <select id="semester-filter" class="form-select">
             <option value="all">Tất cả các kỳ</option>
             <?php foreach ($semesters as $semester): ?>
-                <option value="<?php echo $semester['semester_id']; ?>">
+                <option value="<?php echo $semester['name']; ?>">
                     <?php echo $semester['name']; ?>
                 </option>
             <?php endforeach; ?>
@@ -145,8 +146,8 @@
     <tbody>
     <?php foreach ($DangKyData as $index => $data): ?>
         <tr id="row-<?php echo $index; ?>" data-reg-id="<?php echo $data['reg_id']; ?>">
-            <td><?php echo $data['subject_id']; ?></td>
-            <td><?php echo $data['semester_id']; ?></td>
+            <td><?php echo $data['subject_name']; ?></td>
+            <td><?php echo $data['name']; ?></td>
             <td class="status"><?php echo $data['status']; ?></td>
         </tr>
     <?php endforeach; ?>

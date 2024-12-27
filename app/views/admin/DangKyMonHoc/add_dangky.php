@@ -44,8 +44,8 @@
                 <select name="subject_id" id="subject_id" class="form-select" required>
                     <option value="" disabled selected>Chọn mã môn học</option>
                     <?php foreach ($subjects as $subject): ?>
-                        <option value="<?php echo $subject['name']; ?>">
-                            <?php echo $subject['name']; ?>
+                        <option value="<?php echo $subject['subject_name']; ?>">
+                            <?php echo $subject['subject_name']; ?>
                         </option>
                     <?php endforeach; ?>
                 </select>

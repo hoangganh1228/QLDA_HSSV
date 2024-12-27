@@ -100,7 +100,6 @@
             </div>
             <div class="col-md-9 col-lg-10 main-content">
                 <?php $this->view("admin/layout/topHead", []) ?>
-
     <div class="container">
         <div class="display-6 text-center">Danh sách lớp</div>
         <form action="" method="get" class="row justify-content-center mt-3 mb-3">
@@ -146,6 +145,11 @@
             </tbody>
         </table>
     </div>
+
+
+                    </div>
+                    </div>
+                    </div>
 
                     </div>
                     </div>

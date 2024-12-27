@@ -6,6 +6,7 @@ private $data,$model;
     }
 
     function index() {
+        checkPermission(['Sinh viên']);
         // Lấy dữ liệu từ model
         $sinhVienData = $this->model->getAll();
       
@@ -26,7 +27,7 @@ private $data,$model;
             echo "<script>window.location.href = '/QLDA_HSSV/student/thongtinSinhVien'</script>";
         } else {
             $result = $this->model->getSinhVienById($id); // Lấy thông tin sinh viên theo ID
-        
+            
             if (!$result) {
                 die("Không tìm thấy thông tin sinh viên.");
             }
