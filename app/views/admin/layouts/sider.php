@@ -1,12 +1,15 @@
 <div class="sidebar">
     <h4><a href="javascript:void(0)" onclick="window.history.back();">Hệ thống</a></h4>
     <ul class="list-unstyled">
-        <li><a href="http://localhost/QLDA_HSSV/admin/dashboard/index">Trang Chủ</a></li>
-        <li><a href="http://localhost/QLDA_HSSV/admin/users">Quản lý người dùng </a></li>
-        <li><a href="http://localhost/QLDA_HSSV/admin/tuition">Quản lý học phí</a></li>
-        <li><a href="DangKyMonHoc">Đăng Ký Học</a></li>
-        <li><a href="#">Thời Khóa Biểu</a></li>
-        <li><a href="#">Tài Chính</a></li>
+        <li><a href="/QLDA_HSSV/admin/dashboard">Trang Chủ</a></li>
+        <li><a href="/QLDA_HSSV/admin/users">Quản lý người dùng </a></li>
+        <li><a href="/QLDA_HSSV/admin/tuition">Quản lý học phí</a></li>
+
+        <li><a href="/QLDA_HSSV/admin/nganh">Quản lý ngành</a></li>
+        <li><a href="/QLDA_HSSV/admin/mon">Quản lý môn</a></li>
+        <li><a href="/QLDA_HSSV/admin/DangKyMonHoc">Quản lý đăng Ký Học</a></li>
+        <li><a href="/QLDA_HSSV/admin/lop">Quản lý lớp</a></li>
+        <li><a href="/QLDA_HSSV/admin/khoa">Quản lý khoa</a></li>
     </ul>
 </div>
 

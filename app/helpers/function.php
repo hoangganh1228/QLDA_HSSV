@@ -14,9 +14,9 @@ function checkPermission(array $allowedRoles) {
   }
 
   // Nếu là Quản lý, tự động có quyền truy cập mọi chức năng
-  if ($_SESSION['role'] === 'Quản lý') {
-      return;
-  }
+  // if ($_SESSION['role'] === 'Quản lý') {
+  //     return;
+  // }
 
   // Kiểm tra nếu vai trò người dùng không nằm trong danh sách cho phép
   if (!in_array($_SESSION['role'], $allowedRoles)) {

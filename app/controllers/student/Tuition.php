@@ -4,7 +4,7 @@ class Tuition extends Controller
     private $data, $model;
 
     function __construct() {
-        $this->model = $this->model('students/TuitionModel'); 
+        $this->model = $this->model('student/TuitionModel'); 
         if (!$this->model) {
             die("Không thể tải model users.model.");
         }

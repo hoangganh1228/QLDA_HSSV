@@ -7,6 +7,8 @@ class DangKyMonHoc extends Controller {
     }
 
     function index() {
+        checkPermission(['Sinh viên']);
+
         $DangKyData = $this->model->getAll();
         $majors = $this->model->getAllNganh();
         $subjects = $this->model->getAllMon();

@@ -1,14 +1,15 @@
 <div class="d-flex align-items-center justify-content-between mb-4">
-  <!-- Search Bar -->
-  <div class="col-md-6 search-bar">
-      <div class="input-group">
-          <span class="input-group-text"><i class="bi bi-search"></i></span>
-          <input type="text" class="form-control" placeholder="Tìm kiếm...">
-      </div>
-  </div>
+    <form action="" method="get" class="row justify-content-center mt-3 mb-3">
+    <div class="col-md-4 mb-2">
+        <input name="search" type="text" class="form-control" placeholder="Tìm kiếm ">
+    </div>
+    <div class="col-md-2 mb-2">
+        <button class="btn btn-outline-secondary" type="submit">Tìm kiếm</button>
+    </div>
+</form>
 
   <!-- User Profile -->
-  <div class="dropdown">
+  <div class="dropdown ms-auto">
       <button class="dropdown-toggle d-flex flex-nowrap align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           <div class="d-flex align-items-center justify-content-center gap-3">
               <div><i class="bi bi-person-circle custom-icon"></i></div>

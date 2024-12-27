@@ -13,7 +13,7 @@ class DangKyMonHocModel extends Model {
             SELECT 
                 credit_registration.*, 
                 majors.major_name,
-                subjects.name,
+                subjects.subject_name,
                 semesters.name,
                 khoa_hoc.start_year
                

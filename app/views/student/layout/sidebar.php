@@ -5,5 +5,6 @@
                     <li><a href="/QLDA_HSSV/student/DiemSo">Góc Học Tập</a></li>
                     <li><a href="/QLDA_HSSV/student/DangKyMonHoc">Đăng Ký Học</a></li>
                     <li><a href="#">Thời Khóa Biểu</a></li>
-                    <li><a href="#">Tài Chính</a></li>
+                    <li><a href="/QLDA_HSSV/student/tuition?hoc_ky=all">Học phí</a></li>
                 </ul>
+

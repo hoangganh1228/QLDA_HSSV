@@ -228,7 +228,7 @@ class Users extends Controller
                         header('Location: /QLDA_HSSV/teacher/dashboard/index');
                         break;
                     case 'Sinh viên': // Student
-                        header('Location: /QLDA_HSSV/student/dashboard/index');
+                        header('Location: /QLDA_HSSV/student/');
                         break;
                 }
                 exit;

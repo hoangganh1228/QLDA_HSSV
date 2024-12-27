@@ -1,12 +1,12 @@
 <div class="sidebar">
     <h4><a href="javascript:void(0)" onclick="window.history.back();">Hệ thống</a></h4>
     <ul class="list-unstyled">
-        <li><a href="Trang_chu">Trang Chủ</a></li>
-        <li><a href="DiemSo">Góc Học Tập</a></li>
-        <li><a href="http://localhost/QLDA_HSSV/student/tuition/viewTuition?hoc_ky=all">Học phí</a></li>
-        <li><a href="DangKyMonHoc">Đăng Ký Học</a></li>
-        <li><a href="#">Thời Khóa Biểu</a></li>
-        <li><a href="#">Tài Chính</a></li>
+    <li><a href="/QLDA_HSSV/student/Trang_chu">Trang Chủ</a></li>
+    <li><a href="/QLDA_HSSV/student/ThongtinSinhVien">Thông tin sinh viên</a></li>
+    <li><a href="/QLDA_HSSV/student/DiemSo">Góc Học Tập</a></li>
+    <li><a href="/QLDA_HSSV/student/DangKyMonHoc">Đăng Ký Học</a></li>
+    <li><a href="#">Thời Khóa Biểu</a></li>
+    <li><a href="/QLDA_HSSV/student/tuition?hoc_ky=all">Học phí</a></li>
     </ul>
 </div>
 
