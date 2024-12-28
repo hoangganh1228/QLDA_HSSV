@@ -25,7 +25,7 @@ public function getGradesBySemester($reg_id, $semester_id) {
         "g.grade",
         "cr.reg_id",
         "s.semester_id",
-        "s.semester_name",
+        "s.name",
         
     ];
     
@@ -33,7 +33,7 @@ public function getGradesBySemester($reg_id, $semester_id) {
     $table = "
         grades g
         JOIN credit_registration cr ON g.reg_id = cr.reg_id
-        JOIN semesters s ON cr.semester_id = s.semester_id
+        JOIN semesters s ON cr.semester_id = s.name
     ";
     
     // Điều kiện lọc

@@ -122,6 +122,7 @@
 </head>
 
 <body>
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3 col-lg-2 sidebar">
@@ -167,7 +168,7 @@
                             <?php foreach ($user as $user1): ?>
                             <?php foreach ($student as $student1): ?>
                             <?php foreach ($Registration as $registration): ?>
-                            <?php if ($DiemSo['student_id'] == $student1['student_id'] && $student1['user_id'] == $user1['user_id'] && $DiemSo['reg_id'] == $registration['reg_id']): ?>
+                            <?php if ($DiemSo['student_id'] == $student1['student_id'] && $student1['user_id'] == $user1['user_id'] && $DiemSo['reg_id'] == $registration['reg_id'] && $registration['status']=="Đã đăng ký"): ?>
                             <tr>
                                 <td><?php echo (++$i); ?></td>
                                 <td><?php echo $registration['subject_id']; ?></td>

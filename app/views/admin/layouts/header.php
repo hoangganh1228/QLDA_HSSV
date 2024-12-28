@@ -12,7 +12,9 @@
   <div class="dropdown ms-auto">
       <button class="dropdown-toggle d-flex flex-nowrap align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           <div class="d-flex align-items-center justify-content-center gap-3">
-              <div><i class="bi bi-person-circle custom-icon"></i></div>
+              <div><i class="bi bi-person-circle custom-icon"></i>
+              
+            </div>
           </div>
       </button>
       <ul class="dropdown-menu">

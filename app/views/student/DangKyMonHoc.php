@@ -112,7 +112,7 @@
     </style>
 </head>
 <body>
-    <?php var_dump($DangKyData)?>
+    
 <div class="container-fluid">
    <div class="row">
    <div class="col-md-3 col-lg-2 sidebar "> 
