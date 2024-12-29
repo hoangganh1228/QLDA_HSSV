@@ -27,7 +27,7 @@
                 <select name="major_id" class="form-control" required>
                     <option value="">Chọn ngành</option>
                     <?php foreach ($majors as $major): ?>
-                        <option value="<?= $major['major_id']; ?>"
+                        <option value="<?= $major['major_name']; ?>"
                             <?= $data['major_id'] == $major['major_id'] ? 'selected' : ''; ?>>
                             <?= $major['major_name']; ?>
                         </option>
@@ -39,7 +39,7 @@
     <select name="subject_id" class="form-control" required>
                     <option value="">Chọn môn học</option>
                     <?php foreach ($subjects as $subject): ?>
-                        <option value="<?= $subject['subject_id']; ?>"
+                        <option value="<?= $subject['subject_name']; ?>"
                             <?= $data['subject_id'] == $subject['subject_id'] ? 'selected' : ''; ?>>
                             <?= $subject['subject_name']; ?>
                         </option>
@@ -52,7 +52,7 @@
                 <select name="semester_id" class="form-control" required>
                     <option value="">Chọn học kỳ</option>
                     <?php foreach ($semesters as $semester): ?>
-                        <option value="<?= $semester['semester_id']; ?>"
+                        <option value="<?= $semester['name']; ?>"
                             <?= $data['semester_id'] == $semester['semester_id'] ? 'selected' : ''; ?>>
                             <?= $semester['name']; ?>
                         </option>
@@ -64,7 +64,7 @@
                 <select name="khoa_hoc_id" class="form-control" required>
                     <option value="">Chọn khóa học</option>
                     <?php foreach ($khoa_hoc as $khoa): ?>
-                        <option value="<?= $khoa['khoa_hoc_id']; ?>"
+                        <option value="<?= $khoa['start_year']; ?>"
                             <?= $data['khoa_hoc_id'] == $khoa['khoa_hoc_id'] ? 'selected' : ''; ?>>
                             <?= $khoa['start_year']; ?>
                         </option>

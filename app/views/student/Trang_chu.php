@@ -89,7 +89,15 @@
 <div class="container-fluid">
    <div class="row">
     <div class="col-md-3 col-lg-2 sidebar "> <?php $this->view("student/layout/sidebar",['user'=>$user])?></div>
-     <div class="col-md-9 col-lg-10 main-content"><?php $this->view("student/layout/topHead",['user'=>$user])?></div>
+     <div class="col-md-9 col-lg-10 main-content">
+        <?php $this->view("student/layout/topHead",['user'=>$user])?>
+        <div class="main-content flex-grow-1">
+
+                <div class="p-4" style="flex-grow: 1;">
+                    <?php echo "Xin chào,". $_SESSION['username']?>
+                </div>
+            </div>
+    </div>
 
     </div>
 </div>

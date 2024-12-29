@@ -92,7 +92,7 @@
                 <?php $this->view("admin/layout/sidebar", []) ?>
             </div>
             <div class="col-md-9 col-lg-10 main-content">
-                <?php $this->view("admin/layout/topHead", []) ?>
+                <?php $this->view("admin/layout/topHead", ['user'=>$user]) ?>
     <div class="container mt-4">
         <!-- Header -->
         <div class="d-flex justify-content-between align-items-center mb-3">

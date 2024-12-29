@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danh sách khoa</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
+
     <style>
         .column {
             width: 25%;
@@ -110,14 +112,14 @@
                 <input name="search" type="text" class="form-control" placeholder="Tìm kiếm ngành">
             </div>
             <div class="col-md-2 mb-2">
-                <button class="btn btn-outline-secondary" type="submit">Tìm kiếm</button>
+                <button class="btn btn-primary" type="submit">Tìm kiếm</button>
             </div>
         </form>
         <div>
-            <a href="/QLDA_HSSV/admin/nganh/add_nganh" class="btn btn-outline-secondary" style="width: 100px;">Thêm</a>
+            <a href="/QLDA_HSSV/admin/nganh/add_nganh" class="btn btn-success" style="width: 100px;">Thêm</a>
         </div>
-        <table class="table table-bordered table-hover mt-3">
-            <thead class="thead-dark">
+        <table class="table table-bordered table-striped mt-4">
+            <thead class="table-dark">
                 <tr style="background:#efeded">
                     <th>STT</th>
                     <th>Mã ngành</th>
@@ -141,8 +143,8 @@
                             <td><?php echo $row['major_name'] ?></td> 
                             <td><?php echo $row['department_name'] ?></td> 
                             <td>
-                                <a href="/QLDA_HSSV/admin/nganh/edit_nganh/<?= $row['id'] ?>" class="btn btn-outline-secondary">Sửa</a>
-                                <a href="/QLDA_HSSV/admin/nganh/delete_nganh/<?= $row['id'] ?>" class="btn btn-outline-secondary" onclick="return confirm('Xác nhận xóa!')">Xóa</a>
+                                <a href="/QLDA_HSSV/admin/nganh/edit_nganh/<?= $row['id'] ?>" class="btn btn-warning btn-sm">Sửa</a>
+                                <a href="/QLDA_HSSV/admin/nganh/delete_nganh/<?= $row['id'] ?>" class="btn btn-danger btn-sm    " onclick="return confirm('Xác nhận xóa!')">Xóa</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

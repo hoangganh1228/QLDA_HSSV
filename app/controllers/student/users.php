@@ -146,7 +146,7 @@ class Users extends Controller
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['role'] = $user['role'];
                
-                header('Location: /QLDA_HSSV/student');
+                header('Location: /QLDA_HSSV/student/Trang_chu');
             } else {
                 // Đăng nhập thất bại
                 echo "<script>alert('Tên đăng nhập hoặc mật khẩu không đúng!')</script>";

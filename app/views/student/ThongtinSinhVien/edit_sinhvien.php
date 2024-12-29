@@ -117,6 +117,7 @@
                 ?>
                    <?php foreach($user as $user1): ?>
                     <?php if ($SinhVien['user_id'] == $user1['user_id']): ?>
+                        
                     <!-- student_id -->
                     <div class="mb-3">
                         <label for="student_id" class="form-label">Mã Sinh Viên</label>
