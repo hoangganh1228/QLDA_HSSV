@@ -44,7 +44,7 @@
                 <?php if (empty($table)) : ?>
                     <tr>
                         <td colspan="5">
-                            <div class="alert alert-danger text-center">Không tìm thấy ngành</div>
+                            <div class="alert alert-danger text-center">Không tìm thấy ngưới dùng</div>
                         </td>
                     </tr>
                 <?php else : ?>

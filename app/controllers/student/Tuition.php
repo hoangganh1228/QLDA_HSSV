@@ -25,6 +25,8 @@ class Tuition extends Controller
         $student_id = $student[0]['student_id'];
         $semester_id = isset($_GET['hoc_ky']) ? $_GET['hoc_ky'] : null;
         $semesters = $this->model->getAllSemesters();
+        $users = $this->model->getAllUsers();
+
         $infoUser = $this->model->getInfo($student_id);
         // echo '<pre>';   
         // print_r($infoUser);
@@ -53,7 +55,8 @@ class Tuition extends Controller
         $this->view('/student/tuition/index', [
             'semesters' => $semesters,
             'tuitionDetails' => $tuitionDetails,
-            'infoUser' => $infoUser
+            'infoUser' => $infoUser,
+            'user'=>$users
         ]);
     }
 

@@ -69,4 +69,7 @@ class DangKyMonHocModel extends Model {
     public function getAllKhoaHoc() {
         return $this->database->select([], 'khoa_hoc', '');
     }
+    public function getAllUsers() {
+        return $this->database->select([], 'users', '');
+    }
 }

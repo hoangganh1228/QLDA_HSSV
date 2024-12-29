@@ -17,12 +17,12 @@
             <?php require_once __DIR__ . '/../layouts/sider.php' ;?>
 
             <!-- Main Content -->
-            <div class="main-content flex-grow-1">
+            <div class=" main-content flex-grow-1">
                 <!-- Header -->
-                <?php require_once __DIR__ . '/../layouts/header.php' ;?>
+                <?php $this->view("student/layout/topHead",[])?>
                 <!-- Dropdown chọn học kỳ -->
-                <div class="dropdown mt-4">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="hocKyDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="dropdown mt-4 ">
+                    <button class=" btn btn-secondary dropdown-toggle btn-dropdown" type="button" id="hocKyDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         Chọn Học Kỳ
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="hocKyDropdown">
@@ -144,80 +144,22 @@
 </body>
 </html>
 
-<!-- <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: Arial, sans-serif;
-    }
+<style>
+   
 
     a {
         text-decoration: none;
     }
+  .main-content{
+    margin-left: 280px;
+  }
+  .btn-dropdown{
+    background-color:#5c636a;
+    
+  }
 
-    .sidebar {
-        background-color: #343a40;
-        color: white;
-        height: auto;
-        padding: 20px 0;
-        overflow-y: auto;
-        position: sticky;
-        top:0;
-    }
-    .sidebar h4{
-      text-align:center;
-      
-    }
-
-    .sidebar h4 a {
-        color: blue;
-        text-decoration: none;
-        margin-bottom: 15px;
-        display: block;
-    }
-
-    .sidebar ul {
-        list-style: none;
-        padding: 0;
-        margin-top: 20px;
-    }
-
-    .sidebar ul li {
-        margin-bottom: 15px;
-    }
-
-    .sidebar ul li a {
-        color: white;
-        padding: 10px 15px;
-        display: block;
-        border-radius: 5px;
-        
-    }
-
-    .sidebar ul li a:hover {
-        background-color: #6c757d;
-    }
-
-    .main-content {
-        padding: 20px;
-        background-color: #f8f9fa;
-        min-height: 100vh;
-    }
-
-    .main-content h2 {
-        margin-bottom: 20px;
-    }
-
-    .search-bar .form-control {
-        border-radius: 20px;
-    }
-
-    .dropdown button {
+    .btn-logo {
         border: none;
-        background: none;
+       background-color: #fff;
     }
-</style> -->
+</style>

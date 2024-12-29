@@ -16,7 +16,7 @@ class Users extends Controller
     }
 
     function list_user() {
-        checkPermission(['Quản lý']);
+       
         $search = isGet() ? (!empty($_GET['search']) ? $_GET['search'] : '') : '';
         $result = $this->model->getAllUsers($search);
         if ($result === false) {
@@ -112,6 +112,7 @@ class Users extends Controller
                 'role' => $newRole
             ];
             $this->model->updateUser($id, $userData);
+
             // Cập nhật vào bảng phụ dựa vào vai trò
             if($newRole !== $currentRole) {
                 if ($currentRole === 'Giảng viên') {
@@ -119,7 +120,6 @@ class Users extends Controller
                 } elseif ($currentRole === 'Sinh viên') {
                     $this->model->deleteStudentByUserId($id);
                 }
-
                 // Thêm dữ liệu mới vào bảng phụ của vai trò mới
                 if ($newRole === 'Giảng viên') {
                     $teacherData = [
@@ -152,18 +152,21 @@ class Users extends Controller
         } else {
             // Lấy dữ liệu hiện tại của người dùng
             $user = $this->model->getUserById($id);
+            // echo '<pre>';   
+            // print_r($user);
+            // echo '</pre>';
             // Lấy thông tin từ bảng phụ theo vai trò
             if ($user['role'] === 'Giảng viên') {
                 $extraData = $this->model->getTeacherByUserId($id);
 
             } else if ($user['role'] === 'Sinh viên') {
+                // echo $id;
                 $extraData = $this->model->getStudentByUserId($id);
             } else {
+                // echo "Alo";
                 $extraData = [];
             }
-            // echo '<pre>';   
-            // print_r($extraData);
-            // echo '</pre>';
+           
     
             // Lấy dữ liệu phụ trợ (khoa, lớp, khóa học)
             $khoahocs = $this->model->getAllKhoaHoc();
@@ -171,7 +174,19 @@ class Users extends Controller
             $classes = $this->model->getAllClasses();
             
             // echo '<pre>';   
+            // print_r($khoahocs);
+            // echo '</pre>';
+
+            // echo '<pre>';   
+            // print_r($classes);
+            // echo '</pre>';
+
+            // echo '<pre>';   
             // print_r($departments);
+            // echo '</pre>';
+
+            // echo '<pre>';   
+            // print_r($extraData);
             // echo '</pre>';
 
             // Gửi dữ liệu đến View
@@ -184,7 +199,6 @@ class Users extends Controller
             ]);
         }
     }
-
     public function delete($id = '') {
         checkPermission(['Quản lý']);
 
@@ -246,5 +260,52 @@ class Users extends Controller
         session_destroy();
         header('Location: /QLDA_HSSV/admin/users/login');
     }
+    function resetPassword (){
+        $user = $this->model->getAllUsers();
 
+        $this->view('/admin/users/resetPassword', ['user'=>$user]);
+    }
+    public function resetPasswordPost() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Lấy và lọc dữ liệu từ form
+            $filteredPost = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $username = $filteredPost['username'] ?? null;
+            $oldPassword = $filteredPost['old_password'] ?? null;
+            $newPassword = $filteredPost['new_password'] ?? null;
+            $confirmPassword = $filteredPost['confirm_password'] ?? null;
+    
+            // Kiểm tra dữ liệu đầu vào
+            if (!$username || !$oldPassword || !$newPassword || !$confirmPassword) {
+                echo "<script>alert('Vui lòng điền đầy đủ thông tin!')</script>";
+                echo "<script>window.location.href = '/QLDA_HSSV/admin/users/resetPassword'</script>";
+                return;
+            }
+    
+            // Lấy thông tin người dùng từ database
+            $user = $this->model->getUserByUsername($username);
+    
+            // Kiểm tra người dùng có tồn tại và mật khẩu cũ chính xác
+            if ($user && $oldPassword === $user['password']) {
+                if ($newPassword === $confirmPassword) {
+                    // Cập nhật mật khẩu mới trong database
+                    $this->model->updatePassword($username, $newPassword);
+    
+                    // Hiển thị thông báo thành công
+                    echo "<script>alert('Đặt lại mật khẩu thành công!')</script>";
+                    echo "<script>window.location.href = '/QLDA_HSSV/admin/users/login'</script>";
+                } else {
+                    // Mật khẩu mới và xác nhận không khớp
+                    echo "<script>alert('Mật khẩu mới và xác nhận mật khẩu không khớp!')</script>";
+                    echo "<script>window.location.href = '/QLDA_HSSV/damin/users/resetPassword'</script>";
+                }
+            } else {
+                // Sai tên đăng nhập hoặc mật khẩu cũ
+                echo "<script>alert('Tên đăng nhập hoặc mật khẩu cũ không đúng!')</script>";
+                echo "<script>window.location.href = '/QLDA_HSSV/student/damin/users/resetPassword'</script>";
+            }
+        } else {
+            // Nếu không phải POST, chuyển hướng về trang resetPassword
+            header("Location: /QLDA_HSSV/admin/users/resetPassword");
+        }
+    }
 }

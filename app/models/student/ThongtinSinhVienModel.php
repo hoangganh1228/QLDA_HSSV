@@ -20,8 +20,8 @@ class ThongtinSinhVienModel extends Model {
     }
 
     // Cập nhật thông tin sinh viên theo id
-    public function updateSinhVien($id, $data) {
-        return $this->database->update('students', $data, "WHERE id = '$id'");
+    public function updateSinhVien($user_id, $data) {
+        return $this->database->update('students', $data, "WHERE user_id = '$user_id'");
     }
 
     // Lấy thông tin sinh viên theo id

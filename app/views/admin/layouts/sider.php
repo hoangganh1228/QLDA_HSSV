@@ -19,7 +19,7 @@
         position: fixed;
         top: 0;
         left: 0;
-        width: 250px;
+        width: 300px !important;
         background-color: #343a40;
         padding-top: 20px;
     }

@@ -129,9 +129,7 @@ class Users extends Controller
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();
             }
-            echo '<pre>';   
-            print_r($_SESSION);
-            echo '</pre>';
+        
             $filter = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING); // Lọc dữ liệu để tránh XSS
             $username = $filter['username'];
             $password = $filter['password'];
@@ -146,7 +144,7 @@ class Users extends Controller
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['role'] = $user['role'];
                
-                header('Location: /QLDA_HSSV/student');
+                header('Location: /QLDA_HSSV/student/Trang_chu');
             } else {
                 // Đăng nhập thất bại
                 echo "<script>alert('Tên đăng nhập hoặc mật khẩu không đúng!')</script>";

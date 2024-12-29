@@ -30,7 +30,8 @@ class DangKyMonHoc extends Controller {
         $majors = $this->model->getAllNganh();
         $subjects = $this->model->getAllMon();
         $semesters = $this->model->getAllKi();
-        $khoa_hoc = $this->model->getAllKhoaHoc(); // Đảm bảo bạn có phương thức này trong model
+        $khoa_hoc = $this->model->getAllKhoaHoc();
+        $user = $this->model->getAllUsers() ;// Đảm bảo bạn có phương thức này trong model
     
         // Truyền dữ liệu ra view
         $this->data['table'] = $result;
@@ -39,7 +40,8 @@ class DangKyMonHoc extends Controller {
             'majors' => $majors,
             'subjects' => $subjects,
             'semesters' => $semesters,
-            'khoa_hoc' => $khoa_hoc
+            'khoa_hoc' => $khoa_hoc,
+            'user'=>$user
         ]);
     }
     

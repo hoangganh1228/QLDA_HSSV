@@ -72,4 +72,8 @@
             echo "<script>window.location.href = '/QLDA_HSSV/admin/khoa/list_khoa'</script>";
         }
     }
+<<<<<<< HEAD
+?>
+=======
+>>>>>>> 698311c190f699438f1aafc1be2cddb0062b0c64
 

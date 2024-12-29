@@ -2,7 +2,7 @@
 class UsersModel extends Model {
 
     public function getAllUsers($search = '') {
-        return $this->database->select([], 'users', "WHERE username LIKE '%$search%' OR email LIKE '%$search%'");
+        return $this->database->select([], 'users', "WHERE username LIKE '%$search%' OR username LIKE '%$search%'");
     }
 
     public function isDuplicateKhoaId($users_id) {
@@ -20,14 +20,20 @@ class UsersModel extends Model {
     public function addStudent($data) {
 
 
-        return $this->database->insert('student', $data);
+        return $this->database->insert('students', $data);
+
     }
 
       
 
     // Cập nhật khoa theo id
+
+
+      
+
+    // Cập nhật khoa theo id
     public function updateUser($id, $data) {
-        return $this->database->update('users', $data, "WHERE id = '$id'");
+        return $this->database->update('users', $data, "WHERE user_id = '$id'");
 
 
 
@@ -52,9 +58,9 @@ class UsersModel extends Model {
         return $this->database->select([], 'teachers', "WHERE user_id = '$user_id'");
     }
     
-    public function getStudentByUserId($user_id) {
-        return $this->database->select([], 'students', "WHERE user_id = '$user_id'");
-    }
+        public function getStudentByUserId($user_id) {
+            return $this->database->select([], 'students', "WHERE user_id = '$user_id'");
+        }
 
     public function getUser($user_id) {
         return $this->database->select([], 'users', "WHERE user_id = '$user_id'");
@@ -62,10 +68,6 @@ class UsersModel extends Model {
 
     // Lấy thông tin khoa theo id
     public function getUserById($id) {
-
-
-
-
 
         $result = $this->database->select([], 'users', "WHERE user_id = '$id'");
 
@@ -90,8 +92,11 @@ class UsersModel extends Model {
     // Xóa khoa theo id
     public function deleteUser($id) {
 
+        return $this->database->delete('users', "WHERE user_id = '$id'");
 
-        return $this->database->delete('users', "WHERE id = '$id'");
+
+  
+
     }
     public function escapeString($string) {
         return str_replace("'", "''", $string); // Thay thế dấu nháy đơn để tránh lỗi SQL

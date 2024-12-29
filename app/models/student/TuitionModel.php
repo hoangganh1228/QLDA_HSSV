@@ -18,6 +18,7 @@ class TuitionModel extends Model {
     $condition = "
         WHERE ss.student_id = '$student_id' 
         AND cr.semester_id = '$semester_id'
+        AND cr.status = 'Đã đăng ký'
         GROUP BY ss.student_id, cr.semester_id
     ";
 
@@ -147,7 +148,9 @@ public function getInfo($student_id) {
     $condition = "WHERE semester_id = $semester_id";
     return $this->database->update('tuitions', $data, $condition);
   }
-
+  public function getAllUsers($search = '') {
+    return $this->database->select([], 'users', "WHERE username LIKE '%$search%' OR email LIKE '%$search%'");
+}
 
 
 }
