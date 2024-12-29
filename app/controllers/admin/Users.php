@@ -112,6 +112,7 @@ class Users extends Controller
                 'role' => $newRole
             ];
             $this->model->updateUser($id, $userData);
+
             // Cập nhật vào bảng phụ dựa vào vai trò
             if($newRole !== $currentRole) {
                 if ($currentRole === 'Giảng viên') {
@@ -119,7 +120,6 @@ class Users extends Controller
                 } elseif ($currentRole === 'Sinh viên') {
                     $this->model->deleteStudentByUserId($id);
                 }
-
                 // Thêm dữ liệu mới vào bảng phụ của vai trò mới
                 if ($newRole === 'Giảng viên') {
                     $teacherData = [
@@ -152,18 +152,21 @@ class Users extends Controller
         } else {
             // Lấy dữ liệu hiện tại của người dùng
             $user = $this->model->getUserById($id);
+            // echo '<pre>';   
+            // print_r($user);
+            // echo '</pre>';
             // Lấy thông tin từ bảng phụ theo vai trò
             if ($user['role'] === 'Giảng viên') {
                 $extraData = $this->model->getTeacherByUserId($id);
 
             } else if ($user['role'] === 'Sinh viên') {
+                // echo $id;
                 $extraData = $this->model->getStudentByUserId($id);
             } else {
+                // echo "Alo";
                 $extraData = [];
             }
-            // echo '<pre>';   
-            // print_r($extraData);
-            // echo '</pre>';
+           
     
             // Lấy dữ liệu phụ trợ (khoa, lớp, khóa học)
             $khoahocs = $this->model->getAllKhoaHoc();
@@ -171,7 +174,19 @@ class Users extends Controller
             $classes = $this->model->getAllClasses();
             
             // echo '<pre>';   
+            // print_r($khoahocs);
+            // echo '</pre>';
+
+            // echo '<pre>';   
+            // print_r($classes);
+            // echo '</pre>';
+
+            // echo '<pre>';   
             // print_r($departments);
+            // echo '</pre>';
+
+            // echo '<pre>';   
+            // print_r($extraData);
             // echo '</pre>';
 
             // Gửi dữ liệu đến View
@@ -184,7 +199,6 @@ class Users extends Controller
             ]);
         }
     }
-
     public function delete($id = '') {
         checkPermission(['Quản lý']);
 
