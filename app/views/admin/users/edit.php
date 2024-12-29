@@ -80,7 +80,7 @@
                         <option value="">Chọn khoa</option>
                         <?php foreach ($departments as $dept): ?>
                             <option value="<?= $dept['department_id']; ?>" 
-                                <?= $extraData[0]['department_id'] == $dept['department_id'] ? 'selected' : ''; ?>>
+                                <?= isset($extraData[0]['department_id']) && $extraData[0]['department_id'] == $dept['department_id'] ? 'selected' : ''; ?>>
                                 <?= $dept['department_name']; ?>
                             </option>
                         <?php endforeach; ?>

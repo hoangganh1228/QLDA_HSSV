@@ -18,7 +18,20 @@ class UsersModel extends Model {
     }
     
     public function addStudent($data) {
+
+
         return $this->database->insert('students', $data);
+    }
+
+      
+
+    // Cập nhật khoa theo id
+    public function updateUser($id, $data) {
+        return $this->database->update('users', $data, "WHERE user_id = '$id'");
+
+
+
+        return $this->database->insert('users', $data);
     }
 
     public function getUserByUsername($username) {
@@ -26,11 +39,7 @@ class UsersModel extends Model {
         return $result ? $result[0] : null;
     }
 
-    // Cập nhật khoa theo id
-    public function updateUser($id, $data) {
-        return $this->database->update('users', $data, "WHERE user_id = '$id'");
-    }
-    
+
     public function updateTeacher($user_id, $data) {
         return $this->database->update('teachers', $data, "WHERE user_id = '$user_id'");
     }
@@ -43,9 +52,9 @@ class UsersModel extends Model {
         return $this->database->select([], 'teachers', "WHERE user_id = '$user_id'");
     }
     
-    public function getStudentByUserId($user_id) {
-        return $this->database->select([], 'students', "WHERE user_id = '$user_id'");
-    }
+        public function getStudentByUserId($user_id) {
+            return $this->database->select([], 'students', "WHERE user_id = '$user_id'");
+        }
 
     public function getUser($user_id) {
         return $this->database->select([], 'users', "WHERE user_id = '$user_id'");
@@ -53,7 +62,13 @@ class UsersModel extends Model {
 
     // Lấy thông tin khoa theo id
     public function getUserById($id) {
+
+
+
+
+
         $result = $this->database->select([], 'users', "WHERE user_id = '$id'");
+
         return $result ? $result[0] : null;
     }
     
@@ -75,8 +90,26 @@ class UsersModel extends Model {
     // Xóa khoa theo id
     public function deleteUser($id) {
 
+
         return $this->database->delete('users', "WHERE user_id = '$id'");
     }
+    public function escapeString($string) {
+        return str_replace("'", "''", $string); // Thay thế dấu nháy đơn để tránh lỗi SQL
+    }
+    
+    public function updatePassword($username, $hashedPassword) {
+        $username = $this->escapeString($username);
+        $hashedPassword = $this->escapeString($hashedPassword);
+    
+        $sql = "UPDATE users SET password = '$hashedPassword' WHERE username = '$username'";
+        return $this->database->query($sql);
+    }
+    
+    
+    
+
+    
+
 
     public function deleteTeacherByUserId($id) {
         return $this->database->delete('teachers', "WHERE user_id = '$id'");
@@ -85,4 +118,5 @@ class UsersModel extends Model {
     public function deleteStudentByUserId($id) {
         return $this->database->delete('students', "WHERE user_id = '$id'");
     }
+
 }
