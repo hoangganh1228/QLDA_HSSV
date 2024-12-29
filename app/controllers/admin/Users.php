@@ -16,7 +16,7 @@ class Users extends Controller
     }
 
     function list_user() {
-        checkPermission(['Quản lý']);
+       
         $search = isGet() ? (!empty($_GET['search']) ? $_GET['search'] : '') : '';
         $result = $this->model->getAllUsers($search);
         if ($result === false) {

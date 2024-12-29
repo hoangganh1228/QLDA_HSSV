@@ -103,6 +103,14 @@
             <div class="col-md-9 col-lg-10 main-content">
                 <?php $this->view("admin/layout/topHead", []) ?>
                <div class="container">
+               <form action="" method="get" class="row justify-content-center mt-3 mb-3">
+            <div class="col-md-4 mb-2">
+                <input name="search" type="text" class="form-control" placeholder="Tìm kiếm người dùng">
+            </div>
+            <div class="col-md-2 mb-2">
+                <button class="btn btn-primary" type="submit">Tìm kiếm</button>
+            </div>
+        </form>
                     <a href="/QLDA_HSSV/admin/users/create" class="btn btn-success" style="width: 100px;">Thêm</a>
                     
                     <div class="table-container">

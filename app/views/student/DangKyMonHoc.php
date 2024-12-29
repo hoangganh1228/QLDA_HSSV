@@ -145,9 +145,38 @@
     </thead>
     <tbody>
     <?php foreach ($DangKyData as $index => $data): ?>
+        <?php 
+           
+            $subject_name = "";
+            $semester_name = "";
+       
+
+        
+
+            // Tìm tên môn học
+            foreach ($subjects as $subject) {
+                if ($data['subject_id'] == $subject['subject_id']) {
+                    $subject_name = $subject['subject_name'];
+                    break;
+                }
+            }
+
+            // Tìm tên học kỳ
+            foreach ($semesters as $semester) {
+                if ($data['semester_id'] == $semester['semester_id']) {
+                    $semester_name = $semester['name'];
+                    break;
+                }
+            }
+
+            // Tìm tên khóa học
+          
+            ?>
+            <tr>
+                
         <tr id="row-<?php echo $index; ?>" data-reg-id="<?php echo $data['reg_id']; ?>">
-            <td><?php echo $data['subject_id']; ?></td>
-            <td><?php echo $data['semester_id']; ?></td>
+            <td><?php echo $subject_name; ?></td>
+            <td><?php echo $semester_name; ?></td>
             <td class="status"><?php echo $data['status']; ?></td>
         </tr>
     <?php endforeach; ?>

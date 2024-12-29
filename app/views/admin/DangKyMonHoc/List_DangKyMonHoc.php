@@ -114,38 +114,74 @@
                 <tr>
                     <th>ID</th>
                     <th>Mã Đăng Ký</th>
-                    <th>Mã Ngành</th>
-                    <th>Mã Môn Học</th>
-                    <th>Mã Học Kỳ</th>
-                    <th>Mã Khóa Học</th>
+                    <th>Tên Ngành</th>
+                    <th>Tên Môn Học</th>
+                    <th>Tên Học Kỳ</th>
+                    <th>Tên Khóa Học</th>
                     <th>Hành Động</th>
                 </tr>
             </thead>
             <tbody>
-                <?php if (!empty($table)) : ?>
-                    <?php foreach ($table as $row) : ?>
-                        <tr>
-                            <td><?php echo $row['id']; ?></td>
-                            <td><?php echo $row['reg_id']; ?></td>
-                            <td><?php echo $row['major_id']; ?></td>
-                            <td><?php echo $row['subject_id']; ?></td>
-                            <td><?php echo $row['semester_id']; ?></td>
-                            <td><?php echo $row['khoa_hoc_id']; ?></td>
+    <?php if (!empty($table)) : ?>
+        <?php foreach ($table as $row) : ?>
+            <?php 
+            $major_name = "";
+            $subject_name = "";
+            $semester_name = "";
+            $khoa_hoc_name = "";
 
+            // Tìm tên ngành
+            foreach ($majors as $major) {
+                if ($row['major_id'] == $major['major_id']) {
+                    $major_name = $major['major_name'];
+                    break;
+                }
+            }
 
-      
-                            <td>
-                                <a href="/QLDA_HSSV/admin/DangKyMonHoc/edit_dangky/<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Sửa</a>
-                                <a href="/QLDA_HSSV/admin/DangKyMonHoc/delete_dangky/<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">Xóa</a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                <?php else : ?>
-                    <tr>
-                        <td colspan="7" class="text-center">Không có dữ liệu nào!</td>
-                    </tr>
-                <?php endif; ?>
-            </tbody>
+            // Tìm tên môn học
+            foreach ($subjects as $subject) {
+                if ($row['subject_id'] == $subject['subject_id']) {
+                    $subject_name = $subject['subject_name'];
+                    break;
+                }
+            }
+
+            // Tìm tên học kỳ
+            foreach ($semesters as $semester) {
+                if ($row['semester_id'] == $semester['semester_id']) {
+                    $semester_name = $semester['name'];
+                    break;
+                }
+            }
+
+            // Tìm tên khóa học
+            foreach ($khoa_hoc as $khoa_Hoc) {
+                if ($row['khoa_hoc_id'] == $khoa_Hoc['khoa_hoc_id']) {
+                    $khoa_hoc_name = $khoa_Hoc['start_year'] . '-' . $khoa_Hoc['end_year'];
+                    break;
+                }
+            }
+            ?>
+            <tr>
+                <td><?php echo $row['id']; ?></td>
+                <td><?php echo $row['reg_id']; ?></td>
+                <td><?php echo $major_name; ?></td> <!-- Tên Ngành -->
+                <td><?php echo $subject_name; ?></td> <!-- Tên Môn Học -->
+                <td><?php echo $semester_name; ?></td> <!-- Tên Học Kỳ -->
+                <td><?php echo $khoa_hoc_name; ?></td> <!-- Tên Khóa Học -->
+                <td>
+                    <a href="/QLDA_HSSV/admin/DangKyMonHoc/edit_dangky/<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Sửa</a>
+                    <a href="/QLDA_HSSV/admin/DangKyMonHoc/delete_dangky/<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">Xóa</a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    <?php else : ?>
+        <tr>
+            <td colspan="7" class="text-center">Không có dữ liệu nào!</td>
+        </tr>
+    <?php endif; ?>
+</tbody>
+
         </table>
     </div>
                 </div>

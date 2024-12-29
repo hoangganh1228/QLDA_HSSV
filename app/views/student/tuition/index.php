@@ -19,7 +19,7 @@
             <!-- Main Content -->
             <div class=" main-content flex-grow-1">
                 <!-- Header -->
-                <?php $this->view("student/layout/topHead",['user'=>$user])?>
+                <?php $this->view("student/layout/topHead",[])?>
                 <!-- Dropdown chọn học kỳ -->
                 <div class="dropdown mt-4 ">
                     <button class=" btn btn-secondary dropdown-toggle btn-dropdown" type="button" id="hocKyDropdown" data-bs-toggle="dropdown" aria-expanded="false">

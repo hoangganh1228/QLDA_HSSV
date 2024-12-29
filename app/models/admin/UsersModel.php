@@ -2,7 +2,7 @@
 class UsersModel extends Model {
 
     public function getAllUsers($search = '') {
-        return $this->database->select([], 'users', "WHERE username LIKE '%$search%' OR email LIKE '%$search%'");
+        return $this->database->select([], 'users', "WHERE username LIKE '%$search%' OR username LIKE '%$search%'");
     }
 
     public function isDuplicateKhoaId($users_id) {
@@ -20,14 +20,14 @@ class UsersModel extends Model {
     public function addStudent($data) {
 
 
-        return $this->database->insert('student', $data);
+        return $this->database->insert('students', $data);
     }
 
       
 
     // Cập nhật khoa theo id
     public function updateUser($id, $data) {
-        return $this->database->update('users', $data, "WHERE id = '$id'");
+        return $this->database->update('users', $data, "WHERE user_id = '$id'");
 
 
 
@@ -91,7 +91,7 @@ class UsersModel extends Model {
     public function deleteUser($id) {
 
 
-        return $this->database->delete('users', "WHERE id = '$id'");
+        return $this->database->delete('users', "WHERE user_id = '$id'");
     }
     public function escapeString($string) {
         return str_replace("'", "''", $string); // Thay thế dấu nháy đơn để tránh lỗi SQL
