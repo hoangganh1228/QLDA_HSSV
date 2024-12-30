@@ -189,7 +189,7 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-
+let isRegisteredAll = false; 
 document.getElementById('registerAllButton').addEventListener('click', function () {
     const rows = document.querySelectorAll('tbody tr'); // Chọn tất cả các hàng trong tbody
     const regIds = [];
@@ -216,7 +216,11 @@ document.getElementById('registerAllButton').addEventListener('click', function 
         .then(data => {
             if (data.success) {
                 alert('Đăng ký tất cả thành công!');
-                location.reload(); // Tải lại trang nếu cần
+                const registerButton = document.getElementById('registerAllButton');
+                registerButton.disabled = true;
+                registerButton.innerText = 'Đã đăng ký';
+                isRegisteredAll = true; 
+              
             } else {
                 alert('Đăng ký thất bại: ' + data.message);
             }
@@ -227,6 +231,13 @@ document.getElementById('registerAllButton').addEventListener('click', function 
         });
     } else {
         alert('Không có môn học nào để đăng ký.');
+    }
+});
+window.addEventListener('beforeunload', function (e) {
+    if (isRegisteredAll) {
+        const confirmationMessage = "Bạn đã đăng ký tất cả môn học. Bạn có chắc muốn tải lại trang?";
+        e.returnValue = confirmationMessage;  // Chrome, Firefox
+        return confirmationMessage;  // Các trình duyệt khác
     }
 });
 
