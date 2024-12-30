@@ -3,7 +3,7 @@
     <ul class="list-unstyled">
         <!-- Quản lý chung -->
         <li class="mb-2">
-            <button class="btn  w-100 text-start dropdown-toggle" data-toggle="collapse" type="button"  data-target="#quanlyChung" aria-expanded="false" aria-controls="quanlyChung         ">
+            <button class="btn  w-100 text-start dropdown-toggle" data-toggle="collapse" type="button" data-target="#quanlyChung" aria-expanded="false" aria-controls="quanlyChung         ">
                 Quản lý chung
             </button>
             <div class="collapse multi-collapse" id="quanlyChung">
@@ -25,6 +25,7 @@
                     <li><a href="/QLDA_HSSV/admin/mon" class="text-white">Quản lý môn</a></li>
                     <li><a href="/QLDA_HSSV/admin/DangKyMonHoc" class="text-white">Quản lý đăng ký học</a></li>
                     <li><a href="/QLDA_HSSV/admin/lop" class="text-white">Quản lý lớp</a></li>
+                    <li><a href="/QLDA_HSSV/admin/Diem" class="text-white">Quản lý điểm</a></li>
                 </ul>
             </div>
         </li>
@@ -58,23 +59,25 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
- .btn {
-    color: #fff;
-}
+    .btn {
+        color: #fff;
+    }
 
-.btn:hover {
-    background-color: transparent !important; /* Chỉ định rõ màu */
-    border-color: transparent !important;
-}
+    .btn:hover {
+        background-color: transparent !important;
+        /* Chỉ định rõ màu */
+        border-color: transparent !important;
+    }
 
-/* Đảm bảo chức năng toggle không bị ảnh hưởng */
-.btn[data-bs-toggle="collapse"] {
-    color: #fff;
-    background-color: #343a40; /* Màu nền mặc định */
-}
+    /* Đảm bảo chức năng toggle không bị ảnh hưởng */
+    .btn[data-bs-toggle="collapse"] {
+        color: #fff;
+        background-color: #343a40;
+        /* Màu nền mặc định */
+    }
 
-.btn[data-bs-toggle="collapse"]:hover {
-    background-color: #495057; /* Màu khi hover */
-}
-
+    .btn[data-bs-toggle="collapse"]:hover {
+        background-color: #495057;
+        /* Màu khi hover */
+    }
 </style>
