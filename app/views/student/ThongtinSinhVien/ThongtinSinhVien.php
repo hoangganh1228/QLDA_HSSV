@@ -103,11 +103,11 @@
                     <?php
                 foreach ($sinhVienData as $SinhVien) {
                 ?>
-                   <?php foreach($user as $user1): ?>
-                    <?php if ($SinhVien['user_id'] == $user1['user_id']): ?>
+                  
+                    <?php if ($SinhVien['fullname'] === $_SESSION['username']): ?>
                         <div class="mb-3">
                             <label for="student_id" class="form-label">Mã Sinh Viên</label>
-                            <input type="number" class="form-control" id="student_id" value="0" readonly>
+                            <input type="text" class="form-control" id="student_id" value="<?php echo $SinhVien['student_id']?>" readonly>
                         </div>
                         <div class="mb-3">
                             <label for="fullname" class="form-label">Họ và Tên</label>
@@ -143,7 +143,7 @@
 
 
                         <?php endif; ?>
-                    <?php endforeach; ?>
+                    
                 <?php
                             
                 }

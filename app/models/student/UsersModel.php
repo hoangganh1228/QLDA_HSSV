@@ -18,7 +18,7 @@ class UsersModel extends Model {
     }
     
     public function addStudent($data) {
-        return $this->database->insert('student', $data);
+        return $this->database->insert('students', $data);
     }
 
         public function getUserByUsername($username) {
@@ -26,9 +26,13 @@ class UsersModel extends Model {
             return $result ? $result[0] : null;
         }
 
-    // Cập nhật khoa theo id
+  
     public function updateUser($id, $data) {
         return $this->database->update('users', $data, "WHERE id = '$id'");
+    }
+    // đừng động vào
+    public function updateSinhVien($user_id, $data) {
+        return $this->database->update('users', $data, "WHERE user_id = '$user_id'");
     }
 
     // Lấy thông tin khoa theo id

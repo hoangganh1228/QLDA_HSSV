@@ -52,15 +52,7 @@ class DangKyMonHocModel extends Model {
         $result = $this->database->select([], 'credit_registration', "WHERE id = '$id'");
         return $result ? $result[0] : null;
     }
-    public function updateStatus($reg_id) {
-        // Dữ liệu cần cập nhật
-        $data = [
-            'status' => 'Đã đăng ký'
-        ];
     
-        // Thực thi câu lệnh cập nhật trong bảng credit_registration
-        return $this->database->update('credit_registration', $data, "WHERE reg_id = '$reg_id'");
-    }
     
     
     // Xóa thông tin đăng ký môn học theo id
@@ -82,4 +74,43 @@ class DangKyMonHocModel extends Model {
     public function getAllUsers($search = '') {
         return $this->database->select([], 'users', "WHERE username LIKE '%$search%' OR email LIKE '%$search%'");
     }
+    public function getStudentByUsername($username) {
+        // Thoát ký tự đặc biệt trong username (nếu cần)
+        $username = addslashes($username);
+    
+        // Truy vấn cơ sở dữ liệu
+        $query = "SELECT * FROM students WHERE fullname = '$username'";
+        $stmt = $this->database->query($query);
+    
+        // Kiểm tra kết quả trả về
+        if ($stmt && $stmt->rowCount() > 0) {  // Dùng rowCount() thay cho num_rows
+            return $stmt->fetch(PDO::FETCH_ASSOC);  // Trả về sinh viên đầu tiên
+        }
+    
+        return null;  // Trả về null nếu không tìm thấy sinh viên
+    }
+    public function addStudentSubject($studentId, $regId) {
+        // Tạo ID ngẫu nhiên cho student_subject
+        $randomId = mt_rand(100000, 999999);  // ID ngẫu nhiên trong phạm vi 6 chữ số
+    
+        // Dữ liệu cần thêm vào bảng student_subject
+        $data = [
+            'id' => $randomId,  // ID ngẫu nhiên
+            'student_id' => $studentId,
+            'reg_id' => $regId
+        ];
+    
+        // Chèn dữ liệu vào bảng student_subject
+        return $this->database->insert('student_subject', $data);
+    }
+    
+
+    
+    
+
+    
+    
+    
+    
+    
 }

@@ -123,11 +123,7 @@
                         <label for="student_id" class="form-label">Mã Sinh Viên</label>
                         <input type="number" class="form-control" id="student_id" value="<?php echo $SinhVien['student_id']; ?>" readonly>
                     </div>
-                    <!-- user_id -->
-                    <div class="mb-3">
-                        <label for="user_id" class="form-label">Mã Người Dùng</label>
-                        <input type="number" class="form-control" id="user_id" value="<?php echo $SinhVien['user_id']; ?>" readonly>
-                    </div>
+                  
                     <!-- fullname -->
                     <div class="mb-3">
                         <label for="fullname" class="form-label">Họ và Tên</label>

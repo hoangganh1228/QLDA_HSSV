@@ -135,23 +135,23 @@
 </div>
 
 <h2 class="text-center mb-4">Danh sách các môn học</h2>
+<div class="text-center mb-4">
+    <button id="registerAllButton" class="btn btn-primary">Đăng ký tất cả</button>
+</div>
 <table class="table table-bordered table-striped">
     <thead class="table-dark">
         <tr>
             <th>Môn Học</th>
             <th>Học Kỳ</th>
-            <th>Trạng Thái</th>
+           
+           
         </tr>
     </thead>
     <tbody>
     <?php foreach ($DangKyData as $index => $data): ?>
         <?php 
-           
             $subject_name = "";
             $semester_name = "";
-       
-
-        
 
             // Tìm tên môn học
             foreach ($subjects as $subject) {
@@ -168,25 +168,19 @@
                     break;
                 }
             }
-
-            // Tìm tên khóa học
-          
-            ?>
-            <tr>
-                
+        ?>
         <tr id="row-<?php echo $index; ?>" data-reg-id="<?php echo $data['reg_id']; ?>">
             <td><?php echo $subject_name; ?></td>
-            <td><?php echo $semester_name; ?></td>
-            <td class="status"><?php echo $data['status']; ?></td>
+            <td class="semester"><?php echo $semester_name; ?></td>
+          
         </tr>
     <?php endforeach; ?>
 </tbody>
 
+
 </table>
-<!-- Nút Đăng ký bên dưới bảng -->
-<div class="text-center mt-3">
-    <button class="btn btn-success" id="register-all" onclick="registerAllSubjects()">Đăng ký tất cả</button>
-</div>
+
+
 
     </div>
      </div>
@@ -195,71 +189,79 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-function registerAllSubjects() {
-    // Lấy tất cả các reg_id từ bảng
-    const regIds = Array.from(document.querySelectorAll('tbody tr'))
-        .map(row => row.getAttribute('data-reg-id')) // Lấy reg_id từ thuộc tính data-reg-id
-        .filter(id => id); // Lọc các giá trị hợp lệ (không null hoặc undefined)
 
-    if (regIds.length === 0) {
-        alert('Không có môn học nào để đăng ký!');
-        return;
-    }
-
-    // Gửi danh sách reg_id lên server
-    fetch('/QLDA_HSSV/student/DangKyMonHoc/updateStatus', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ reg_ids: regIds }) // Gửi danh sách reg_id
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            console.log('Cập nhật thành công', data);
-
-            // Cập nhật trạng thái trong bảng
-            const rows = document.querySelectorAll('tbody tr');
-            rows.forEach(row => {
-                const statusCell = row.querySelector('.status');
-                statusCell.textContent = 'Đã đăng ký';
-                statusCell.classList.add('text-success');
-            });
-
-            alert('Tất cả các môn học đã được đăng ký thành công!');
-        } else {
-            console.error('Lỗi:', data.message);
-            alert(data.message);
-        }
-    })
-    .catch(error => {
-        console.error('Có lỗi trong quá trình gửi yêu cầu:', error);
-        alert('Có lỗi xảy ra, vui lòng thử lại.');
-    });
-}
-
-
-
-
-document.getElementById('semester-filter').addEventListener('change', function () {
-    const selectedSemester = this.options[this.selectedIndex].text.trim(); // Lấy giá trị được chọn từ dropdown và loại bỏ khoảng trắng thừa
-    console.log(`Selected Semester: ${selectedSemester}`);
-    
+document.getElementById('registerAllButton').addEventListener('click', function () {
     const rows = document.querySelectorAll('tbody tr'); // Chọn tất cả các hàng trong tbody
+    const regIds = [];
 
     rows.forEach(row => {
-        const semester = row.querySelector('td:nth-child(2)').textContent.trim(); // Lấy giá trị học kỳ trong hàng và loại bỏ khoảng trắng
-        console.log(`Row Semester: ${semester}`);
-        
-        // So sánh giá trị với điều kiện chuẩn hóa
-        if (selectedSemester === 'Tất cả các kỳ' || semester === selectedSemester) {
-            row.style.display = ''; // Hiển thị nếu khớp hoặc chọn "Tất cả các kỳ"
-        } else {
-            row.style.display = 'none'; // Ẩn nếu không khớp
+        const regId = row.getAttribute('data-reg-id'); // Lấy reg_id từ thuộc tính data-reg-id
+        if (regId) {
+            regIds.push(regId);
         }
     });
+
+    if (regIds.length > 0) {
+        // Gửi regIds và student_id qua AJAX đến backend
+        fetch('http://localhost/QLDA_HSSV/student/DangKyMonHoc/registerAll', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                regIds: regIds
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Đăng ký tất cả thành công!');
+                location.reload(); // Tải lại trang nếu cần
+            } else {
+                alert('Đăng ký thất bại: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Lỗi khi gửi yêu cầu:', error);
+            alert('Đã xảy ra lỗi.');
+        });
+    } else {
+        alert('Không có môn học nào để đăng ký.');
+    }
 });
+
+
+
+
+
+
+
+
+
+
+
+    document.getElementById('semester-filter').addEventListener('change', function () {
+        const selectedSemester = this.options[this.selectedIndex].text.trim(); // Lấy giá trị được chọn từ dropdown và loại bỏ khoảng trắng thừa
+        console.log(`Selected Semester: ${selectedSemester}`);
+        
+        const rows = document.querySelectorAll('tbody tr'); // Chọn tất cả các hàng trong tbody
+        console.log(rows)
+
+                rows.forEach(row => {
+                    const semesterCell = row.querySelector('.semester'); // Chọn cột có lớp 'semester'
+        if (semesterCell) {
+            const semester = semesterCell.textContent.trim(); // Lấy nội dung văn bản và loại bỏ khoảng trắng thừa
+            console.log(`Semester: ${semester}`);
+                    
+                    // So sánh giá trị với điều kiện chuẩn hóa
+                    if (selectedSemester === 'Tất cả các kỳ' || semester === selectedSemester) {
+                        row.style.display = ''; // Hiển thị nếu khớp hoặc chọn "Tất cả các kỳ"
+                    } else {
+                        row.style.display = 'none'; // Ẩn nếu không khớp
+                    }
+                }
+                });
+    });
 
 
 

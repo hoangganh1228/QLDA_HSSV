@@ -14,6 +14,7 @@ class Database
         $statement->execute();
         return $statement;
     }
+  
 
     public function select($colArr =[], $table, $condition)
     {
