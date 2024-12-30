@@ -22,7 +22,7 @@ class SqlConnection
         if (self::$conn == null) {
             new SqlConnection();
         }
-        //var_dump(self::$conn);
+        // var_dump(self::$conn);
         return self::$conn;
     }
 }

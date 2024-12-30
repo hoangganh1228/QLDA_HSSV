@@ -33,4 +33,5 @@ class KhoaModel extends Model {
     public function deleteKhoa($id) {
         return $this->database->delete('departments', "WHERE id = '$id'");
     }
+
 }
