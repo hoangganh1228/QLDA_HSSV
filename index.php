@@ -14,8 +14,5 @@ require_once 'core/Functions.php';
 require_once 'configs/config.php';
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 698311c190f699438f1aafc1be2cddb0062b0c64
 $app = new App();

@@ -18,7 +18,6 @@ class TuitionModel extends Model {
     $condition = "
         WHERE ss.student_id = '$student_id' 
         AND cr.semester_id = '$semester_id'
-        AND cr.status = 'Đã đăng ký'
         GROUP BY ss.student_id, cr.semester_id
     ";
 

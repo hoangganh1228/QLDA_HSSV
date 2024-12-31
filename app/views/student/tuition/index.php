@@ -36,8 +36,8 @@
                 <!-- Điểm số table -->
                 <div class="table-container">
                     <h3 class="text-center mb-4">Học phí</h3>
-                    <table class="table">
-                        <thead>
+                    <table class="table table-bordered table-striped mt-4">
+                        <thead class="table-dark">
                             <tr>
                                 <th>STT</th>
                                 <th>Học kỳ</th>
