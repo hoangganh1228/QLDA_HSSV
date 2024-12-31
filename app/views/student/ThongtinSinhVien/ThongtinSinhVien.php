@@ -105,6 +105,29 @@
                 ?>
                   
                     <?php if ($SinhVien['fullname'] === $_SESSION['username']): ?>
+                        <?php 
+            $major_name = "";
+            $khoahoc_name = "";
+
+            // Tìm tên môn học
+            foreach ($classes as $class) {
+            foreach ($majors as $major) {
+
+                if ($SinhVien['class_id'] == $class['class_id'] && $class['major_id']==$major['major_id']) {
+                    $major_name = $major['major_name'];
+                    break;
+                }
+            }
+        }
+
+            // Tìm tên học kỳ
+            foreach ($khoahocs as $khoahoc) {
+                if ($SinhVien['khoa_hoc_id'] == $khoahoc['khoa_hoc_id']) {
+                    $khoahoc_name = $khoahoc['start_year'] . '-' . $khoahoc['end_year'];
+                    break;
+                }
+            }
+            ?>
                         <div class="mb-3">
                             <label for="student_id" class="form-label">Mã Sinh Viên</label>
                             <input type="text" class="form-control" id="student_id" value="<?php echo $SinhVien['student_id']?>" readonly>
@@ -131,12 +154,12 @@
                             <input type="text" class="form-control" id="address" value="<?php echo $SinhVien['address']?>" readonly>
                         </div>
                         <div class="mb-3">
-                            <label for="class_id" class="form-label">Mã Lớp</label>
-                            <input type="text" class="form-control" id="class_id" value="<?php echo $SinhVien['class_id']?>" readonly>
+                            <label for="class_id" class="form-label">Tên ngành</label>
+                            <input type="text" class="form-control" id="class_id" value="<?php echo $major_name?>" readonly>
                         </div>
                         <div class="mb-3">
                             <label for="khoa_hoc_id" class="form-label">Mã Khóa Học</label>
-                            <input type="text" class="form-control" id="khoa_hoc_id" value="<?php echo $SinhVien['khoa_hoc_id']?>" readonly>
+                            <input type="text" class="form-control" id="khoa_hoc_id" value="<?php echo $khoahoc_name?>" readonly>
                         </div>
 
                         <button type="button" class="btn btn-warning" onclick="window.location.href='/QLDA_HSSV/student/ThongtinSinhVien/edit_sinhvien/<?php echo $SinhVien['user_id']; ?>'">Sửa</button>

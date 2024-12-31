@@ -54,6 +54,10 @@ class ThongtinSinhVienModel extends Model {
         $result = $this->database->select([], 'classes', "");
         return $result ?: []; // Trả về toàn bộ mảng hoặc mảng rỗng nếu không có dữ liệu
     }
+    public function getAllNganh() {
+        $result = $this->database->select([], 'majors', "");
+        return $result ?: []; // Trả về toàn bộ mảng hoặc mảng rỗng nếu không có dữ liệu
+    }
     public function getAllUsers($search = '') {
         return $this->database->select([], 'users', "WHERE username LIKE '%$search%' OR email LIKE '%$search%'");
     }

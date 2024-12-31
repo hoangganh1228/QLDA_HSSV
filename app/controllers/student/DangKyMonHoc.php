@@ -9,13 +9,18 @@ class DangKyMonHoc extends Controller {
 
     function index() {
         checkPermission(['Sinh viên']);
+       
 
+        // Lấy danh sách các reg_id mà sinh viên đã đăng ký
+        // $registeredSubjects = $this->model->getRegisteredSubjects($student_id);
         $DangKyData = $this->model->getAll();
         $majors = $this->model->getAllNganh();
         $subjects = $this->model->getAllMon();
         $semesters = $this->model->getAllKi();
         $khoa_hoc = $this->model->getAllKhoaHoc();
        $user = $this->model->getAllUsers();
+       $studentSubject = $this->model->getAllSubjectCredit();
+
         
 
         $this->view('student/DangKyMonHoc', [
@@ -24,7 +29,9 @@ class DangKyMonHoc extends Controller {
             'majors' => $majors,
             'subjects' => $subjects,
             'semesters' => $semesters,
-            'khoa_hoc' => $khoa_hoc
+            'khoa_hoc' => $khoa_hoc,
+            'studentSubject'=>$studentSubject,
+            // 'registeredSubjects'=>$registeredSubjects,
         ]);
     }
   
@@ -66,16 +73,30 @@ class DangKyMonHoc extends Controller {
         // Xử lý từng môn học và gọi addStudentSubject
         foreach ($regIds as $regId) {
             // Gọi hàm addStudentSubject trong model
+            if ($this->model->isRegistered($studentId,$regId)) {
+                echo json_encode(['success' => false, 'message' => 'Môn học đã được đăng ký.']);
+                return;
+            }
             $insertResult = $this->model->addStudentSubject($studentId, $regId);
     
             if (!$insertResult) {
                 echo json_encode(['success' => false, 'message' => "Lỗi khi đăng ký môn học có reg_id: $regId"]);
                 return;
             }
+    
+            // Thêm dữ liệu vào bảng grades
+            $addGradeResult = $this->model->addGrades($studentId, $regId);
+    
+            if (!$addGradeResult) {
+                echo json_encode(['success' => false, 'message' => "Lỗi khi thêm điểm vào bảng grades cho reg_id: $regId"]);
+                return;
+            }
+            // $updateStatusResult = $this->model->updateStatus($regId, 'đã đăng ký');
         }
     
         echo json_encode(['success' => true, 'message' => 'Đăng ký tất cả thành công']);
     }
+    
     
     
     

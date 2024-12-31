@@ -101,7 +101,7 @@
     }
 </style>
 <body>
-   
+  
 <div class="container-fluid">
    <div class="row">
    <div class="col-md-3 col-lg-2 sidebar "> 
@@ -115,13 +115,12 @@
                 <?php
                 foreach ($sinhVienData as $SinhVien) {
                 ?>
-                   <?php foreach($user as $user1): ?>
-                    <?php if ($SinhVien['user_id'] == $user1['user_id']): ?>
+                     <?php if ($SinhVien['fullname'] === $_SESSION['username']): ?>
                         
                     <!-- student_id -->
                     <div class="mb-3">
                         <label for="student_id" class="form-label">Mã Sinh Viên</label>
-                        <input type="number" class="form-control" id="student_id" value="<?php echo $SinhVien['student_id']; ?>" readonly>
+                        <input type="text" class="form-control" id="student_id" value="<?php echo $SinhVien['student_id']; ?>" readonly>
                     </div>
                   
                     <!-- fullname -->
@@ -155,7 +154,7 @@
                         <a href="/QLDA_HSSV/student/ThongtinSinhVien" class="btn btn-secondary">Hủy</a>
                     </div>
                     <?php endif; ?>
-                    <?php endforeach; ?>
+                    
                 <?php
                             
                 }

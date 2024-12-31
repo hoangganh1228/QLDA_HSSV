@@ -15,13 +15,15 @@ class DiemSo extends Controller {
        $Registration = $this->model->getAlldki();
        $user = $this->model->getAllUsers();
        $student = $this->model->getAllstudent();
+       $subjects = $this->model->getAllSubject();
+
    
 
 
 
         
         // Trả kết quả ra view
-        $this->view('student/DiemSo', ['ResultData' => $ResultData,'semester'=>$semester,'Registration'=>$Registration,'user'=>$user,'student'=>$student]);
+        $this->view('student/DiemSo', ['ResultData' => $ResultData,'semester'=>$semester,'Registration'=>$Registration,'user'=>$user,'student'=>$student,'subjects'=>$subjects]);
     }
     function getGradesBySemester($semester_id) { $reg_id = '12345'; // Thay bằng ID sinh viên thực tế hoặc lấy từ session
          if ($semester_id === 'all') { 

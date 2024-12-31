@@ -164,14 +164,19 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <?php
+                     $selectedSemester = isset($_GET['hoc_ky']) ? $_GET['hoc_ky'] : 'all';
+                       ?>
                             <?php $i = 0; foreach ($ResultData as $DiemSo): ?>
                            
                             <?php foreach ($student as $student1): ?>
                             <?php foreach ($Registration as $registration): ?>
-                            <?php if ($DiemSo['student_id'] == $student1['student_id'] && $student1['fullname'] == $_SESSION['username'] && $DiemSo['reg_id'] == $registration['reg_id'] && $registration['status']=="Đã đăng ký"): ?>
+                            <?php foreach ($subjects as $subject): ?>
+
+                            <?php if ($DiemSo['student_id'] == $student1['student_id'] && $student1['fullname'] == $_SESSION['username'] && $DiemSo['reg_id'] == $registration['reg_id'] && $registration['subject_id']==$subject['subject_id']&&($selectedSemester == 'all' || $selectedSemester == $registration['semester_id'])): ?>
                             <tr>
-                                <td><?php echo (++$i); ?></td>
-                                <td><?php echo $registration['subject_id']; ?></td>
+                                <td data-semester-id="<?php echo $registration['semester_id']?>"><?php echo (++$i); ?></td>
+                                <td><?php echo $subject['subject_name']; ?></td>
                                 <td><?php echo $DiemSo['chuyen_can']; ?></td>
                                 <td><?php echo $DiemSo['giua_ky']; ?></td>
                                 <td><?php echo $DiemSo['cuoi_ky']; ?></td>
@@ -179,6 +184,7 @@
                             </tr>
                             <?php endif; ?>
                            
+                            <?php endforeach; ?>
                             <?php endforeach; ?>
                             <?php endforeach; ?>
                             <?php endforeach; ?>

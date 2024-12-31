@@ -87,6 +87,9 @@ public function query($sql) {
 public function getAllKi() {
     return $this->database->select([], 'semesters', '');
 }
+public function getAllSubject() {
+    return $this->database->select([], 'subjects', '');
+}
 public function getAlldki() {
     return $this->database->select([], 'credit_registration', '');
 }

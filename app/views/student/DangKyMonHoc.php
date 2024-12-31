@@ -172,6 +172,7 @@
         <tr id="row-<?php echo $index; ?>" data-reg-id="<?php echo $data['reg_id']; ?>">
             <td><?php echo $subject_name; ?></td>
             <td class="semester"><?php echo $semester_name; ?></td>
+           
           
         </tr>
     <?php endforeach; ?>
@@ -189,7 +190,10 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-let isRegisteredAll = false; 
+
+   
+
+    
 document.getElementById('registerAllButton').addEventListener('click', function () {
     const rows = document.querySelectorAll('tbody tr'); // Chọn tất cả các hàng trong tbody
     const regIds = [];
@@ -202,7 +206,7 @@ document.getElementById('registerAllButton').addEventListener('click', function 
     });
 
     if (regIds.length > 0) {
-        // Gửi regIds và student_id qua AJAX đến backend
+       
         fetch('http://localhost/QLDA_HSSV/student/DangKyMonHoc/registerAll', {
             method: 'POST',
             headers: {
@@ -219,7 +223,8 @@ document.getElementById('registerAllButton').addEventListener('click', function 
                 const registerButton = document.getElementById('registerAllButton');
                 registerButton.disabled = true;
                 registerButton.innerText = 'Đã đăng ký';
-                isRegisteredAll = true; 
+                registerButton.style.display="none";
+                
               
             } else {
                 alert('Đăng ký thất bại: ' + data.message);
@@ -233,13 +238,7 @@ document.getElementById('registerAllButton').addEventListener('click', function 
         alert('Không có môn học nào để đăng ký.');
     }
 });
-window.addEventListener('beforeunload', function (e) {
-    if (isRegisteredAll) {
-        const confirmationMessage = "Bạn đã đăng ký tất cả môn học. Bạn có chắc muốn tải lại trang?";
-        e.returnValue = confirmationMessage;  // Chrome, Firefox
-        return confirmationMessage;  // Các trình duyệt khác
-    }
-});
+
 
 
 
@@ -273,7 +272,6 @@ window.addEventListener('beforeunload', function (e) {
                 }
                 });
     });
-
 
 
 

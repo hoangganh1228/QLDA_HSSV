@@ -11,12 +11,16 @@ private $data,$model;
         $sinhVienData = $this->model->getAll();
       
         $user = $this->model->getAllUsers();
-        $khoahocs = $this->model->getAllKhoaHoc(); 
+        $khoahocs = $this->model->getAllKhoaHoc();
+        $majors = $this->model->getAllNganh(); 
+$classes=$this->model->getAllClasses();
         $departments = $this->model->getAllDepartments(); 
         // Trả dữ liệu ra view
         $this->view('student/ThongtinSinhVien/ThongtinSinhVien', ['sinhVienData' => $sinhVienData, 'user' => $user,
         'khoahocs' => $khoahocs,
-        'departments' => $departments
+        'departments' => $departments,
+        'majors'=>$majors,
+        'classes'=>$classes
         ]);
     }
     public function edit_sinhvien($user_id = '') {
@@ -40,7 +44,8 @@ private $data,$model;
             'sinhVienData' => $sinhVienData,
             'user' => $user,
             'khoahocs' => $khoahocs,
-            'departments' => $departments
+            'departments' => $departments,
+            
         ]);
         
     }
