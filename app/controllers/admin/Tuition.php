@@ -12,7 +12,6 @@ class Tuition extends Controller
     
     function index()
     {
-        checkPermission(['Quản lý']);
         $this->list_tuition();
     }
 
@@ -30,7 +29,6 @@ class Tuition extends Controller
     }
 
     public function create() {
-        checkPermission(['Quản lý']);
 
         if (isPost()) {
           $filteredPost = filter();
@@ -51,7 +49,6 @@ class Tuition extends Controller
     }
 
     public function edit($id = '') {
-        checkPermission(['Quản lý']);
 
         if (isPost()) {
             $filteredPost = filter(); 
@@ -72,7 +69,6 @@ class Tuition extends Controller
     }
 
     public function delete($id = '') {
-        checkPermission(['Quản lý']);
 
         if ($this->model->deleteTuition($id)) {
             echo "<script>alert('Xóa thành công')</script>";

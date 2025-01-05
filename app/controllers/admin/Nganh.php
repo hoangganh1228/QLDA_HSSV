@@ -15,7 +15,6 @@ class Nganh extends Controller {
 
     function list_nganh() {
 
-        checkPermission(['Quản lý']);
 
 
 
@@ -35,7 +34,6 @@ class Nganh extends Controller {
     public function add_nganh() {
 
 
-        checkPermission(['Quản lý']);
 
 
         if (isPost()) {
@@ -55,7 +53,6 @@ class Nganh extends Controller {
     public function edit_nganh($id = '') {
 
 
-        checkPermission(['Quản lý']);
 
 
         if (isPost()) {
@@ -80,7 +77,6 @@ class Nganh extends Controller {
 
     public function delete_nganh($id = '') {
 
-        checkPermission(['Quản lý']);
 
         if ($this->model->deleteNganh($id)) {
             echo "<script>alert('Xóa thành công')</script>";

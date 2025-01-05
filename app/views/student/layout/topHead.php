@@ -5,11 +5,9 @@
             <i class="bi bi-person-circle" style="font-size: 30px;"></i>
             <span class="ms-2">
                 <?php 
-                foreach ($user as $user1): 
-                    if ($user1['username'] === $_SESSION['username']): 
-                        echo $user1['username'];
-                    endif; 
-                endforeach; 
+           
+                        echo $_SESSION['username'];
+               
                 ?>
             </span>
         </button>

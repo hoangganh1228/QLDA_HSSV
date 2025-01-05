@@ -1,4 +1,5 @@
 <?php
+
 class DangKyMonHoc extends Controller {
     private $model;
 
@@ -7,7 +8,6 @@ class DangKyMonHoc extends Controller {
     }
 
     function index() {
-        checkPermission(['Sinh viên']);
 
         $DangKyData = $this->model->getAll();
         $majors = $this->model->getAllNganh();
@@ -26,52 +26,59 @@ class DangKyMonHoc extends Controller {
             'khoa_hoc' => $khoa_hoc
         ]);
     }
-
-    function updateStatus() {
-        // Đặt header trả về JSON
-        header('Content-Type: application/json; charset=utf-8');
-        
-        // Lấy dữ liệu JSON từ request
-        $input = json_decode(file_get_contents('php://input'), true);
+  
+    public function registerAll() {
+        header('Content-Type: application/json');
     
-        // Kiểm tra nếu không có danh sách reg_ids
-        if (empty($input['reg_ids']) || !is_array($input['reg_ids'])) {
-            echo json_encode([
-                'success' => false,
-                'message' => 'Danh sách reg_ids là bắt buộc và phải là một mảng hợp lệ.'
-            ]);
+        // Lấy thông tin student_id từ session
+        if (!isset($_SESSION['username'])) {
+            echo json_encode(['success' => false, 'message' => 'Session không hợp lệ']);
+            return;
+        }
+        $studentUsername = $_SESSION['username'];
+    
+        // Gọi model và lấy thông tin sinh viên
+        $student = $this->model->getStudentByUsername($studentUsername);
+    
+        if (!$student) {
+            echo json_encode(['success' => false, 'message' => 'Không tìm thấy thông tin sinh viên']);
             return;
         }
     
-        $reg_ids = $input['reg_ids'];
-        
-        // Biến lưu trạng thái thành công và thất bại
-        $successCount = 0;
-        $failedCount = 0;
+        $studentId = $student['student_id'];
     
-        // Lặp qua từng reg_id để cập nhật trạng thái
-        foreach ($reg_ids as $reg_id) {
-            if ($this->model->updateStatus($reg_id)) {
-                $successCount++;
-            } else {
-                $failedCount++;
+        // Lấy dữ liệu regIds từ request
+        $data = json_decode(file_get_contents("php://input"), true);
+    
+        if ($data === null) {
+            echo json_encode(['success' => false, 'message' => 'Dữ liệu JSON không hợp lệ']);
+            return;
+        }
+    
+        $regIds = $data['regIds'] ?? [];
+    
+        if (empty($regIds)) {
+            echo json_encode(['success' => false, 'message' => 'Không có môn học nào để đăng ký']);
+            return;
+        }
+    
+        // Xử lý từng môn học và gọi addStudentSubject
+        foreach ($regIds as $regId) {
+            // Gọi hàm addStudentSubject trong model
+            $insertResult = $this->model->addStudentSubject($studentId, $regId);
+    
+            if (!$insertResult) {
+                echo json_encode(['success' => false, 'message' => "Lỗi khi đăng ký môn học có reg_id: $regId"]);
+                return;
             }
         }
     
-        // Trả về kết quả
-        if ($failedCount === 0) {
-            echo json_encode([
-                'success' => true,
-                'message' => "Cập nhật trạng thái thành công cho $successCount mục."
-            ]);
-        } else {
-            echo json_encode([
-                'success' => false,
-                'message' => "Cập nhật trạng thái thất bại cho $failedCount mục. Thành công $successCount mục."
-            ]);
-        }
+        echo json_encode(['success' => true, 'message' => 'Đăng ký tất cả thành công']);
     }
     
     
+    
+    
 }
+
 ?>

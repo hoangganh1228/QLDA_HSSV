@@ -6,7 +6,6 @@ private $data,$model;
     }
 
     function index() {
-        checkPermission(['Sinh viên']);
         // Lấy dữ liệu từ model
         $sinhVienData = $this->model->getAll();
       

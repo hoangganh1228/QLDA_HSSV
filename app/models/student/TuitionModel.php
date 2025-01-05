@@ -148,7 +148,7 @@ public function getInfo($student_id) {
     return $this->database->update('tuitions', $data, $condition);
   }
   public function getAllUsers($search = '') {
-    return $this->database->select([], 'users', "WHERE username LIKE '%$search%' OR email LIKE '%$search%'");
+    return $this->database->select([], 'students', "WHERE username LIKE '%$search%' OR email LIKE '%$search%'");
 }
 
 

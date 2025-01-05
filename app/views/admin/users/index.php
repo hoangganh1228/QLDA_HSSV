@@ -103,6 +103,14 @@
             <div class="col-md-9 col-lg-10 main-content">
                 <?php $this->view("admin/layout/topHead", []) ?>
                <div class="container">
+               <form action="" method="get" class="row justify-content-center mt-3 mb-3">
+            <div class="col-md-4 mb-2">
+                <input name="search" type="text" class="form-control" placeholder="Tìm kiếm người dùng">
+            </div>
+            <div class="col-md-2 mb-2">
+                <button class="btn btn-primary" type="submit">Tìm kiếm</button>
+            </div>
+        </form>
                     <a href="/QLDA_HSSV/admin/users/create" class="btn btn-success" style="width: 100px;">Thêm</a>
                     
                     <div class="table-container">
@@ -111,12 +119,16 @@
                             <thead class="table-dark">
                                 <tr>
                                     <th>STT</th>
-                                    <th>Tên</th>
-                                    <th>Quyền</th>
+                                    <th>Mã sinh viên</th>
+                                    <th>Họ tên</th>
                                     <th>Email</th>
+                                    <th>Ngày sinh</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Tài khoản<th>
                                     <th>SĐT</th>
+                                    <th>Lớp</th>
+                                    <th>Khóa học</th>
                                     <th>Hành động</th>
-                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -130,13 +142,18 @@
                                     <?php $i = 0; foreach ($table as $row) : ?>
                                         <tr>
                                             <td><?php echo (++$i); ?></td>
-                                            <td><?php echo $row['username'] ?></td> 
-                                            <td><?php echo $row['role'] ?></td> 
+                                            <td><?php echo $row['student_id'] ?></td> 
+                                            <td><?php echo $row['fullname'] ?></td> 
                                             <td><?php echo $row['email'] ?></td> 
+                                            <td><?php echo $row['date_of_birth'] ?></td> 
+                                            <td><?php echo $row['address'] ?></td> 
+                                            <td><?php echo $row['username'] ?></td> 
                                             <td><?php echo $row['phone'] ?></td> 
+                                            <td><?php echo $row['class_id'] ?></td> 
+                                            <td><?php echo $row['start_year'] . '-' . $row['end_year']; ?></td>
                                             <td>
-                                                <a href="/QLDA_HSSV/admin/users/edit/<?= $row['user_id'] ?>" class="btn btn-warning btn-sm">Sửa</a>
-                                                <a href="/QLDA_HSSV/admin/users/delete/<?= $row['user_id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Xác nhận xóa!')">Xóa</a>
+                                                <a href="/QLDA_HSSV/admin/users/edit/<?= $row['student_id'] ?>" class="btn btn-warning btn-sm">Sửa</a>
+                                                <a href="/QLDA_HSSV/admin/users/delete/<?= $row['student_id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Xác nhận xóa!')">Xóa</a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

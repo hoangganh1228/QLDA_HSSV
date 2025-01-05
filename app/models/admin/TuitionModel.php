@@ -18,7 +18,7 @@ class TuitionModel extends Model {
     }
 
     public function getUserByUsername($username) {
-        $result = $this->database->select(['*'], 'users', "WHERE username = '$username'");
+        $result = $this->database->select(['*'], 'students', "WHERE username = '$username'");
         return $result ? $result[0] : null;
     }
 

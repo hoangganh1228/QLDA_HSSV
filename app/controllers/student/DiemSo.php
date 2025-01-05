@@ -7,7 +7,6 @@ class DiemSo extends Controller {
     }
 
     function index() {
-        checkPermission(['Sinh viên']);
 
         // Truy vấn để JOIN 3 bảng: credit_registration, semesters, và grades
        $ResultData = $this->model->getAll();

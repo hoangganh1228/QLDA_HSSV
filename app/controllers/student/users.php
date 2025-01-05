@@ -125,34 +125,36 @@ class Users extends Controller
     }
 
     public function loginPost() {
+
         if(isPost()) {
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();
             }
-            echo '<pre>';   
-            print_r($_SESSION);
-            echo '</pre>';
+ 
             $filter = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING); // Lọc dữ liệu để tránh XSS
             $username = $filter['username'];
             $password = $filter['password'];
          
             $user = $this->model->getUserByUsername($username);
-            // echo '<pre>';   
-            // print_r($user);
-            // echo '</pre>';
+            echo '<pre>';   
+            print_r($user);
+            echo '</pre>';
             if ($user && $password === $user['password']) {
                 // Đăng nhập thành công
-                $_SESSION['user_id'] = $user['user_id'];
+                $_SESSION['student_id'] = $user['student_id'];
                 $_SESSION['username'] = $user['username'];
-                $_SESSION['role'] = $user['role'];
-               
-                header('Location: /QLDA_HSSV/student/Trang_chu');
+                
+                if($this->model->studentExists($user['student_id'])) {
+                    header('Location: /QLDA_HSSV/student/Trang_chu');
+
+                }
             } else {
                 // Đăng nhập thất bại
-                echo "<script>alert('Tên đăng nhập hoặc mật khẩu không đúng!')</script>";
-                echo "<script>window.location.href = '/QLDA_HSSV/student/users/login'</script>";
+                // echo "<script>alert('Tên đăng nhập hoặc mật khẩu không đúng!')</script>";
+                // echo "<script>window.location.href = '/QLDA_HSSV/admin/users/login'</script>";
             }
         } 
+        
     }
 
     public function logout() {

@@ -31,7 +31,7 @@
                 <select name="major_id" id="major_id" class="form-select" required>
                     <option value="" disabled selected>Chọn mã ngành</option>
                     <?php foreach ($majors as $major): ?>
-                        <option value="<?php echo $major['major_name']; ?>">
+                        <option value="<?php echo $major['major_id']; ?>">
                         <?= $major['major_name']; ?>
                         </option>
                     <?php endforeach; ?>
@@ -44,7 +44,7 @@
                 <select name="subject_id" id="subject_id" class="form-select" required>
                     <option value="" disabled selected>Chọn mã môn học</option>
                     <?php foreach ($subjects as $subject): ?>
-                        <option value="<?php echo $subject['subject_name']; ?>">
+                        <option value="<?php echo $subject['subject_id']; ?>">
                             <?php echo $subject['subject_name']; ?>
                         </option>
                     <?php endforeach; ?>
@@ -57,7 +57,7 @@
                 <select name="semester_id" id="semester_id" class="form-select" required>
                     <option value="" disabled selected>Chọn mã học kỳ</option>
                     <?php foreach ($semesters as $semester): ?>
-                        <option value="<?php echo $semester['name']; ?>">
+                        <option value="<?php echo $semester['semester_id']; ?>">
                             <?php echo $semester['name']; ?>
                         </option>
                     <?php endforeach; ?>
@@ -70,8 +70,8 @@
                 <select name="khoa_hoc_id" id="khoa_hoc_id" class="form-select" required>
                     <option value="" disabled selected>Chọn mã khóa học</option>
                     <?php foreach ($khoa_hoc as $khoa): ?>
-                        <option value="<?php echo $khoa['start_year']; ?>">
-                            <?php echo $khoa['start_year']; ?>
+                        <option value="<?php echo $khoa['khoa_hoc_id']; ?>">
+                        <?php echo $khoa['start_year'] . '-' . $khoa['end_year']; ?>
                         </option>   
                     <?php endforeach; ?>
                 </select>

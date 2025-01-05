@@ -9,7 +9,6 @@
         }
         function index()
         {
-            checkPermission(['Sinh viên']);
             $user = $this->model->getAllUsers();
             $khoahocs = $this->model->getAllKhoaHoc(); 
             $departments = $this->model->getAllDepartments(); 
@@ -17,7 +16,7 @@
             // print_r($departments);
             // echo '</pre>';
             $classes = $this->model->getAllClasses(); 
-            $this->view('student/Trang_chu', [    'user' => $user,
+            $this->view('student/Trang_chu', ['user' => $user,
             'khoahocs' => $khoahocs,
             'departments' => $departments,
             'classes' => $classes]);

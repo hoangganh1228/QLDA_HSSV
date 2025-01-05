@@ -2,28 +2,36 @@
 class UsersModel extends Model {
 
     public function getAllUsers($search = '') {
-        return $this->database->select([], 'users', "WHERE username LIKE '%$search%' OR email LIKE '%$search%'");
+        $sql = "
+            SELECT 
+                *
+            FROM 
+                students 
+            JOIN 
+                classes 
+            ON 
+                students.class_id = classes.class_id
+            JOIN
+                khoa_hoc
+            ON
+                students.khoa_hoc_id = khoa_hoc.khoa_hoc_id 
+            WHERE 
+                students.username LIKE '%$search%' 
+                OR students.fullname LIKE '%$search%'
+        ";
+        return $this->database->query($sql);
     }
+    
 
-    public function isDuplicateKhoaId($users_id) {
-        return $this->database->isDuplicate('users', 'user_id', $users_id);
+    public function isDuplicateKhoaId($student_id) {
+        return $this->database->isDuplicate('students', 'student_id', $student_id);
     }
 
     public function addUser($data) {
-        return $this->database->insert('users', $data);
-    }
-
-    public function addTeacher($data) {
-        return $this->database->insert('teachers', $data);
-    }
-    
-    public function addStudent($data) {
-
-
         return $this->database->insert('students', $data);
-
     }
 
+    
       
 
     // Cập nhật khoa theo id
@@ -33,43 +41,36 @@ class UsersModel extends Model {
 
     // Cập nhật khoa theo id
     public function updateUser($id, $data) {
-        return $this->database->update('users', $data, "WHERE user_id = '$id'");
+        return $this->database->update('students', $data, "WHERE student_id = '$id'");
 
 
 
-        return $this->database->insert('users', $data);
+        return $this->database->insert('students', $data);
     }
 
     public function getUserByUsername($username) {
-        $result = $this->database->select(['*'], 'users', "WHERE username = '$username'");
+        $result = $this->database->select(['*'], 'students', "WHERE username = '$username'");
         return $result ? $result[0] : null;
     }
 
+    public function studentExists($student_id) {
+        $result = $this->database->select(
+            ['id'], // Chỉ cần lấy cột id
+            'students', // Bảng students
+            "WHERE student_id = '$student_id'" // Điều kiện kiểm tra
+        );
+        return !empty($result); // Trả về true nếu tồn tại, false nếu không
+    }
 
     public function updateTeacher($user_id, $data) {
         return $this->database->update('teachers', $data, "WHERE user_id = '$user_id'");
     }
     
-    public function updateStudent($user_id, $data) {
-        return $this->database->update('students', $data, "WHERE user_id = '$user_id'");
-    }
-    
-    public function getTeacherByUserId($user_id) {
-        return $this->database->select([], 'teachers', "WHERE user_id = '$user_id'");
-    }
-    
-        public function getStudentByUserId($user_id) {
-            return $this->database->select([], 'students', "WHERE user_id = '$user_id'");
-        }
-
-    public function getUser($user_id) {
-        return $this->database->select([], 'users', "WHERE user_id = '$user_id'");
-    }
 
     // Lấy thông tin khoa theo id
     public function getUserById($id) {
 
-        $result = $this->database->select([], 'users', "WHERE user_id = '$id'");
+        $result = $this->database->select([], 'students', "WHERE student_id = '$id'");
 
         return $result ? $result[0] : null;
     }
@@ -92,7 +93,10 @@ class UsersModel extends Model {
     // Xóa khoa theo id
     public function deleteUser($id) {
 
-        return $this->database->delete('users', "WHERE user_id = '$id'");
+        return $this->database->delete('students', "WHERE student_id = '$id'");
+
+
+  
 
     }
     public function escapeString($string) {
@@ -103,7 +107,7 @@ class UsersModel extends Model {
         $username = $this->escapeString($username);
         $hashedPassword = $this->escapeString($hashedPassword);
     
-        $sql = "UPDATE users SET password = '$hashedPassword' WHERE username = '$username'";
+        $sql = "UPDATE students SET password = '$hashedPassword' WHERE username = '$username'";
         return $this->database->query($sql);
     }
     

@@ -2,15 +2,15 @@
 class UsersModel extends Model {
 
     public function getAllUsers($search = '') {
-        return $this->database->select([], 'users', "WHERE username LIKE '%$search%' OR email LIKE '%$search%'");
+        return $this->database->select([], 'students', "WHERE username LIKE '%$search%' OR email LIKE '%$search%'");
     }
 
-    public function isDuplicateKhoaId($users_id) {
-        return $this->database->isDuplicate('users', 'user_id', $users_id);
+    public function isDuplicateKhoaId($student_id) {
+        return $this->database->isDuplicate('students', 'student_id', $student_id);
     }
 
     public function addUser($data) {
-        return $this->database->insert('users', $data);
+        return $this->database->insert('students', $data);
     }
 
     public function addTeacher($data) {
@@ -18,22 +18,35 @@ class UsersModel extends Model {
     }
     
     public function addStudent($data) {
-        return $this->database->insert('student', $data);
+        return $this->database->insert('students', $data);
     }
 
-        public function getUserByUsername($username) {
-            $result = $this->database->select(['*'], 'users', "WHERE username = '$username'");
-            return $result ? $result[0] : null;
-        }
+    public function getUserByUsername($username) {
+        $result = $this->database->select(['*'], 'students', "WHERE username = '$username'");
+        return $result ? $result[0] : null;
+    }
 
-    // Cập nhật khoa theo id
+    public function studentExists($student_id) {
+        $result = $this->database->select(
+            ['id'], // Chỉ cần lấy cột id
+            'students', // Bảng students
+            "WHERE student_id = '$student_id'" // Điều kiện kiểm tra
+        );
+        return !empty($result); // Trả về true nếu tồn tại, false nếu không
+    }
+
+  
     public function updateUser($id, $data) {
-        return $this->database->update('users', $data, "WHERE id = '$id'");
+        return $this->database->update('students', $data, "WHERE id = '$id'");
+    }
+    // đừng động vào
+    public function updateSinhVien($student_id, $data) {
+        return $this->database->update('students', $data, "WHERE student_id = '$student_id'");
     }
 
     // Lấy thông tin khoa theo id
     public function getUserById($id) {
-        $result = $this->database->select([], 'users', "WHERE id = '$id'");
+        $result = $this->database->select([], 'students', "WHERE id = '$id'");
         return $result ? $result[0] : null;
     }
     
@@ -54,7 +67,7 @@ class UsersModel extends Model {
 
     // Xóa khoa theo id
     public function deleteUser($id) {
-        return $this->database->delete('users', "WHERE id = '$id'");
+        return $this->database->delete('students', "WHERE id = '$id'");
     }
     public function escapeString($string) {
         return str_replace("'", "''", $string); // Thay thế dấu nháy đơn để tránh lỗi SQL
@@ -64,7 +77,7 @@ class UsersModel extends Model {
         $username = $this->escapeString($username);
         $hashedPassword = $this->escapeString($hashedPassword);
     
-        $sql = "UPDATE users SET password = '$hashedPassword' WHERE username = '$username'";
+        $sql = "UPDATE students SET password = '$hashedPassword' WHERE username = '$username'";
         return $this->database->query($sql);
     }
     

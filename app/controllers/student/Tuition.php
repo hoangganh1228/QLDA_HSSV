@@ -12,17 +12,13 @@ class Tuition extends Controller
     
     function index()
     {
-        checkPermission(['Sinh viên']);
         $this->viewTuition();
     }
 
 
     public function viewTuition() {
-        checkPermission(['Sinh viên']);
-        $user_id = $_SESSION['user_id'];
-        $student = $this->model->getStudent($user_id);
     
-        $student_id = $student[0]['student_id'];
+        $student_id = $_SESSION['student_id'];
         $semester_id = isset($_GET['hoc_ky']) ? $_GET['hoc_ky'] : null;
         $semesters = $this->model->getAllSemesters();
         $users = $this->model->getAllUsers();
@@ -61,7 +57,6 @@ class Tuition extends Controller
     }
 
     public function payTuition() {
-        checkPermission(['Sinh viên']);
         if(isPost()) {
             $filter = filter();
             echo '<pre>';   

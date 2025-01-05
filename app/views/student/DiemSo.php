@@ -165,10 +165,10 @@
                         </thead>
                         <tbody>
                             <?php $i = 0; foreach ($ResultData as $DiemSo): ?>
-                            <?php foreach ($user as $user1): ?>
+                           
                             <?php foreach ($student as $student1): ?>
                             <?php foreach ($Registration as $registration): ?>
-                            <?php if ($DiemSo['student_id'] == $student1['student_id'] && $student1['user_id'] == $user1['user_id'] && $DiemSo['reg_id'] == $registration['reg_id'] && $registration['status']=="Đã đăng ký"): ?>
+                            <?php if ($DiemSo['student_id'] == $student1['student_id'] && $student1['fullname'] == $_SESSION['username'] && $DiemSo['reg_id'] == $registration['reg_id'] && $registration['status']=="Đã đăng ký"): ?>
                             <tr>
                                 <td><?php echo (++$i); ?></td>
                                 <td><?php echo $registration['subject_id']; ?></td>
@@ -178,7 +178,7 @@
                                 <td><?php echo $DiemSo['tong_ket']; ?></td>
                             </tr>
                             <?php endif; ?>
-                            <?php endforeach; ?>
+                           
                             <?php endforeach; ?>
                             <?php endforeach; ?>
                             <?php endforeach; ?>
