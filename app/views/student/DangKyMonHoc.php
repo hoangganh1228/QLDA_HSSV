@@ -119,7 +119,7 @@
     <?php $this->view("student/layout/sidebar",[])?>
 </div>
      <div class="col-md-9 col-lg-10 main-content">
-        <?php $this->view("student/layout/topHead",['user'=>$user])?>
+        <?php $this->view("student/layout/topHead",[])?>
     <div class="container">
     <div class="row mb-3">
     <div class="col-md-4 offset-md-4">
@@ -172,6 +172,7 @@
         <tr id="row-<?php echo $index; ?>" data-reg-id="<?php echo $data['reg_id']; ?>">
             <td><?php echo $subject_name; ?></td>
             <td class="semester"><?php echo $semester_name; ?></td>
+
           
         </tr>
     <?php endforeach; ?>
@@ -189,7 +190,9 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+
 let isRegisteredAll = false; 
+
 document.getElementById('registerAllButton').addEventListener('click', function () {
     const rows = document.querySelectorAll('tbody tr'); // Chọn tất cả các hàng trong tbody
     const regIds = [];
@@ -202,7 +205,7 @@ document.getElementById('registerAllButton').addEventListener('click', function 
     });
 
     if (regIds.length > 0) {
-        // Gửi regIds và student_id qua AJAX đến backend
+
         fetch('http://localhost/QLDA_HSSV/student/DangKyMonHoc/registerAll', {
             method: 'POST',
             headers: {
@@ -219,7 +222,12 @@ document.getElementById('registerAllButton').addEventListener('click', function 
                 const registerButton = document.getElementById('registerAllButton');
                 registerButton.disabled = true;
                 registerButton.innerText = 'Đã đăng ký';
+
+                registerButton.style.display="none";
+                
+
                 isRegisteredAll = true; 
+
               
             } else {
                 alert('Đăng ký thất bại: ' + data.message);
@@ -253,7 +261,7 @@ window.addEventListener('beforeunload', function (e) {
 
     document.getElementById('semester-filter').addEventListener('change', function () {
         const selectedSemester = this.options[this.selectedIndex].text.trim(); // Lấy giá trị được chọn từ dropdown và loại bỏ khoảng trắng thừa
-        console.log(`Selected Semester: ${selectedSemester}`);
+        // console.log(Selected Semester: ${selectedSemester});
         
         const rows = document.querySelectorAll('tbody tr'); // Chọn tất cả các hàng trong tbody
         console.log(rows)
@@ -262,7 +270,7 @@ window.addEventListener('beforeunload', function (e) {
                     const semesterCell = row.querySelector('.semester'); // Chọn cột có lớp 'semester'
         if (semesterCell) {
             const semester = semesterCell.textContent.trim(); // Lấy nội dung văn bản và loại bỏ khoảng trắng thừa
-            console.log(`Semester: ${semester}`);
+            // console.log(Semester: ${semester});
                     
                     // So sánh giá trị với điều kiện chuẩn hóa
                     if (selectedSemester === 'Tất cả các kỳ' || semester === selectedSemester) {
@@ -275,6 +283,17 @@ window.addEventListener('beforeunload', function (e) {
     });
 
 
+
+
+
+
+
+
+
+
+
+
+  
 
 
 

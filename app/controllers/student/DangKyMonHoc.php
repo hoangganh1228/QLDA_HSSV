@@ -14,11 +14,11 @@ class DangKyMonHoc extends Controller {
         $subjects = $this->model->getAllMon();
         $semesters = $this->model->getAllKi();
         $khoa_hoc = $this->model->getAllKhoaHoc();
-       $user = $this->model->getAllUsers();
+       
         
 
         $this->view('student/DangKyMonHoc', [
-            'user'=>$user,
+            
             'DangKyData' => $DangKyData,
             'majors' => $majors,
             'subjects' => $subjects,
@@ -64,8 +64,18 @@ class DangKyMonHoc extends Controller {
     
         // Xử lý từng môn học và gọi addStudentSubject
         foreach ($regIds as $regId) {
+            if ($this->model->isRegistered($studentId,$regId)) {
+                echo json_encode(['success' => false, 'message' => 'Môn học đã được đăng ký.']);
+                return;
+            }
             // Gọi hàm addStudentSubject trong model
             $insertResult = $this->model->addStudentSubject($studentId, $regId);
+    
+            if (!$insertResult) {
+                echo json_encode(['success' => false, 'message' => "Lỗi khi đăng ký môn học có reg_id: $regId"]);
+                return;
+            }
+            $insertResult = $this->model->addGrades($studentId, $regId);
     
             if (!$insertResult) {
                 echo json_encode(['success' => false, 'message' => "Lỗi khi đăng ký môn học có reg_id: $regId"]);

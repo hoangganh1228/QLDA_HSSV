@@ -71,15 +71,13 @@ class DangKyMonHocModel extends Model {
     public function getAllKhoaHoc() {
         return $this->database->select([], 'khoa_hoc', '');
     }
-    public function getAllUsers($search = '') {
-        return $this->database->select([], 'users', "WHERE username LIKE '%$search%' OR email LIKE '%$search%'");
-    }
+    
     public function getStudentByUsername($username) {
         // Thoát ký tự đặc biệt trong username (nếu cần)
         $username = addslashes($username);
     
         // Truy vấn cơ sở dữ liệu
-        $query = "SELECT * FROM students WHERE fullname = '$username'";
+        $query = "SELECT * FROM students WHERE username = '$username'";
         $stmt = $this->database->query($query);
     
         // Kiểm tra kết quả trả về
@@ -103,6 +101,34 @@ class DangKyMonHocModel extends Model {
         // Chèn dữ liệu vào bảng student_subject
         return $this->database->insert('student_subject', $data);
     }
+    public function addGrades($studentId, $regId) {
+        // Tạo ID ngẫu nhiên cho student_subject
+        $randomId = mt_rand(100000, 999999);  // ID ngẫu nhiên trong phạm vi 6 chữ số
+    
+        // Dữ liệu cần thêm vào bảng student_subject
+        $data = [
+            'id' => NULL,  // ID ngẫu nhiên
+            'grade_id'=>$randomId,
+            'student_id' => $studentId,
+            'reg_id' => $regId,
+            'chuyen_can'=>NULL,
+            'giua_ky'=>NULL,
+            'cuoi_ky'=>NULL,
+            'tong_ket'=>NULL,
+
+        ];
+    
+        // Chèn dữ liệu vào bảng student_subject
+        return $this->database->insert('grades', $data);
+    }
+    public function isRegistered($studentId, $regId) {
+        // Truy vấn kiểm tra xem student_id và reg_id đã tồn tại trong bảng student_subject chưa
+        $result = $this->database->select(['COUNT(*) as count'], 'student_subject', "WHERE student_id = '$studentId' AND reg_id = '$regId'");
+    
+        // Kiểm tra kết quả, nếu COUNT(*) > 0, nghĩa là đã đăng ký
+        return $result && $result[0]['count'] > 0;
+    }
+    
     
 
     

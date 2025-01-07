@@ -30,7 +30,7 @@
     }
 </style>
 <body>
-   <?php var_dump($user)?>
+  
     <div class="reset-password-container">
         <h3>Reset Password</h3>
         <form action="/QLDA_HSSV/student/Trang_chu/resetPasswordPost" method="POST">

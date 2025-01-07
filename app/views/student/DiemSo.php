@@ -126,10 +126,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3 col-lg-2 sidebar">
-                <?php $this->view("student/layout/sidebar", ['user' => $user]) ?>
+                <?php $this->view("student/layout/sidebar", []) ?>
             </div>
             <div class="col-md-9 col-lg-10 main-content">
-                <?php $this->view("student/layout/topHead", ['user' => $user]) ?>
+                <?php $this->view("student/layout/topHead", []) ?>
                 <!-- Dropdown chọn học kỳ -->
                 <div class="dropdown mt-4">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="hocKyDropdown"
@@ -164,14 +164,34 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <?php
+                     $selectedSemester = isset($_GET['hoc_ky']) ? $_GET['hoc_ky'] : 'all';
+                       ?>
                             <?php $i = 0; foreach ($ResultData as $DiemSo): ?>
-                           
+                               <?php 
+                               $subject_id="";
+                               $subject_name = ""; 
+
+                               foreach ($Registration as $registration) {
+                                if ($DiemSo['reg_id'] == $registration['reg_id']) {
+                                    $subject_id = $registration['subject_id'];
+                                    break;
+                                }
+                            }
+                            foreach ($subjects as $subject) {
+                                if ($subject_id == $subject['subject_id']) {
+                                    $subject_name = $subject['subject_name'];
+                                    break;
+                                }
+                            }
+                               
+                               ?>
                             <?php foreach ($student as $student1): ?>
                             <?php foreach ($Registration as $registration): ?>
-                            <?php if ($DiemSo['student_id'] == $student1['student_id'] && $student1['fullname'] == $_SESSION['username'] && $DiemSo['reg_id'] == $registration['reg_id'] && $registration['status']=="Đã đăng ký"): ?>
+                                <?php if ($DiemSo['student_id'] == $student1['student_id'] && $student1['username'] == $_SESSION['username'] && $DiemSo['reg_id'] == $registration['reg_id'] && $registration['subject_id']==$subject['subject_id']&&($selectedSemester == 'all' || $selectedSemester == $registration['semester_id'])): ?>
                             <tr>
-                                <td><?php echo (++$i); ?></td>
-                                <td><?php echo $registration['subject_id']; ?></td>
+                                <td data-semester-id="<?php echo $registration['semester_id']?>"    ><?php echo (++$i); ?></td>
+                                <td><?php echo $subject_name; ?></td>
                                 <td><?php echo $DiemSo['chuyen_can']; ?></td>
                                 <td><?php echo $DiemSo['giua_ky']; ?></td>
                                 <td><?php echo $DiemSo['cuoi_ky']; ?></td>

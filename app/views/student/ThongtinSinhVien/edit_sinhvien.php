@@ -105,23 +105,23 @@
 <div class="container-fluid">
    <div class="row">
    <div class="col-md-3 col-lg-2 sidebar "> 
-    <?php $this->view("student/layout/sidebar",['user'=>$user])?>
+    <?php $this->view("student/layout/sidebar",[])?>
 </div>
      <div class="col-md-9 col-lg-10 main-content">
-        <?php $this->view("student/layout/topHead",['user'=>$user])?>
+        <?php $this->view("student/layout/topHead",[])?>
         <div class="container">
             <h2 class="text-center mb-4">Sửa Thông Tin Sinh Viên</h2>
             <form method="POST" action="">
                 <?php
                 foreach ($sinhVienData as $SinhVien) {
                 ?>
-                   <?php foreach($user as $user1): ?>
-                    <?php if ($SinhVien['user_id'] == $user1['user_id']): ?>
+                  
+                    <?php if ($SinhVien['username'] == $_SESSION['username']): ?>
                         
                     <!-- student_id -->
                     <div class="mb-3">
                         <label for="student_id" class="form-label">Mã Sinh Viên</label>
-                        <input type="number" class="form-control" id="student_id" value="<?php echo $SinhVien['student_id']; ?>" readonly>
+                        <input type="text" class="form-control" id="student_id" value="<?php echo $SinhVien['student_id']; ?>" readonly>
                     </div>
                   
                     <!-- fullname -->
@@ -149,13 +149,17 @@
                         <label for="address" class="form-label">Địa Chỉ</label>
                         <input type="text" class="form-control" id="address" name="address" value="<?php echo $SinhVien['address']; ?>" required>
                     </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Địa Chỉ</label>
+                        <input type="text" class="form-control" id="email" name="email" value="<?php echo $SinhVien['email']; ?>" required>
+                    </div>
 
                     <div class="d-flex justify-content-between">
                         <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
                         <a href="/QLDA_HSSV/student/ThongtinSinhVien" class="btn btn-secondary">Hủy</a>
                     </div>
                     <?php endif; ?>
-                    <?php endforeach; ?>
+              
                 <?php
                             
                 }

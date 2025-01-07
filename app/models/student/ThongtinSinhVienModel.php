@@ -20,13 +20,13 @@ class ThongtinSinhVienModel extends Model {
     }
 
     // Cập nhật thông tin sinh viên theo id
-    public function updateSinhVien($user_id, $data) {
-        return $this->database->update('students', $data, "WHERE user_id = '$user_id'");
+    public function updateSinhVien($student_id, $data) {
+        return $this->database->update('students', $data, "WHERE student_id = '$student_id'");
     }
 
     // Lấy thông tin sinh viên theo id
     public function getSinhVienById($id) {
-        $result = $this->database->select([], 'students', "WHERE user_id = '$id'");
+        $result = $this->database->select([], 'students', "WHERE student_id = '$id'");
         return $result ? $result[0] : null;
     }
 
@@ -54,7 +54,9 @@ class ThongtinSinhVienModel extends Model {
         $result = $this->database->select([], 'classes', "");
         return $result ?: []; // Trả về toàn bộ mảng hoặc mảng rỗng nếu không có dữ liệu
     }
-    public function getAllUsers($search = '') {
-        return $this->database->select([], 'users', "WHERE username LIKE '%$search%' OR email LIKE '%$search%'");
+    public function getAllMajors() {
+        $result = $this->database->select([], 'majors', "");
+        return $result ?: []; // Trả về toàn bộ mảng hoặc mảng rỗng nếu không có dữ liệu
     }
+ 
 }

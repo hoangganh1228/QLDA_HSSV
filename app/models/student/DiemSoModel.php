@@ -90,10 +90,10 @@ public function getAllKi() {
 public function getAlldki() {
     return $this->database->select([], 'credit_registration', '');
 }
-
-public function getAllUsers($search = '') {
-    return $this->database->select([], 'users', "WHERE username LIKE '%$search%' OR email LIKE '%$search%'");
+public function getAllSubjects() {
+    return $this->database->select([], 'subjects', '');
 }
+
 public function getAllstudent($search = '') {
     return $this->database->select([], 'students', "WHERE fullname LIKE '%$search%' OR student_id LIKE '%$search%'");
 }

@@ -124,7 +124,7 @@
                                     <th>Email</th>
                                     <th>Ngày sinh</th>
                                     <th>Địa chỉ</th>
-                                    <th>Tài khoản<th>
+                                    <th>Tài khoản</th>
                                     <th>SĐT</th>
                                     <th>Lớp</th>
                                     <th>Khóa học</th>
