@@ -115,7 +115,7 @@ class Users extends Controller
         if ($this->model->deleteUser($id)) {
             echo "<script>alert('Xóa thành công')</script>";
         } else {
-            echo "<script>alert('Xóa thất bại')</script>";
+            echo "<script>alert('Xóa thất bại!')</script>";
         }
         echo "<script>window.location.href = '/QLDA_HSSV/student/users'</script>";
     }
