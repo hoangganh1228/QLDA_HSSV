@@ -172,8 +172,6 @@
         <tr id="row-<?php echo $index; ?>" data-reg-id="<?php echo $data['reg_id']; ?>">
             <td><?php echo $subject_name; ?></td>
             <td class="semester"><?php echo $semester_name; ?></td>
-
-          
         </tr>
     <?php endforeach; ?>
 </tbody>

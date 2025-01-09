@@ -130,7 +130,6 @@ class Users extends Controller
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();
             }
- 
             $filter = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING); // Lọc dữ liệu để tránh XSS
             $username = $filter['username'];
             $password = $filter['password'];
