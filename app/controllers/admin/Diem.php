@@ -34,6 +34,7 @@ class Diem extends Controller
             $editData['chuyen_can'] = isset($_POST['chuyen_can'][$grade]) && $_POST['chuyen_can'][$grade] !== '' ? $_POST['chuyen_can'][$grade] : '';
             $editData['giua_ky'] = isset($_POST['giua_ky'][$grade]) && $_POST['giua_ky'][$grade] !== '' ? $_POST['giua_ky'][$grade] : '';
             $editData['cuoi_ky'] = isset($_POST['cuoi_ky'][$grade]) && $_POST['cuoi_ky'][$grade] !== '' ? $_POST['cuoi_ky'][$grade] : '';
+           
 
             $this->model->updateGrade($grade, $editData);
         }

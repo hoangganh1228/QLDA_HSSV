@@ -206,7 +206,7 @@
                                 <td><?php echo $DiemSo['chuyen_can']; ?></td>
                                 <td><?php echo $DiemSo['giua_ky']; ?></td>
                                 <td><?php echo $DiemSo['cuoi_ky']; ?></td>
-                                <td><?php echo $DiemSo['tong_ket']; ?></td>
+                                <td><?php echo round(($DiemSo['chuyen_can'] * 10 + $DiemSo['giua_ky'] * 30 + $DiemSo['cuoi_ky'] * 60) / 100, 1) ?></td>
                             </tr>
                             <?php endif; ?>
                            
