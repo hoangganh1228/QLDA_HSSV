@@ -98,6 +98,9 @@ class UsersModel extends Model {
 
   
 
+
+  
+
     }
     public function escapeString($string) {
         return str_replace("'", "''", $string); // Thay thế dấu nháy đơn để tránh lỗi SQL

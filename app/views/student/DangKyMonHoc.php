@@ -189,11 +189,14 @@
         <tr id="row-<?php echo $index; ?>" data-reg-id="<?php echo $data['reg_id']; ?>">
             <td><?php echo $subject_name; ?></td>
             <td class="semester"><?php echo $semester_name; ?></td>
+<<<<<<< HEAD
             <td>
            <?php echo $credit;?>
         </td>
 
           
+=======
+>>>>>>> 0314b38ec1e323fe5d1e293c38133745ce301a55
         </tr>
     <?php endforeach; ?>
 </tbody>
