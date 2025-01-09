@@ -1,3 +1,22 @@
+<?php
+if (!empty($_GET['status'])) {
+    switch ($_GET['status']) {
+        case 'success':
+            echo "<script>alert('Import thành công');</script>";
+            break;
+        case 'error':
+            echo "<script>alert('Import không thành công');</script>";
+            break;
+        case 'invalid_file':
+            echo "<script>alert('File định dạng lỗi');</script>";
+            break;
+        default:
+            echo "<script>alert('Lỗi không xác định!');</script>";
+    }
+    echo "<script>window.location.href = 'http://localhost/QLDA_HSSV/admin/diem';</script>";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,6 +27,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
 
     <title>Quản lý điểm</title>
+
+    <script>
+        function formToggle(ID) {
+            var element = document.getElementById(ID);
+            if (element.style.display === "none") {
+                element.style.display = "block";
+            } else {
+                element.style.display = "none";
+            }
+        }
+    </script>
 </head>
 <style>
     .table input {
@@ -149,8 +179,8 @@
                             <!-- Form tìm kiếm -->
                             <form action="" id="tbForm" method="get" style="margin-top: 20px;">
                                 <div class="row mb-3 align-items-center">
-                                    <div class="col-3">
-                                        <select name="mon" id="" onchange="document.getElementById('tbForm').submit()">
+                                    <div class="col-md-2">
+                                        <select class="form-select" name="mon" id="" onchange="document.getElementById('tbForm').submit()">
                                             <option value="">-- Chọn môn --</option>
                                             <?php
                                             foreach ($mons as $val):
@@ -161,8 +191,8 @@
                                             ?>
                                         </select>
                                     </div>
-                                    <div class="col-3">
-                                        <select name="khoa" id="" onchange="document.getElementById('tbForm').submit()">
+                                    <div class="col-md-2">
+                                        <select class="form-select" name="khoa" id="" onchange="document.getElementById('tbForm').submit()">
                                             <option value="">-- Chọn khóa --</option>
                                             <?php
                                             foreach ($khoas as $val):
@@ -173,8 +203,8 @@
                                             ?>
                                         </select>
                                     </div>
-                                    <div class="col-3">
-                                        <select name="nganh" id="" onchange="document.getElementById('tbForm').submit()">
+                                    <div class="col-md-2">
+                                        <select class="form-select" name="nganh" id="" onchange="document.getElementById('tbForm').submit()">
                                             <option value="">-- Chọn ngành --</option>
                                             <?php
                                             foreach ($nganhs as $val):
@@ -185,8 +215,8 @@
                                             ?>
                                         </select>
                                     </div>
-                                    <div class="col-3">
-                                        <select name="lop" id="" onchange="document.getElementById('tbForm').submit()">
+                                    <div class="col-md-2">
+                                        <select class="form-select" name="lop" id="" onchange="document.getElementById('tbForm').submit()">
                                             <option value="">-- Chọn lớp --</option>
                                             <?php
                                             foreach ($sv as $val):
@@ -197,9 +227,25 @@
                                             ?>
                                         </select>
                                     </div>
+                                    <div class="col-md-4 head">
+                                        <div class="float-end">
+                                            <a href="javascript:void(0);" class="btn btn-success" onclick="formToggle('importForm')" style="visibility: <?= !empty($mon) ? 'visible' : 'hidden'; ?>"><i class="plus"></i>Import</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </form>
-                            <form action="diem/edit" method="post">
+                            <div class="col-md-4" id="importForm" style="display: none;">
+                                <form class="row g-3" action="../admin/diem/Import?mon=<?= $mon ?>&khoa=<?= $khoa ?>&nganh=<?= $nganh ?>&lop=<?= $lop ?>" method="post" enctype="multipart/form-data">
+                                    <div class="col-auto">
+                                        <label for="fileInput" class="visually-hidden">File</label>
+                                        <input type="file" name="file" id="fileInput" class="form-control">
+                                    </div>
+                                    <div class="col-auto">
+                                        <input type="submit" class="btn btn-primary mb-3" name="importSubmit" value="Import">
+                                    </div>
+                                </form>
+                            </div>
+                            <form action="diem/edit?mon=<?= $mon ?>&khoa=<?= $khoa ?>&nganh=<?= $nganh ?>&lop=<?= $lop ?>" method="post">
                                 <div class="table-responsive-lg" style="height: 450px;">
                                     <table class="table table-hover table-bordered border text-center">
                                         <thead class="table-dark p-2" style="opacity:0.9">

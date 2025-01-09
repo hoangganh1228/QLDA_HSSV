@@ -25,4 +25,18 @@ class DiemModel extends Model
     {
         return $this->database->update('grades', $editData, "where grade_id = '$grade'");
     }
+
+    function importGrades($row, $mon)
+    {
+        $sv = $this->database->select(['credit_registration.reg_id'], '`credit_registration` JOIN `student_subject`', "WHERE credit_registration.reg_id = student_subject.reg_id and subject_id = '$mon' and student_id = '" . $row[1] . "'");
+        if (isset($sv)) {
+            $reg = $sv[0]['reg_id'];
+            $editdata = [
+                'chuyen_can' => $row[3],
+                'giua_ky' => $row[4],
+                'cuoi_ky' => $row[5]
+            ];
+            $this->database->update('grades', $editdata, "where student_id = '" . $row[1] . "' and reg_id = '$reg'");
+        }
+    }
 }

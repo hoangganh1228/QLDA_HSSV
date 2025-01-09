@@ -1,4 +1,7 @@
 <?php
+
+use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
+
 class Diem extends Controller
 {
     private $data, $model;
@@ -11,6 +14,7 @@ class Diem extends Controller
     function index()
     {
         if (isset($_GET)) {
+            if (isset($_GET['importSubmit'])) $this->import();
             $this->data['mon'] = isset($_GET['mon']) && $_GET['mon'] !== '' ? $_GET['mon'] : '';
             $this->data['khoa'] = isset($_GET['khoa']) && $_GET['khoa'] !== '' ? $_GET['khoa'] : '';
             $this->data['nganh'] = isset($_GET['nganh']) && $_GET['nganh'] !== '' ? $_GET['nganh'] : '';
@@ -33,6 +37,43 @@ class Diem extends Controller
 
             $this->model->updateGrade($grade, $editData);
         }
-        header("Location: ../diem");
+        header("Location: ../diem?mon=" . $_GET['mon'] . "&khoa=" . $_GET['khoa'] . "&nganh=" . $_GET['nganh'] . "&lop=" . $_GET['lop']);
+    }
+
+    function import()
+    {
+        require_once 'vendor/autoload.php';
+        $excelMimes = array(
+            'text/xls',
+            'text/xlsx',
+            'application/excel',
+            'application/vnd.msexcel',
+            'application/vnd.ms-excel',
+            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        );
+
+        // var_dump($_FILES);
+
+        if (!empty($_FILES['file']['name']) && in_array($_FILES['file']['type'], $excelMimes)) {
+            if (is_uploaded_file($_FILES['file']['tmp_name'])) {
+                $reader = new Xlsx();
+                $spreadSheet = $reader->load($_FILES['file']['tmp_name']);
+                $worksheet = $spreadSheet->getActiveSheet();
+                $worksheet_arr = $worksheet->toArray();
+
+                unset($worksheet_arr[0]);
+
+                foreach ($worksheet_arr as $row) {
+                    $this->model->importGrades($row, $_GET['mon']);
+                }
+                $qstring = '?status=success';
+            } else {
+                $qstring = '?status=error';
+            }
+        } else {
+            $qstring = '?status=invalid_file';
+        }
+
+        header("Location: ../diem" . $qstring);
     }
 }

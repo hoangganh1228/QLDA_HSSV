@@ -8,20 +8,19 @@ class Database
     }
     public function query($sql)
     {
-        //var_dump($this->conn);
+        // var_dump($this->conn);
+        // echo $sql;
         $statement = $this->conn->prepare($sql);
-        //echo $sql;
         $statement->execute();
         return $statement;
     }
-  
 
-    public function select($colArr =[], $table, $condition)
+
+    public function select($colArr = [], $table, $condition)
     {
-        if (empty($colArr)) $colStr='*';
+        if (empty($colArr)) $colStr = '*';
 
-        else
-        {
+        else {
             $colStr = implode(', ', $colArr);
         }
         $sql = "select $colStr from $table $condition";
@@ -77,7 +76,8 @@ class Database
         return $ret->rowCount() > 0;
     }
 
-    public function lastInsertId() {
+    public function lastInsertId()
+    {
         return $this->conn->lastInsertId(); // Giả sử $this->pdo là đối tượng PDO của bạn
     }
 }
