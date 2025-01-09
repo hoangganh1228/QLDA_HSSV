@@ -90,6 +90,7 @@ public function getAllKi() {
 public function getAlldki() {
     return $this->database->select([], 'credit_registration', '');
 }
+
 public function getAllSubjects() {
     return $this->database->select([], 'subjects', '');
 }

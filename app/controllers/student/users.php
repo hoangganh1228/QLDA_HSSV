@@ -136,9 +136,7 @@ class Users extends Controller
             $password = $filter['password'];
          
             $user = $this->model->getUserByUsername($username);
-            echo '<pre>';   
-            print_r($user);
-            echo '</pre>';
+         
             if ($user && $password === $user['password']) {
                 // Đăng nhập thành công
                 $_SESSION['student_id'] = $user['student_id'];
@@ -149,9 +147,9 @@ class Users extends Controller
 
                 }
             } else {
-                // Đăng nhập thất bại
-                // echo "<script>alert('Tên đăng nhập hoặc mật khẩu không đúng!')</script>";
-                // echo "<script>window.location.href = '/QLDA_HSSV/admin/users/login'</script>";
+                
+                echo "<script>alert('Tên đăng nhập hoặc mật khẩu không đúng!')</script>";
+                echo "<script>window.location.href = '/QLDA_HSSV/admin/users/login'</script>";
             }
         } 
         

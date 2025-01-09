@@ -58,6 +58,7 @@ class DangKyMonHoc extends Controller {
         $regIds = $data['regIds'] ?? [];
     
         if (empty($regIds)) {
+            
             echo json_encode(['success' => false, 'message' => 'Không có môn học nào để đăng ký']);
             return;
         }

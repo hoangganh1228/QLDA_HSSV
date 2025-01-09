@@ -27,7 +27,18 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="hocKyDropdown">
                         <?php foreach ($semesters as $item): ?>
-                            <li><a class="dropdown-item" href="?hoc_ky=<?php echo $item['semester_id']; ?>"><?php echo $item['name']; ?></a></li>
+                            <?php 
+                           $isInsubject="";
+                           foreach($Registration as $registration){
+                             if($registration['semester_id']==$item['semester_id']){
+                                $isInsubject=true;
+                                break;
+                             }
+                           }
+                           ?>
+                           <?php if( $isInsubject): ?>
+                            <li><a class="dropdown-item" href="?hoc_ky=<?php echo htmlspecialchars($item['semester_id']); ?>"><?php echo htmlspecialchars($item['name']); ?></a></li>
+                            <?php endif;?>
                         <?php endforeach; ?>
                         <li><a class="dropdown-item" href="?hoc_ky=all">Tất Cả</a></li>
                     </ul>

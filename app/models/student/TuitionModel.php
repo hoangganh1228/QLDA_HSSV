@@ -79,7 +79,9 @@ function calculateTotalTuition($student_id) {
 public function getAllSemesters() {
   return $this->database->select([], 'semesters', '');
 }
-
+public function getAllDki() {
+  return $this->database->select([], 'credit_registration', '');
+}
 public function getSemester($semester_id) {
   $result = $this->database->select([], 'semesters', "WHERE semester_id = '$semester_id'");
   return $result ? $result[0] : null;

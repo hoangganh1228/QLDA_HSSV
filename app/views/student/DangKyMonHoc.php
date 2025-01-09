@@ -123,14 +123,27 @@
     <div class="container">
     <div class="row mb-3">
     <div class="col-md-4 offset-md-4">
-        <select id="semester-filter" class="form-select">
-            <option value="all">Tất cả các kỳ</option>
-            <?php foreach ($semesters as $semester): ?>
-                <option value="<?php echo $semester['name']; ?>">
-                    <?php echo $semester['name']; ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
+    <select id="semester-filter" class="form-select">
+    <option value="all">Tất cả các kỳ</option>
+    <?php foreach ($semesters as $semester): ?>
+        <?php 
+  
+        $isInSubjects = false;
+        foreach ($DangKyData as $data) {
+            if ($data['semester_id'] == $semester['semester_id']) {
+                $isInSubjects = true;
+                break;
+            }
+        }
+        ?>
+        <?php if ($isInSubjects): ?>
+            <option value="<?php echo htmlspecialchars($semester['semester_id']); ?>">
+                <?php echo htmlspecialchars($semester['name']); ?>
+            </option>
+        <?php endif; ?>
+    <?php endforeach; ?>
+</select>
+
     </div>
 </div>
 
@@ -143,7 +156,7 @@
         <tr>
             <th>Môn Học</th>
             <th>Học Kỳ</th>
-           
+           <th>Số tín chỉ</th>
            
         </tr>
     </thead>
@@ -152,11 +165,14 @@
         <?php 
             $subject_name = "";
             $semester_name = "";
+            $credit="";
+            
 
             // Tìm tên môn học
             foreach ($subjects as $subject) {
                 if ($data['subject_id'] == $subject['subject_id']) {
                     $subject_name = $subject['subject_name'];
+                    $credit = $subject['credits'];
                     break;
                 }
             }
@@ -168,10 +184,14 @@
                     break;
                 }
             }
+        
         ?>
         <tr id="row-<?php echo $index; ?>" data-reg-id="<?php echo $data['reg_id']; ?>">
             <td><?php echo $subject_name; ?></td>
             <td class="semester"><?php echo $semester_name; ?></td>
+            <td>
+           <?php echo $credit;?>
+        </td>
 
           
         </tr>
@@ -191,7 +211,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
 
-let isRegisteredAll = false; 
+ 
 
 document.getElementById('registerAllButton').addEventListener('click', function () {
     const rows = document.querySelectorAll('tbody tr'); // Chọn tất cả các hàng trong tbody
@@ -222,11 +242,11 @@ document.getElementById('registerAllButton').addEventListener('click', function 
                 const registerButton = document.getElementById('registerAllButton');
                 registerButton.disabled = true;
                 registerButton.innerText = 'Đã đăng ký';
-
+                
                 registerButton.style.display="none";
                 
 
-                isRegisteredAll = true; 
+         
 
               
             } else {

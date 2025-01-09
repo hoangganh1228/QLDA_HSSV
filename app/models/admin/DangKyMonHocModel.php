@@ -4,8 +4,7 @@ class DangKyMonHocModel extends Model {
     public function getAll($search = '') {
         // Kiểm tra và tạo câu điều kiện tìm kiếm
         $condition = !empty($search) ? "
-            WHERE credit_registration.reg_id LIKE '%$search%' 
-         
+            WHERE credit_registration.reg_id LIKE '%$search%'  or subjects.subject_name LIKE '%$search%'
         " : '';
         
         // Truy vấn SQL
@@ -30,7 +29,7 @@ class DangKyMonHocModel extends Model {
         // Thực thi truy vấn và trả về kết quả
         return $this->database->query($query)->fetchAll(PDO::FETCH_ASSOC);
     }
-    
+   
 
     // Kiểm tra trùng mã đăng ký (reg_id)
     public function isDuplicateRegId($reg_id) {
@@ -55,7 +54,7 @@ class DangKyMonHocModel extends Model {
 
     // Xóa thông tin đăng ký môn học theo id
     public function deleteDangKyMonHoc($id) {
-        return $this->database->delete('credit_registration', "WHERE id = '$id'");
+        return $this->database->delete('credit_registration', "WHERE id = '$id' ");
     }
     public function getAllNganh() {
         return $this->database->select([], 'majors', '');
@@ -69,7 +68,5 @@ class DangKyMonHocModel extends Model {
     public function getAllKhoaHoc() {
         return $this->database->select([], 'khoa_hoc', '');
     }
-    public function getAllUsers() {
-        return $this->database->select([], 'users', '');
-    }
+    
 }

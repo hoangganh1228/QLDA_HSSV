@@ -111,10 +111,10 @@ class DangKyMonHocModel extends Model {
             'grade_id'=>$randomId,
             'student_id' => $studentId,
             'reg_id' => $regId,
-            'chuyen_can'=>NULL,
-            'giua_ky'=>NULL,
-            'cuoi_ky'=>NULL,
-            'tong_ket'=>NULL,
+            'chuyen_can'=>"",
+            'giua_ky'=>"",
+            'cuoi_ky'=>"",
+            'tong_ket'=>"",
 
         ];
     

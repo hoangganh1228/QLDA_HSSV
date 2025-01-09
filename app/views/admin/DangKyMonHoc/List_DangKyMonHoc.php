@@ -171,7 +171,7 @@
                 <td><?php echo $khoa_hoc_name; ?></td> <!-- Tên Khóa Học -->
                 <td>
                     <a href="/QLDA_HSSV/admin/DangKyMonHoc/edit_dangky/<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Sửa</a>
-                    <a href="/QLDA_HSSV/admin/DangKyMonHoc/delete_dangky/<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">Xóa</a>
+                    <a href="/QLDA_HSSV/admin/DangKyMonHoc/delete_dangky/<?php echo $row['id']?>" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">Xóa</a>
                 </td>
             </tr>
         <?php endforeach; ?>
