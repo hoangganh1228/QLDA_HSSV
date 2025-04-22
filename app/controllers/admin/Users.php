@@ -73,7 +73,7 @@ class Users extends Controller
                     $this->model->addStudent($studentData);
                 }
                 echo "<script>alert('Thêm người dùng thành công!')</script>";
-                echo "<script>window.location.href = '/QLDA_HSSV/admin/users/index'</script>";
+                echo "<script>window.location.href = '/admin/users/index'</script>";
             } else {
                 echo "<script>alert('Thêm ngành thất bại, trùng mã ngành!')</script>";
             }
@@ -148,7 +148,7 @@ class Users extends Controller
             }
     
             echo "<script>alert('Cập nhật người dùng thành công!')</script>";
-            echo "<script>window.location.href = '/QLDA_HSSV/admin/users/index'</script>";
+            echo "<script>window.location.href = '/admin/users/index'</script>";
         } else {
             // Lấy dữ liệu hiện tại của người dùng
             $user = $this->model->getUserById($id);
@@ -207,7 +207,7 @@ class Users extends Controller
         } else {
             echo "<script>alert('Xóa thất bại')</script>";
         }
-        echo "<script>window.location.href = '/QLDA_HSSV/admin/users'</script>";
+        echo "<script>window.location.href = '/admin/users'</script>";
     }
 
     public function login() {
@@ -235,21 +235,18 @@ class Users extends Controller
                 $_SESSION['role'] = $user['role'];
                 
                 switch ($user['role']) {
-                    case 'Quản lý':
-                        header('Location: /QLDA_HSSV/admin/dashboard/index');
-                        break;
-                    case 'Giảng viên': // Teacher
-                        header('Location: /QLDA_HSSV/teacher/dashboard/index');
+                    case 'Quản lý': 
+                        header('Location: /admin/Dashboard');
                         break;
                     case 'Sinh viên': // Student
-                        header('Location: /QLDA_HSSV/student/');
+                        header('Location: /student/Trang_chu');
                         break;
                 }
                 exit;
             } else {
                 // Đăng nhập thất bại
                 echo "<script>alert('Tên đăng nhập hoặc mật khẩu không đúng!')</script>";
-                echo "<script>window.location.href = '/QLDA_HSSV/admin/users/login'</script>";
+                echo "<script>window.location.href = '/admin/Users/login'</script>";
             }
         } 
     }
@@ -258,7 +255,7 @@ class Users extends Controller
         session_start();
         session_unset();
         session_destroy();
-        header('Location: /QLDA_HSSV/admin/users/login');
+        header('Location: /admin/Users/login');
     }
     function resetPassword (){
         $user = $this->model->getAllUsers();
@@ -277,7 +274,7 @@ class Users extends Controller
             // Kiểm tra dữ liệu đầu vào
             if (!$username || !$oldPassword || !$newPassword || !$confirmPassword) {
                 echo "<script>alert('Vui lòng điền đầy đủ thông tin!')</script>";
-                echo "<script>window.location.href = '/QLDA_HSSV/admin/users/resetPassword'</script>";
+                echo "<script>window.location.href = '/admin/users/resetPassword'</script>";
                 return;
             }
     
@@ -292,20 +289,20 @@ class Users extends Controller
     
                     // Hiển thị thông báo thành công
                     echo "<script>alert('Đặt lại mật khẩu thành công!')</script>";
-                    echo "<script>window.location.href = '/QLDA_HSSV/admin/users/login'</script>";
+                    echo "<script>window.location.href = '/admin/users/login'</script>";
                 } else {
                     // Mật khẩu mới và xác nhận không khớp
                     echo "<script>alert('Mật khẩu mới và xác nhận mật khẩu không khớp!')</script>";
-                    echo "<script>window.location.href = '/QLDA_HSSV/damin/users/resetPassword'</script>";
+                    echo "<script>window.location.href = '/damin/users/resetPassword'</script>";
                 }
             } else {
                 // Sai tên đăng nhập hoặc mật khẩu cũ
                 echo "<script>alert('Tên đăng nhập hoặc mật khẩu cũ không đúng!')</script>";
-                echo "<script>window.location.href = '/QLDA_HSSV/student/damin/users/resetPassword'</script>";
+                echo "<script>window.location.href = '/student/damin/users/resetPassword'</script>";
             }
         } else {
             // Nếu không phải POST, chuyển hướng về trang resetPassword
-            header("Location: /QLDA_HSSV/admin/users/resetPassword");
+            header("Location: /admin/users/resetPassword");
         }
     }
 }

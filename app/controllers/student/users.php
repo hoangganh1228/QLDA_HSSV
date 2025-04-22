@@ -71,7 +71,7 @@ class Users extends Controller
                     $this->model->addStudent($studentData);
                 }
                 echo "<script>alert('Thêm người dùng thành công!')</script>";
-                echo "<script>window.location.href = '/QLDA_HSSV/student/users/index'</script>";
+                echo "<script>window.location.href = '/student/users/index'</script>";
             } else {
                 echo "<script>alert('Thêm ngành thất bại, trùng mã ngành!')</script>";
             }
@@ -96,7 +96,7 @@ class Users extends Controller
             $filteredPost = filter(); 
             $this->model->updateUser($id, $filteredPost); 
             echo "<script>alert('Sửa người dùng thành công')</script>";
-            echo "<script>window.location.href = '/QLDA_HSSV/student/users'</script>";
+            echo "<script>window.location.href = '/student/users'</script>";
         } else {
             $result = $this->model->getUserById($id); 
             if (!$result) {
@@ -117,11 +117,11 @@ class Users extends Controller
         } else {
             echo "<script>alert('Xóa thất bại')</script>";
         }
-        echo "<script>window.location.href = '/QLDA_HSSV/student/users'</script>";
+        echo "<script>window.location.href = '/student/users'</script>";
     }
 
     public function login() {
-        $this->view('/student/users/login', []);
+        $this->view('/admin/Users/login', []);
     }
 
     public function loginPost() {
@@ -144,11 +144,11 @@ class Users extends Controller
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['role'] = $user['role'];
                
-                header('Location: /QLDA_HSSV/student/Trang_chu');
+                header('Location: /student/Trang_chu');
             } else {
                 // Đăng nhập thất bại
                 echo "<script>alert('Tên đăng nhập hoặc mật khẩu không đúng!')</script>";
-                echo "<script>window.location.href = '/QLDA_HSSV/student/users/login'</script>";
+                echo "<script>window.location.href = '/admin/Users/login'</script>";
             }
         } 
     }
@@ -157,7 +157,7 @@ class Users extends Controller
         session_start();
         session_unset();
         session_destroy();
-        header('Location: /QLDA_HSSV/student/users/login');
+        header('Location: /admin/Users/login');
     }
 
 }

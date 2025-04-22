@@ -207,7 +207,7 @@ function registerAllSubjects() {
     }
 
     // Gửi danh sách reg_id lên server
-    fetch('/QLDA_HSSV/student/DangKyMonHoc/updateStatus', {
+    fetch('/student/DangKyMonHoc/updateStatus', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

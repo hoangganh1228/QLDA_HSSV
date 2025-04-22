@@ -43,7 +43,7 @@ class App
             }
         }
         $urlArr = array_values($urlArr);
-        echo $urlArr;
+        // echo $urlArr;
         if (!empty($urlArr[0])) {
             $this->__controller = $urlArr[0];
         }

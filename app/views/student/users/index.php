@@ -26,7 +26,7 @@
             </div>
         </form>
         <div>
-            <a href="/QLDA_HSSV/student/users/create" class="btn btn-outline-secondary" style="width: 100px;">Thêm</a>
+            <a href="/student/users/create" class="btn btn-outline-secondary" style="width: 100px;">Thêm</a>
         </div>
         <table class="table table-bordered table-hover mt-3">
             <thead class="thead-dark">
@@ -56,8 +56,8 @@
                             <td><?php echo $row['email'] ?></td> 
                             <td><?php echo $row['phone'] ?></td> 
                             <td>
-                                <a href="/QLDA_HSSV/student/users/edit/<?= $row['id'] ?>" class="btn btn-outline-secondary">Sửa</a>
-                                <a href="/QLDA_HSSV/student/users/delete/<?= $row['id'] ?>" class="btn btn-outline-secondary" onclick="return confirm('Xác nhận xóa!')">Xóa</a>
+                                <a href="/student/users/edit/<?= $row['id'] ?>" class="btn btn-outline-secondary">Sửa</a>
+                                <a href="/student/users/delete/<?= $row['id'] ?>" class="btn btn-outline-secondary" onclick="return confirm('Xác nhận xóa!')">Xóa</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

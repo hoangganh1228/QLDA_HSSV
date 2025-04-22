@@ -116,7 +116,7 @@
             </div>
         </form>
         <div>
-            <a href="/QLDA_HSSV/admin/nganh/add_nganh" class="btn btn-success" style="width: 100px;">Thêm</a>
+            <a href="/admin/nganh/add_nganh" class="btn btn-success" style="width: 100px;">Thêm</a>
         </div>
         <table class="table table-bordered table-striped mt-4">
             <thead class="table-dark">
@@ -143,8 +143,8 @@
                             <td><?php echo $row['major_name'] ?></td> 
                             <td><?php echo $row['department_name'] ?></td> 
                             <td>
-                                <a href="/QLDA_HSSV/admin/nganh/edit_nganh/<?= $row['id'] ?>" class="btn btn-warning btn-sm">Sửa</a>
-                                <a href="/QLDA_HSSV/admin/nganh/delete_nganh/<?= $row['id'] ?>" class="btn btn-danger btn-sm    " onclick="return confirm('Xác nhận xóa!')">Xóa</a>
+                                <a href="/admin/nganh/edit_nganh/<?= $row['id'] ?>" class="btn btn-warning btn-sm">Sửa</a>
+                                <a href="/admin/nganh/delete_nganh/<?= $row['id'] ?>" class="btn btn-danger btn-sm    " onclick="return confirm('Xác nhận xóa!')">Xóa</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

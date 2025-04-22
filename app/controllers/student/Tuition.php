@@ -101,7 +101,7 @@ class Tuition extends Controller
             }
 
             // Redirect hoặc trả về view
-            header('Location: /QLDA_HSSV/student/tuition/viewTuition/?hoc_ky=all');
+            header('Location: /student/tuition/viewTuition/?hoc_ky=all');
             exit();
             }
     }

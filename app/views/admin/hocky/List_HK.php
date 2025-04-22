@@ -108,7 +108,7 @@
             <hr>
             <div class="container_css">
                 <div class="">
-                    <a href="/QLDA_HSSV/admin/hocky/add_hk" class="btn btn-success btn-sm">Thêm mới <i
+                    <a href="/admin/hocky/add_hk" class="btn btn-success btn-sm">Thêm mới <i
                             class="fa-solid fa-plus"></i></a>
                 </div>
                 <div class="">
@@ -162,11 +162,11 @@
 
 
                                     <td>
-                                        <a href="/QLDA_HSSV/admin/hocky/edit_hk/<?= $row['semester_id'] ?>"
+                                        <a href="/admin/hocky/edit_hk/<?= $row['semester_id'] ?>"
                                             class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i>Cập
                                             nhật</a>
 
-                                        <a href="/QLDA_HSSV/admin/hocky/delete_hk/<?= $row['semester_id'] ?>"
+                                        <a href="/admin/hocky/delete_hk/<?= $row['semester_id'] ?>"
                                             class="btn btn-danger" onclick="return confirm('Xác nhận xóa!')"><i
                                                 class="fa-solid fa-trash"></i>Xóa</a>
 

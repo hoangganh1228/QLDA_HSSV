@@ -30,7 +30,7 @@
             if (!$this->model->isDuplicateKhoahocId($filteredPost['khoa_hoc_id'])) {
                 $this->model->addKhoahoc($filteredPost);
                 echo "<script>alert('Thêm khóa học thành công!')</script>";
-                echo "<script>window.location.href = '/QLDA_HSSV/admin/khoahoc/list_KH'</script>";
+                echo "<script>window.location.href = '/admin/khoahoc/list_KH'</script>";
             } else {
                 echo "<script>alert('Thêm khoa thất bại, trùng mã khóa học!')</script>";
             }
@@ -45,7 +45,7 @@
             $filteredPost = filter(); 
             $this->model->updateKhoahoc($id, $filteredPost); 
             echo "<script>alert('Cập nhật thông tin khóa học thành công')</script>";
-            echo "<script>window.location.href = '/QLDA_HSSV/admin/khoahoc/list_KH'</script>";
+            echo "<script>window.location.href = '/admin/khoahoc/list_KH'</script>";
         } else {
             $result = $this->model->getKhoahocById($id);
            // var_dump($result); 
@@ -66,7 +66,7 @@
         } else {
             echo "<script>alert('Xóa thất bại')</script>";
         }
-        echo "<script>window.location.href = '/QLDA_HSSV/admin/khoahoc/list_KH'</script>";
+        echo "<script>window.location.href = '/admin/khoahoc/list_KH'</script>";
     }
     }
 ?>

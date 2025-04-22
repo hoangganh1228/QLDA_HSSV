@@ -43,7 +43,7 @@ class Nganh extends Controller {
             if (!$this->model->isDuplicateNganhId($filteredPost['major_id'])) {
                 $this->model->addNganh($filteredPost);
                 echo "<script>alert('Thêm ngành thành công!')</script>";
-                echo "<script>window.location.href = '/QLDA_HSSV/admin/nganh/list_nganh'</script>";
+                echo "<script>window.location.href = '/admin/nganh/list_nganh'</script>";
             } else {
                 echo "<script>alert('Thêm ngành thất bại, trùng mã ngành!')</script>";
             }
@@ -62,7 +62,7 @@ class Nganh extends Controller {
             $filteredPost = filter(); 
             $this->model->updateNganh($id, $filteredPost); 
             echo "<script>alert('Sửa ngành thành công')</script>";
-            echo "<script>window.location.href = '/QLDA_HSSV/admin/nganh/list_nganh'</script>";
+            echo "<script>window.location.href = '/admin/nganh/list_nganh'</script>";
         } else {
             $result = $this->model->getNganhById($id); 
             if (!$result) {
@@ -87,6 +87,6 @@ class Nganh extends Controller {
         } else {
             echo "<script>alert('Xóa thất bại')</script>";
         }
-        echo "<script>window.location.href = '/QLDA_HSSV/admin/nganh/list_nganh'</script>";
+        echo "<script>window.location.href = '/admin/nganh/list_nganh'</script>";
     }
 }

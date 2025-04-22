@@ -88,7 +88,7 @@
     <div class="container d-flex justify-content-center align-items-center">
         <div class="login-container col-md-4">
             <h3>Đăng nhập</h3>
-            <form action="/QLDA_HSSV/student/users/loginPost" method="post">
+            <form action="/student/users/loginPost" method="post">
                 <div class="form-group mb-3">
                     <label for="username">Tên đăng nhập:</label>
                     <input type="text" name="username" id="username" class="form-control" required>

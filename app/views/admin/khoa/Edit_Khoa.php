@@ -27,7 +27,7 @@
             <br>
             <div>
                 <button type="submit" id="btnThem" class="btn btn-outline-secondary">Sửa</button>
-                <a href="/QLDA_HSSV/admin/khoa/list_khoa" class="btn btn-outline-secondary">Quay lại</a>
+                <a href="/admin/khoa/list_khoa" class="btn btn-outline-secondary">Quay lại</a>
             </div>
         </form>
     </div>

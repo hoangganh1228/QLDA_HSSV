@@ -12,8 +12,8 @@
             </span>
         </button>
         <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/QLDA_HSSV/student/Trang_chu/resetPassword">Thay đổi mật khẩu</a></li>
-            <li><a class="dropdown-item" href="/QLDA_HSSV/student/Trang_chu/logout">Đăng xuất</a></li>
+            <li><a class="dropdown-item" href="/student/Trang_chu/resetPassword">Thay đổi mật khẩu</a></li>
+            <li><a class="dropdown-item" href="/student/Trang_chu/logout">Đăng xuất</a></li>
         </ul>
     </div>
 </div>

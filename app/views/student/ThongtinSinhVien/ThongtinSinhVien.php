@@ -139,7 +139,7 @@
                             <input type="text" class="form-control" id="khoa_hoc_id" value="<?php echo $SinhVien['khoa_hoc_id']?>" readonly>
                         </div>
 
-                        <button type="button" class="btn btn-warning" onclick="window.location.href='/QLDA_HSSV/student/ThongtinSinhVien/edit_sinhvien/<?php echo $SinhVien['user_id']; ?>'">Sửa</button>
+                        <button type="button" class="btn btn-warning" onclick="window.location.href='/student/ThongtinSinhVien/edit_sinhvien/<?php echo $SinhVien['user_id']; ?>'">Sửa</button>
 
 
                         <?php endif; ?>
