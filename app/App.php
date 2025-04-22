@@ -18,6 +18,9 @@ class App
         if (!empty($_SERVER['PATH_INFO']))
             $url = $_SERVER['PATH_INFO'];
         else $url = '/';
+        // echo "<pre>";
+        // print_r($_SERVER);
+        // echo "<pre>";
 
         $urlArr = array_values(array_filter(explode('/', $url)));
 
@@ -26,12 +29,13 @@ class App
         $file='';
         if (!empty($urlArr))
         {
-            //print_r($urlArr);
+            // print_r($urlArr);
+            // echo getcwd(); // Xem thư mục hiện tại là gì
             foreach ($urlArr as $key=>$value)
             {
                 $fileCheck.='/'.$value;
                 $fileCheck = ltrim($fileCheck, '/');
-                if (file_exists('app/controllers/'. $fileCheck .'.php')) {
+                if (file_exists(_root.'/app/controllers/'. $fileCheck .'.php')) {
                     break;   
                 }
                 $file = $fileCheck . '/';
@@ -39,14 +43,15 @@ class App
             }
         }
         $urlArr = array_values($urlArr);
-        //echo $file;
-
+        echo $urlArr;
         if (!empty($urlArr[0])) {
             $this->__controller = $urlArr[0];
         }
-        if (file_exists('app/controllers/' . $file . $this->__controller . '.php')) {
+
+        if (file_exists(_root . 'app/controllers/' . $file . $this->__controller . '.php')) {         
             require_once 'controllers/' . $file . $this->__controller . '.php';
             if (class_exists($this->__controller)) {
+                
                 $this->__controller = new $this->__controller();
                 unset($urlArr[0]);
             } else loadError('404');
