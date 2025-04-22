@@ -282,6 +282,11 @@ CREATE TABLE `users` (
   `phone` varchar(10) NOT NULL,
   `created_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `users` (`id`, `user_id`, `username`, `password`, `role`, `email`, `phone`, `created_date`)
+VALUES
+(1, 'QL001', 'admin', 'admin', 'Quản lý', 'admin@qlda.local', '0909123456', '2024-01-01'),
+(2, 'GV001', 'giangvien', '123456', 'Giảng viên', 'gv1@qlda.local', '0912123456', '2024-02-01'),
+(3, 'SV001', 'nghia', '123456', 'Sinh viên', 'sv1@qlda.local', '0933123456', '2024-03-01');
 
 -- --------------------------------------------------------
 

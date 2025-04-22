@@ -123,6 +123,10 @@ class Users extends Controller
     public function login() {
         $this->view('/student/users/login', []);
     }
+    public function Trang_chu() {
+    $this->view('/student/Trang_chu', []); 
+    }
+
 
     public function loginPost() {
         if(isPost()) {
@@ -144,11 +148,12 @@ class Users extends Controller
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['role'] = $user['role'];
                
-                header('Location: /QLDA_HSSV/student/Trang_chu');
+                header('Location: /student/users/Trang_chu');
+                exit;
             } else {
                 // Đăng nhập thất bại
                 echo "<script>alert('Tên đăng nhập hoặc mật khẩu không đúng!')</script>";
-                echo "<script>window.location.href = '/QLDA_HSSV/student/users/login'</script>";
+                echo "<script>window.location.href = '/student/users/login'</script>";
             }
         } 
     }
@@ -157,7 +162,7 @@ class Users extends Controller
         session_start();
         session_unset();
         session_destroy();
-        header('Location: /QLDA_HSSV/student/users/login');
+        header('Location: /student/users/login');
     }
 
 }

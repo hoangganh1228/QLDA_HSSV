@@ -9,7 +9,7 @@
         }
         function index()
         {
-            checkPermission(['Sinh viên']);
+            
             $user = $this->model->getAllUsers();
             $khoahocs = $this->model->getAllKhoaHoc(); 
             $departments = $this->model->getAllDepartments(); 
