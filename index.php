@@ -1,6 +1,6 @@
 <?php
 session_start();
-//test hihi
+//test hi
 require_once 'app/App.php';
 
 
