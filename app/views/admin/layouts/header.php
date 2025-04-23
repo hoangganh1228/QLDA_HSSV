@@ -19,7 +19,7 @@
       </button>
       <ul class="dropdown-menu">
           <li><button class="dropdown-item" type="button">Thay đổi mật khẩu</button></li>
-          <li><a href="/admin/Users/logout" class="dropdown-item" >Đăng xuất</a></li>
+          <li><a href="/admin/users/logout" class="dropdown-item" >Đăng xuất</a></li>
 
       </ul>
   </div>

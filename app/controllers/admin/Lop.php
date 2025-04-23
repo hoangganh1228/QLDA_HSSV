@@ -33,13 +33,13 @@ class Lop extends Controller {
             if (!$this->model->isDuplicateLopId($filteredPost['class_id'])) {
                 $this->model->addLop($filteredPost);
                 echo "<script>alert('Thêm lớp thành công!')</script>";
-                echo "<script>window.location.href = '/admin/lop/list_lop'</script>";
+                echo "<script>window.location.href = '/admin/Lop/list_lop'</script>";
             } else {
                 echo "<script>alert('Thêm lớp thất bại, trùng mã lớp!')</script>";
             }
         }
         $majors = $this->model->getAllNganh();
-        $this->view('/admin/lop/add_lop', ['majors' => $majors]);
+        $this->view('/admin/lop/Add_Lop', ['majors' => $majors]);
     }
 
     public function edit_lop($id = '') {
@@ -47,14 +47,14 @@ class Lop extends Controller {
             $filteredPost = filter(); 
             $this->model->updateLop($id, $filteredPost); 
             echo "<script>alert('Sửa lớp thành công')</script>";
-            echo "<script>window.location.href = '/admin/lop/list_lop'</script>";
+            echo "<script>window.location.href = '/admin/Lop/list_lop'</script>";
         } else {
             $result = $this->model->getLopById($id); 
             if (!$result) {
                 die("Không tìm thấy lớp.");
             }
             $majors = $this->model->getAllNganh();
-            $this->view('/admin/lop/edit_lop', [
+            $this->view('/admin/lop/Edit_Lop', [
                 'data' => $result,
                 'majors' => $majors
             ]);
@@ -67,6 +67,6 @@ class Lop extends Controller {
         } else {
             echo "<script>alert('Xóa thất bại')</script>";
         }
-        echo "<script>window.location.href = '/admin/lop/list_lop'</script>";
+        echo "<script>window.location.href = '/admin/Lop/list_lop'</script>";
     }
 }

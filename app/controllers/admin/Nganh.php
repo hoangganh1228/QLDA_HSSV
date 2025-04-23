@@ -43,13 +43,13 @@ class Nganh extends Controller {
             if (!$this->model->isDuplicateNganhId($filteredPost['major_id'])) {
                 $this->model->addNganh($filteredPost);
                 echo "<script>alert('Thêm ngành thành công!')</script>";
-                echo "<script>window.location.href = '/admin/nganh/list_nganh'</script>";
+                echo "<script>window.location.href = '/admin/Nganh/list_nganh'</script>";
             } else {
                 echo "<script>alert('Thêm ngành thất bại, trùng mã ngành!')</script>";
             }
         }
         $departments = $this->model->getAllKhoa();
-        $this->view('/admin/nganh/add_nganh', ['departments' => $departments]);
+        $this->view('/admin/nganh/Add_Nganh', ['departments' => $departments]);
     }
 
     public function edit_nganh($id = '') {
@@ -62,14 +62,14 @@ class Nganh extends Controller {
             $filteredPost = filter(); 
             $this->model->updateNganh($id, $filteredPost); 
             echo "<script>alert('Sửa ngành thành công')</script>";
-            echo "<script>window.location.href = '/admin/nganh/list_nganh'</script>";
+            echo "<script>window.location.href = '/admin/Nganh/list_nganh'</script>";
         } else {
             $result = $this->model->getNganhById($id); 
             if (!$result) {
                 die("Không tìm thấy ngành.");
             }
             $departments = $this->model->getAllKhoa();
-            $this->view('/admin/nganh/edit_nganh', [
+            $this->view('/admin/nganh/Edit_Nganh', [
                 'data' => $result,
                 'departments' => $departments
             ]);
@@ -87,6 +87,6 @@ class Nganh extends Controller {
         } else {
             echo "<script>alert('Xóa thất bại')</script>";
         }
-        echo "<script>window.location.href = '/admin/nganh/list_nganh'</script>";
+        echo "<script>window.location.href = '/admin/Nganh/list_nganh'</script>";
     }
 }

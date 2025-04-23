@@ -40,12 +40,12 @@
                 if (!$this->model->isDuplicateKhoaId($filteredPost['department_id'])) {
                     $this->model->addKhoa($filteredPost);
                     echo "<script>alert('Thêm khoa thành công!')</script>";
-                    echo "<script>window.location.href = '/admin/khoa/list_khoa'</script>";
+                    echo "<script>window.location.href = '/admin/Khoa/list_khoa'</script>";
                 } else {
                     echo "<script>alert('Thêm khoa thất bại, trùng mã khoa!')</script>";
                 }
             }
-            $this->view('/admin/khoa/add_khoa', []);
+            $this->view('/admin/khoa/Add_Khoa', []);
         }
 
         // Sửa khoa
@@ -55,13 +55,13 @@
                 $filteredPost = filter();
                 $this->model->updateKhoa($id, $filteredPost);
                 echo "<script>alert('Sửa khoa thành công')</script>";
-                echo "<script>window.location.href = '/admin/khoa/list_khoa'</script>";
+                echo "<script>window.location.href = '/admin/Khoa/list_khoa'</script>";
             } else {
                 $result = $this->model->getKhoaById($id);
                 if (!$result) {
                     die("Không tìm thấy khoa.");
                 }
-                $this->view('/admin/khoa/edit_khoa', [
+                $this->view('/admin/khoa/Edit_Khoa', [
                     'data' => $result
                 ]);
             }
@@ -76,7 +76,7 @@
             } else {
                 echo "<script>alert('Xóa thất bại')</script>";
             }
-            echo "<script>window.location.href = '/admin/khoa/list_khoa'</script>";
+            echo "<script>window.location.href = '/admin/Khoa/list_khoa'</script>";
         }
     }
     ?>

@@ -44,7 +44,7 @@
     <br>
     <div>
         <button type="submit" id="btnThem" class="btn btn-outline-secondary">Sửa</button>
-        <a href="/admin/mon/list_mon" class="btn btn-outline-secondary">Quay lại</a>
+        <a href="/admin/Mon/list_mon" class="btn btn-outline-secondary">Quay lại</a>
     </div>
 </form>
     </div>

@@ -33,13 +33,13 @@ class Mon extends Controller {
             if (!$this->model->isDuplicateMonId($filteredPost['subject_id'])) {
                 $this->model->addMon($filteredPost);
                 echo "<script>alert('Thêm môn thành công!')</script>";
-                echo "<script>window.location.href = '/admin/mon/list_mon'</script>";
+                echo "<script>window.location.href = '/admin/Mon/list_mon'</script>";
             } else {
                 echo "<script>alert('Thêm môn thất bại, trùng mã môn!')</script>";
             }
         }
         $majors = $this->model->getAllNganh();
-        $this->view('/admin/mon/add_mon', ['majors' => $majors]);
+        $this->view('/admin/mon/Add_Mon', ['majors' => $majors]);
     }
 
     public function edit_mon($id = '') {
@@ -47,14 +47,14 @@ class Mon extends Controller {
             $filteredPost = filter(); 
             $this->model->updateMon($id, $filteredPost); 
             echo "<script>alert('Sửa môn thành công')</script>";
-            echo "<script>window.location.href = '/admin/mon/list_mon'</script>";
+            echo "<script>window.location.href = '/admin/Mon/list_mon'</script>";
         } else {
             $result = $this->model->getMonById($id); 
             if (!$result) {
                 die("Không tìm thấy môn.");
             }
             $majors = $this->model->getAllNganh();
-            $this->view('/admin/mon/edit_mon', [
+            $this->view('/admin/mon/Edit_Mon', [
                 'data' => $result,
                 'majors' => $majors
             ]);
@@ -69,6 +69,6 @@ class Mon extends Controller {
         } else {
             echo "<script>alert('Xóa thất bại')</script>";
         }
-        echo "<script>window.location.href = '/admin/mon/list_mon'</script>";
+        echo "<script>window.location.href = '/admin/Mon/list_mon'</script>";
     }
 }

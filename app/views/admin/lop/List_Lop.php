@@ -116,7 +116,7 @@
             </div>
         </form>
         <div>
-            <a href="/admin/lop/add_lop" class="btn btn-success" style="width: 100px;">Thêm</a>
+            <a href="/admin/Lop/add_lop" class="btn btn-success" style="width: 100px;">Thêm</a>
         </div>
         <table class="table table-bordered table-striped mt-4">
             <thead class="table-dark">
@@ -141,8 +141,8 @@
                             <td><?php echo $row['class_id'] ?></td> 
                             <td><?php echo $row['major_name'] ?></td> 
                             <td>
-                                <a href="/admin/lop/edit_lop/<?= $row['id'] ?>" class="btn btn-warning btn-sm">Sửa</a>
-                                <a href="/admin/lop/delete_lop/<?= $row['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Xác nhận xóa!')">Xóa</a>
+                                <a href="/admin/Lop/edit_lop/<?= $row['id'] ?>" class="btn btn-warning btn-sm">Sửa</a>
+                                <a href="/admin/Lop/delete_lop/<?= $row['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Xác nhận xóa!')">Xóa</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

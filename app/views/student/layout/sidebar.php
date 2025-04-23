@@ -4,7 +4,6 @@
                     <li><a href="/student/ThongtinSinhVien">Thông tin sinh viên</a></li>
                     <li><a href="/student/DiemSo">Góc Học Tập</a></li>
                     <li><a href="/student/DangKyMonHoc">Đăng Ký Học</a></li>
-                    <li><a href="#">Thời Khóa Biểu</a></li>
-                    <li><a href="/student/tuition?hoc_ky=all">Học phí</a></li>
+                    <li><a href="/student/Tuition?hoc_ky=all">Học phí</a></li>
                 </ul>
 
