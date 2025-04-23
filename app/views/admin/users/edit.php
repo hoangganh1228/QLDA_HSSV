@@ -122,7 +122,7 @@
             <button type="submit" class="btn btn-outline-secondary mt-3">Cập nhật</button>
         </form>
     </div>
-    <script src="/QLDA_HSSV/app/public/js/script.js"></script>
+    <script src="/app/public/js/script.js"></script>
 </body>
 
 </html>

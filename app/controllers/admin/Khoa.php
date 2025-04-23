@@ -40,7 +40,7 @@
                 if (!$this->model->isDuplicateKhoaId($filteredPost['department_id'])) {
                     $this->model->addKhoa($filteredPost);
                     echo "<script>alert('Thêm khoa thành công!')</script>";
-                    echo "<script>window.location.href = '/QLDA_HSSV/admin/khoa/list_khoa'</script>";
+                    echo "<script>window.location.href = '/admin/khoa/list_khoa'</script>";
                 } else {
                     echo "<script>alert('Thêm khoa thất bại, trùng mã khoa!')</script>";
                 }
@@ -55,7 +55,7 @@
                 $filteredPost = filter();
                 $this->model->updateKhoa($id, $filteredPost);
                 echo "<script>alert('Sửa khoa thành công')</script>";
-                echo "<script>window.location.href = '/QLDA_HSSV/admin/khoa/list_khoa'</script>";
+                echo "<script>window.location.href = '/admin/khoa/list_khoa'</script>";
             } else {
                 $result = $this->model->getKhoaById($id);
                 if (!$result) {
@@ -76,7 +76,7 @@
             } else {
                 echo "<script>alert('Xóa thất bại')</script>";
             }
-            echo "<script>window.location.href = '/QLDA_HSSV/admin/khoa/list_khoa'</script>";
+            echo "<script>window.location.href = '/admin/khoa/list_khoa'</script>";
         }
     }
     ?>

@@ -8,8 +8,8 @@
             </button>
             <div class="collapse multi-collapse" id="quanlyChung">
                 <ul class="list-unstyled ps-3">
-                    <li><a href="/QLDA_HSSV/admin/dashboard" class="text-white">Trang Chủ</a></li>
-                    <li><a href="/QLDA_HSSV/admin/users" class="text-white">Quản lý người dùng</a></li>
+                    <li><a href="/admin/dashboard" class="text-white">Trang Chủ</a></li>
+                    <li><a href="/admin/users" class="text-white">Quản lý người dùng</a></li>
                 </ul>
             </div>
         </li>
@@ -21,11 +21,11 @@
             </button>
             <div class="collapse multi-collapse" id="quanlyHocTap">
                 <ul class="list-unstyled ps-3">
-                    <li><a href="/QLDA_HSSV/admin/nganh" class="text-white">Quản lý ngành</a></li>
-                    <li><a href="/QLDA_HSSV/admin/mon" class="text-white">Quản lý môn</a></li>
-                    <li><a href="/QLDA_HSSV/admin/DangKyMonHoc" class="text-white">Quản lý đăng ký học</a></li>
-                    <li><a href="/QLDA_HSSV/admin/lop" class="text-white">Quản lý lớp</a></li>
-                    <li><a href="/QLDA_HSSV/admin/Diem" class="text-white">Quản lý điểm</a></li>
+                    <li><a href="/admin/nganh" class="text-white">Quản lý ngành</a></li>
+                    <li><a href="/admin/mon" class="text-white">Quản lý môn</a></li>
+                    <li><a href="/admin/DangKyMonHoc" class="text-white">Quản lý đăng ký học</a></li>
+                    <li><a href="/admin/lop" class="text-white">Quản lý lớp</a></li>
+                    <li><a href="/admin/Diem" class="text-white">Quản lý điểm</a></li>
                 </ul>
             </div>
         </li>
@@ -37,9 +37,9 @@
             </button>
             <div class="collapse multi-collapse" id="quanlyHocKy">
                 <ul class="list-unstyled ps-3">
-                    <li><a href="/QLDA_HSSV/admin/khoa" class="text-white">Quản lý khoa</a></li>
-                    <li><a href="/QLDA_HSSV/admin/Hocky" class="text-white">Quản lý kỳ học</a></li>
-                    <li><a href="/QLDA_HSSV/admin/Khoahoc" class="text-white">Quản lý khóa học</a></li>
+                    <li><a href="/admin/khoa" class="text-white">Quản lý khoa</a></li>
+                    <li><a href="/admin/Hocky" class="text-white">Quản lý kỳ học</a></li>
+                    <li><a href="/admin/Khoahoc" class="text-white">Quản lý khóa học</a></li>
                 </ul>
             </div>
         </li>
@@ -51,7 +51,7 @@
             </button>
             <div class="collapse" id="quanlyTaiChinh">
                 <ul class="list-unstyled ps-3">
-                    <li><a href="/QLDA_HSSV/admin/tuition" class="text-white">Quản lý học phí</a></li>
+                    <li><a href="/admin/tuition" class="text-white">Quản lý học phí</a></li>
                 </ul>
             </div>
         </li>

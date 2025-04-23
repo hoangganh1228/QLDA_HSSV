@@ -91,10 +91,10 @@
         <br>
         <div>
             <button type="submit" id="btnThem" class="btn btn-outline-secondary">Thêm</button>
-            <a href="/QLDA_HSSV/student/sers/index" class="btn btn-outline-secondary">Quay lại</a>
+            <a href="/student/sers/index" class="btn btn-outline-secondary">Quay lại</a>
         </div>
     </form>
   </div>
-  <script src="/QLDA_HSSV/app/public/js/script.js"></script>
+  <script src="/app/public/js/script.js"></script>
 </body>
 </html>

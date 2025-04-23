@@ -120,7 +120,7 @@
             </div>
         </form>
         <div>
-            <a href="/QLDA_HSSV/admin/khoa/add_khoa" class="btn btn-success" style="width: 100px;">Thêm</a>
+            <a href="/admin/khoa/add_khoa" class="btn btn-success" style="width: 100px;">Thêm</a>
         </div>
         <table class="table table-bordered table-striped mt-4">
             <thead class="table-dark">
@@ -146,9 +146,9 @@
                     <td><?php echo $row['department_id'] ?></td>
                     <td><?php echo $row['department_name'] ?></td>
                     <td>
-                        <a href="/QLDA_HSSV/admin/khoa/edit_khoa/<?= $row['id'] ?>"
+                        <a href="/admin/khoa/edit_khoa/<?= $row['id'] ?>"
                             class="btn btn-warning btn-sm">Sửa</a>
-                        <a href="/QLDA_HSSV/admin/khoa/delete_khoa/<?= $row['id'] ?>" class="btn btn-danger btn-sm"
+                        <a href="/admin/khoa/delete_khoa/<?= $row['id'] ?>" class="btn btn-danger btn-sm"
                             onclick="return confirm('Xác nhận xóa!')">Xóa</a>
                     </td>
                 </tr>

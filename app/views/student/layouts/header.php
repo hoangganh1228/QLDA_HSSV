@@ -11,7 +11,7 @@
       </button>
       <ul class="dropdown-menu">
           <li><button class="dropdown-item" type="button">Thay đổi mật khẩu</button></li>
-          <li><a href="http://localhost/QLDA_HSSV/admin/users/logout" class="dropdown-item" >Đăng xuất</a></li>
+          <li><a href="http://localhost/admin/users/logout" class="dropdown-item" >Đăng xuất</a></li>
       </ul>
   </div>
 </div>

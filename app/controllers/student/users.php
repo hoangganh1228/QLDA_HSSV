@@ -9,7 +9,6 @@ class Users extends Controller
             die("Không thể tải model users.model.");
         }
     }
-    
     function index()
     {
         $this->list_user();
@@ -22,7 +21,7 @@ class Users extends Controller
             die("Lỗi truy vấn cơ sở dữ liệu.");
         }
 
-        $this->data['table'] = $result; 
+        $this->data['table'] = $result;
         $this->view('/student/users/index', [
             'table' => $this->data['table']
         ]);
@@ -39,7 +38,7 @@ class Users extends Controller
                 $userData = [
                     'user_id' => $user_id,
                     'username' => $filter['username'],
-                    'password' => $filter['password'],  
+                    'password' => $filter['password'],
                     'role' => $role,
                     'email' => $filter['email'],
                     'phone' => $filter['phone'],
@@ -71,18 +70,18 @@ class Users extends Controller
                     $this->model->addStudent($studentData);
                 }
                 echo "<script>alert('Thêm người dùng thành công!')</script>";
-                echo "<script>window.location.href = '/QLDA_HSSV/student/users/index'</script>";
+                echo "<script>window.location.href = '/student/users/index'</script>";
             } else {
                 echo "<script>alert('Thêm ngành thất bại, trùng mã ngành!')</script>";
             }
         }
         $user = $this->model->getAllUsers();
-        $khoahocs = $this->model->getAllKhoaHoc(); 
-        $departments = $this->model->getAllDepartments(); 
-        // echo '<pre>';   
+        $khoahocs = $this->model->getAllKhoaHoc();
+        $departments = $this->model->getAllDepartments();
+        // echo '<pre>';
         // print_r($departments);
         // echo '</pre>';
-        $classes = $this->model->getAllClasses(); 
+        $classes = $this->model->getAllClasses();
         $this->view('/student/users/create', [
             'user' => $user,
             'khoahocs' => $khoahocs,
@@ -93,12 +92,12 @@ class Users extends Controller
 
     public function edit($id = '') {
         if (isPost()) {
-            $filteredPost = filter(); 
-            $this->model->updateUser($id, $filteredPost); 
+            $filteredPost = filter();
+            $this->model->updateUser($id, $filteredPost);
             echo "<script>alert('Sửa người dùng thành công')</script>";
-            echo "<script>window.location.href = '/QLDA_HSSV/student/users'</script>";
+            echo "<script>window.location.href = '/student/users'</script>";
         } else {
-            $result = $this->model->getUserById($id); 
+            $result = $this->model->getUserById($id);
             if (!$result) {
                 die("Không tìm thấy người dùng.");
             }
@@ -109,22 +108,20 @@ class Users extends Controller
             ]);
         }
     }
-  
-    
     public function delete($id = '') {
         if ($this->model->deleteUser($id)) {
             echo "<script>alert('Xóa thành công')</script>";
         } else {
             echo "<script>alert('Xóa thất bại')</script>";
         }
-        echo "<script>window.location.href = '/QLDA_HSSV/student/users'</script>";
+        echo "<script>window.location.href = '/student/users'</script>";
     }
 
     public function login() {
-        $this->view('/student/users/login', []);
+        $this->view('/admin/Users/login', []);
     }
     public function Trang_chu() {
-    $this->view('/student/Trang_chu', []); 
+    $this->view('/student/Trang_chu', []);
     }
 
 
@@ -133,13 +130,11 @@ class Users extends Controller
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();
             }
-        
             $filter = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING); // Lọc dữ liệu để tránh XSS
             $username = $filter['username'];
             $password = $filter['password'];
-         
             $user = $this->model->getUserByUsername($username);
-            // echo '<pre>';   
+            // echo '<pre>';
             // print_r($user);
             // echo '</pre>';
             if ($user && $password === $user['password']) {
@@ -147,22 +142,31 @@ class Users extends Controller
                 $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['role'] = $user['role'];
-               
                 header('Location: /student/users/Trang_chu');
                 exit;
             } else {
                 // Đăng nhập thất bại
                 echo "<script>alert('Tên đăng nhập hoặc mật khẩu không đúng!')</script>";
                 echo "<script>window.location.href = '/student/users/login'</script>";
+                header('Location: /student/Trang_chu');
+            } else {
+                // Đăng nhập thất bại
+                echo "<script>alert('Tên đăng nhập hoặc mật khẩu không đúng!')</script>";
+                echo "<script>window.location.href = '/admin/Users/login'</script>";
+
             }
-        } 
+        }
     }
 
     public function logout() {
         session_start();
         session_unset();
         session_destroy();
+
         header('Location: /student/users/login');
+
+        header('Location: /admin/Users/login');
+
     }
 
 }

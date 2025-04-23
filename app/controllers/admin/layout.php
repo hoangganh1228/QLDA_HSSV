@@ -31,7 +31,7 @@
         //     session_start();
         //     session_unset();
         //     session_destroy();
-        //     header('Location: /QLDA_HSSV/student/users/login');
+        //     header('Location: /student/users/login');
         // }
         // public function resetPasswordPost() {
         //     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -45,7 +45,7 @@
         //         // Kiểm tra dữ liệu đầu vào
         //         if (!$username || !$oldPassword || !$newPassword || !$confirmPassword) {
         //             echo "<script>alert('Vui lòng điền đầy đủ thông tin!')</script>";
-        //             echo "<script>window.location.href = '/QLDA_HSSV/student/users/resetPassword'</script>";
+        //             echo "<script>window.location.href = '/student/users/resetPassword'</script>";
         //             return;
         //         }
         
@@ -60,20 +60,20 @@
         
         //                 // Hiển thị thông báo thành công
         //                 echo "<script>alert('Đặt lại mật khẩu thành công!')</script>";
-        //                 echo "<script>window.location.href = '/QLDA_HSSV/student/users/login'</script>";
+        //                 echo "<script>window.location.href = '/student/users/login'</script>";
         //             } else {
         //                 // Mật khẩu mới và xác nhận không khớp
         //                 echo "<script>alert('Mật khẩu mới và xác nhận mật khẩu không khớp!')</script>";
-        //                 echo "<script>window.location.href = '/QLDA_HSSV/Trang_chu/resetPassword'</script>";
+        //                 echo "<script>window.location.href = '/Trang_chu/resetPassword'</script>";
         //             }
         //         } else {
         //             // Sai tên đăng nhập hoặc mật khẩu cũ
         //             echo "<script>alert('Tên đăng nhập hoặc mật khẩu cũ không đúng!')</script>";
-        //             echo "<script>window.location.href = '/QLDA_HSSV/student/Trang_chu/resetPassword'</script>";
+        //             echo "<script>window.location.href = '/student/Trang_chu/resetPassword'</script>";
         //         }
         //     } else {
         //         // Nếu không phải POST, chuyển hướng về trang resetPassword
-        //         header("Location: /QLDA_HSSV/student/users/resetPassword");
+        //         header("Location: /student/users/resetPassword");
         //     }
         // }
         

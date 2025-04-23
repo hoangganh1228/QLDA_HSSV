@@ -15,7 +15,7 @@
         <!-- Header -->
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h2>Thêm Đăng Ký Môn Học</h2>
-            <a href="/QLDA_HSSV/admin/DangKyMonHoc" class="btn btn-secondary">Quay lại</a>
+            <a href="/admin/DangKyMonHoc" class="btn btn-secondary">Quay lại</a>
         </div>
 
         <!-- Form Add -->

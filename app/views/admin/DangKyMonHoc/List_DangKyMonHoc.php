@@ -97,7 +97,7 @@
         <!-- Header -->
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h2>Danh sách đăng ký môn học</h2>
-            <a href="/QLDA_HSSV/admin/DangKyMonHoc/add_dangky" class="btn btn-success">Thêm mới</a>
+            <a href="/admin/DangKyMonHoc/add_dangky" class="btn btn-success">Thêm mới</a>
         </div>
 
         <!-- Search Form -->
@@ -170,8 +170,8 @@
                 <td><?php echo $semester_name; ?></td> <!-- Tên Học Kỳ -->
                 <td><?php echo $khoa_hoc_name; ?></td> <!-- Tên Khóa Học -->
                 <td>
-                    <a href="/QLDA_HSSV/admin/DangKyMonHoc/edit_dangky/<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Sửa</a>
-                    <a href="/QLDA_HSSV/admin/DangKyMonHoc/delete_dangky/<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">Xóa</a>
+                    <a href="/admin/DangKyMonHoc/edit_dangky/<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Sửa</a>
+                    <a href="/admin/DangKyMonHoc/delete_dangky/<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">Xóa</a>
                 </td>
             </tr>
         <?php endforeach; ?>

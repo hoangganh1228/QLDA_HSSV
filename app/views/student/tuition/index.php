@@ -102,7 +102,7 @@
             </div>
             <div class="modal-body">
                 <!-- Thông tin sinh viên -->
-                <form id="paymentForm" method="POST" action="/QLDA_HSSV/student/tuition/payTuition">
+                <form id="paymentForm" method="POST" action="/student/tuition/payTuition">
                     <!-- Thông tin sinh viên -->
                     <div class="mb-3">
                         <label for="studentName" class="form-label"><strong>Họ tên:</strong></label>
