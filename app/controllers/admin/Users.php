@@ -24,7 +24,7 @@ class Users extends Controller
         }
 
         $this->data['table'] = $result; 
-        $this->view('/admin/users/index', [
+        $this->view('/admin/Users/index', [
             'table' => $this->data['table']
         ]);
     }
@@ -73,9 +73,10 @@ class Users extends Controller
                     $this->model->addStudent($studentData);
                 }
                 echo "<script>alert('Thêm người dùng thành công!')</script>";
-                echo "<script>window.location.href = '/admin/users/index'</script>";
+                echo "<script>window.location.href = '/admin/Users/index'</script>";
             } else {
-                echo "<script>alert('Thêm ngành thất bại, trùng mã ngành!')</script>";
+            echo "<script>window.location.href = '/admin/Users/index'</script>";
+                echo "<script>alert('Thêm sv thất bại!')</script>";
             }
         }
         $user = $this->model->getAllUsers();
@@ -85,7 +86,7 @@ class Users extends Controller
         // print_r($departments);
         // echo '</pre>';
         $classes = $this->model->getAllClasses(); 
-        $this->view('/admin/users/create', [
+        $this->view('/admin/Users/create', [
             'user' => $user,
             'khoahocs' => $khoahocs,
             'departments' => $departments,
@@ -148,7 +149,7 @@ class Users extends Controller
             }
     
             echo "<script>alert('Cập nhật người dùng thành công!')</script>";
-            echo "<script>window.location.href = '/admin/users/index'</script>";
+            echo "<script>window.location.href = '/admin/Users/index'</script>";
         } else {
             // Lấy dữ liệu hiện tại của người dùng
             $user = $this->model->getUserById($id);
@@ -190,7 +191,7 @@ class Users extends Controller
             // echo '</pre>';
 
             // Gửi dữ liệu đến View
-            $this->view('/admin/users/edit', [
+            $this->view('/admin/Users/edit', [
                 'user' => $user,
                 'extraData' => $extraData,
                 'khoahocs' => $khoahocs,
@@ -207,11 +208,11 @@ class Users extends Controller
         } else {
             echo "<script>alert('Xóa thất bại')</script>";
         }
-        echo "<script>window.location.href = '/admin/users'</script>";
+        echo "<script>window.location.href = '/admin/Users'</script>";
     }
 
     public function login() {
-        $this->view('/admin/users/login', []);
+        $this->view('/admin/Users/login', []);
     }
 
     public function loginPost() {
@@ -260,7 +261,7 @@ class Users extends Controller
     function resetPassword (){
         $user = $this->model->getAllUsers();
 
-        $this->view('/admin/users/resetPassword', ['user'=>$user]);
+        $this->view('/admin/Users/resetPassword', ['user'=>$user]);
     }
     public function resetPasswordPost() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -274,7 +275,7 @@ class Users extends Controller
             // Kiểm tra dữ liệu đầu vào
             if (!$username || !$oldPassword || !$newPassword || !$confirmPassword) {
                 echo "<script>alert('Vui lòng điền đầy đủ thông tin!')</script>";
-                echo "<script>window.location.href = '/admin/users/resetPassword'</script>";
+                echo "<script>window.location.href = '/admin/Users/resetPassword'</script>";
                 return;
             }
     
@@ -289,20 +290,20 @@ class Users extends Controller
     
                     // Hiển thị thông báo thành công
                     echo "<script>alert('Đặt lại mật khẩu thành công!')</script>";
-                    echo "<script>window.location.href = '/admin/users/login'</script>";
+                    echo "<script>window.location.href = '/admin/Users/login'</script>";
                 } else {
                     // Mật khẩu mới và xác nhận không khớp
                     echo "<script>alert('Mật khẩu mới và xác nhận mật khẩu không khớp!')</script>";
-                    echo "<script>window.location.href = '/damin/users/resetPassword'</script>";
+                    echo "<script>window.location.href = '/admin/Users/resetPassword'</script>";
                 }
             } else {
                 // Sai tên đăng nhập hoặc mật khẩu cũ
                 echo "<script>alert('Tên đăng nhập hoặc mật khẩu cũ không đúng!')</script>";
-                echo "<script>window.location.href = '/student/damin/users/resetPassword'</script>";
+                echo "<script>window.location.href = '/student/admin/users/resetPassword'</script>";
             }
         } else {
             // Nếu không phải POST, chuyển hướng về trang resetPassword
-            header("Location: /admin/users/resetPassword");
+            header("Location: /admin/Users/resetPassword");
         }
     }
 }

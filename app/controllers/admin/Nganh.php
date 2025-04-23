@@ -10,10 +10,10 @@ class Nganh extends Controller {
     }
 
     function index() {
-        $this->list_nganh();
+        $this->list_Nganh();
     }
 
-    function list_nganh() {
+    function list_Nganh() {
 
         checkPermission(['Quản lý']);
 
@@ -27,12 +27,12 @@ class Nganh extends Controller {
         }
     
         $this->data['table'] = $result; 
-        $this->view('/admin/nganh/List_Nganh', [
+        $this->view('/admin/Nganh/List_Nganh', [
             'table' => $this->data['table']
         ]);
     }
 
-    public function add_nganh() {
+    public function Add_Nganh() {
 
 
         checkPermission(['Quản lý']);
@@ -43,16 +43,16 @@ class Nganh extends Controller {
             if (!$this->model->isDuplicateNganhId($filteredPost['major_id'])) {
                 $this->model->addNganh($filteredPost);
                 echo "<script>alert('Thêm ngành thành công!')</script>";
-                echo "<script>window.location.href = '/admin/nganh/list_nganh'</script>";
+                echo "<script>window.location.href = '/admin/Nganh/list_Nganh'</script>";
             } else {
                 echo "<script>alert('Thêm ngành thất bại, trùng mã ngành!')</script>";
             }
         }
         $departments = $this->model->getAllKhoa();
-        $this->view('/admin/nganh/add_nganh', ['departments' => $departments]);
+        $this->view('/admin/Nganh/add_Nganh', ['departments' => $departments]);
     }
 
-    public function edit_nganh($id = '') {
+    public function Edit_Nganh($id = '') {
 
 
         checkPermission(['Quản lý']);
@@ -69,7 +69,7 @@ class Nganh extends Controller {
                 die("Không tìm thấy ngành.");
             }
             $departments = $this->model->getAllKhoa();
-            $this->view('/admin/nganh/edit_nganh', [
+            $this->view('/admin/Nganh/edit_Nganh', [
                 'data' => $result,
                 'departments' => $departments
             ]);
@@ -87,6 +87,6 @@ class Nganh extends Controller {
         } else {
             echo "<script>alert('Xóa thất bại')</script>";
         }
-        echo "<script>window.location.href = '/admin/nganh/list_nganh'</script>";
+        echo "<script>window.location.href = '/admin/Nganh/list_Nganh'</script>";
     }
 }

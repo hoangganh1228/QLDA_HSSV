@@ -2,10 +2,10 @@
     <h4><a href="javascript:void(0)" onclick="window.history.back();">Hệ thống</a></h4>
     <ul class="list-unstyled">
         <li><a href="/admin/dashboard">Trang Chủ</a></li>
-        <li><a href="/admin/users">Quản lý người dùng </a></li>
+        <li><a href="/admin/Users">Quản lý người dùng </a></li>
         <li><a href="/admin/tuition">Quản lý học phí</a></li>
 
-        <li><a href="/admin/nganh">Quản lý ngành</a></li>
+        <li><a href="/admin/Nganh">Quản lý ngành</a></li>
         <li><a href="/admin/mon">Quản lý môn</a></li>
         <li><a href="/admin/DangKyMonHoc">Quản lý đăng Ký Học</a></li>
         <li><a href="/admin/lop">Quản lý lớp</a></li>

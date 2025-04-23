@@ -111,7 +111,7 @@
                 <button class="btn btn-primary" type="submit">Tìm kiếm</button>
             </div>
         </form>
-                    <a href="/admin/users/create" class="btn btn-success" style="width: 100px;">Thêm</a>
+                    <a href="/admin/Users/create" class="btn btn-success" style="width: 100px;">Thêm</a>
                     
                     <div class="table-container">
                         <h3 class="text-center mb-4">Người dùng</h3>
@@ -143,8 +143,8 @@
                                             <td><?php echo $row['email'] ?></td> 
                                             <td><?php echo $row['phone'] ?></td> 
                                             <td>
-                                                <a href="/admin/users/edit/<?= $row['user_id'] ?>" class="btn btn-warning btn-sm">Sửa</a>
-                                                <a href="/admin/users/delete/<?= $row['user_id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Xác nhận xóa!')">Xóa</a>
+                                                <a href="/admin/Users/edit/<?= $row['user_id'] ?>" class="btn btn-warning btn-sm">Sửa</a>
+                                                <a href="/admin/Users/delete/<?= $row['user_id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Xác nhận xóa!')">Xóa</a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

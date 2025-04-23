@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh sách khoa</title>
+    <title>Danh sách nganh</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
 
@@ -116,7 +116,7 @@
             </div>
         </form>
         <div>
-            <a href="/admin/nganh/add_nganh" class="btn btn-success" style="width: 100px;">Thêm</a>
+            <a href="/admin/Nganh/Add_Nganh" class="btn btn-success" style="width: 100px;">Thêm</a>
         </div>
         <table class="table table-bordered table-striped mt-4">
             <thead class="table-dark">
@@ -143,8 +143,8 @@
                             <td><?php echo $row['major_name'] ?></td> 
                             <td><?php echo $row['department_name'] ?></td> 
                             <td>
-                                <a href="/admin/nganh/edit_nganh/<?= $row['id'] ?>" class="btn btn-warning btn-sm">Sửa</a>
-                                <a href="/admin/nganh/delete_nganh/<?= $row['id'] ?>" class="btn btn-danger btn-sm    " onclick="return confirm('Xác nhận xóa!')">Xóa</a>
+                                <a href="/admin/Nganh/Edit_Nganh/<?= $row['id'] ?>" class="btn btn-warning btn-sm">Sửa</a>
+                                <a href="/admin/Nganh/delete_nganh/<?= $row['id'] ?>" class="btn btn-danger btn-sm    " onclick="return confirm('Xác nhận xóa!')">Xóa</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

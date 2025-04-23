@@ -8,8 +8,8 @@
             </button>
             <div class="collapse multi-collapse" id="quanlyChung">
                 <ul class="list-unstyled ps-3">
-                    <li><a href="/admin/dashboard" class="text-white">Trang Chủ</a></li>
-                    <li><a href="/admin/users" class="text-white">Quản lý người dùng</a></li>
+                    <li><a href="/admin/Dashboard" class="text-white">Trang Chủ</a></li>
+                    <li><a href="/admin/Users" class="text-white">Quản lý người dùng</a></li>
                 </ul>
             </div>
         </li>
@@ -21,7 +21,7 @@
             </button>
             <div class="collapse multi-collapse" id="quanlyHocTap">
                 <ul class="list-unstyled ps-3">
-                    <li><a href="/admin/nganh" class="text-white">Quản lý ngành</a></li>
+                    <li><a href="/admin/Nganh" class="text-white">Quản lý ngành</a></li>
                     <li><a href="/admin/mon" class="text-white">Quản lý môn</a></li>
                     <li><a href="/admin/DangKyMonHoc" class="text-white">Quản lý đăng ký học</a></li>
                     <li><a href="/admin/lop" class="text-white">Quản lý lớp</a></li>
