@@ -27,6 +27,7 @@ SET time_zone = "+00:00";
 -- Cấu trúc bảng cho bảng `classes`
 --
 
+
 CREATE TABLE `classes` (
   `id` int(11) NOT NULL,
   `class_id` varchar(9) NOT NULL,
@@ -415,6 +416,8 @@ ALTER TABLE `tuition_fee`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `uq_userId` (`user_id`);
+
+       
 
 --
 -- Chỉ mục cho bảng `years`
