@@ -70,7 +70,7 @@ class Users extends Controller
                     $this->model->addStudent($studentData);
                 }
                 echo "<script>alert('Thêm người dùng thành công!')</script>";
-                echo "<script>window.location.href = '/student/users/index'</script>";
+                echo "<script>window.location.href = '/student/Users/index'</script>";
             } else {
                 echo "<script>alert('Thêm ngành thất bại, trùng mã ngành!')</script>";
             }
@@ -82,7 +82,7 @@ class Users extends Controller
         // print_r($departments);
         // echo '</pre>';
         $classes = $this->model->getAllClasses();
-        $this->view('/student/users/create', [
+        $this->view('/student/Users/create', [
             'user' => $user,
             'khoahocs' => $khoahocs,
             'departments' => $departments,
@@ -95,14 +95,14 @@ class Users extends Controller
             $filteredPost = filter();
             $this->model->updateUser($id, $filteredPost);
             echo "<script>alert('Sửa người dùng thành công')</script>";
-            echo "<script>window.location.href = '/student/users'</script>";
+            echo "<script>window.location.href = '/student/Users'</script>";
         } else {
             $result = $this->model->getUserById($id);
             if (!$result) {
                 die("Không tìm thấy người dùng.");
             }
             $users = $this->model->getAllUsers();
-            $this->view('/admin/student/edit', [
+            $this->view('/student/Users/edit', [
                 'data' => $result,
                 'users' => $users
             ]);
@@ -114,7 +114,7 @@ class Users extends Controller
         } else {
             echo "<script>alert('Xóa thất bại')</script>";
         }
-        echo "<script>window.location.href = '/student/users'</script>";
+        echo "<script>window.location.href = '/student/Users'</script>";
     }
 
     public function login() {

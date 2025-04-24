@@ -95,7 +95,7 @@
         <br>
         <div>
             <button type="submit" id="btnThem" class="btn btn-outline-secondary">Thêm</button>
-            <a href="/admin/users/index" class="btn btn-outline-secondary">Quay lại</a>
+            <a href="/admin/Users/index" class="btn btn-outline-secondary">Quay lại</a>
         </div>
     </form>
   </div>
