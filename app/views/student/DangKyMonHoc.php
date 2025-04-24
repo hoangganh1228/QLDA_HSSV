@@ -215,7 +215,50 @@
 
  
 
+<<<<<<< HEAD
 document.getElementById('registerAllButton').addEventListener('click', function () {
+=======
+    // Gửi danh sách reg_id lên server
+    fetch('/student/DangKyMonHoc/updateStatus', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ reg_ids: regIds }) // Gửi danh sách reg_id
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log('Cập nhật thành công', data);
+
+            // Cập nhật trạng thái trong bảng
+            const rows = document.querySelectorAll('tbody tr');
+            rows.forEach(row => {
+                const statusCell = row.querySelector('.status');
+                statusCell.textContent = 'Đã đăng ký';
+                statusCell.classList.add('text-success');
+            });
+
+            alert('Tất cả các môn học đã được đăng ký thành công!');
+        } else {
+            console.error('Lỗi:', data.message);
+            alert(data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Có lỗi trong quá trình gửi yêu cầu:', error);
+        alert('Có lỗi xảy ra, vui lòng thử lại.');
+    });
+}
+
+
+
+
+document.getElementById('semester-filter').addEventListener('change', function () {
+    const selectedSemester = this.options[this.selectedIndex].text.trim(); // Lấy giá trị được chọn từ dropdown và loại bỏ khoảng trắng thừa
+    console.log(`Selected Semester: ${selectedSemester}`);
+    
+>>>>>>> 82c559a68c975ba92cd746b127e4aabde6ac1458
     const rows = document.querySelectorAll('tbody tr'); // Chọn tất cả các hàng trong tbody
     const regIds = [];
 

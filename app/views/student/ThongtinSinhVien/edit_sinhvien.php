@@ -156,7 +156,7 @@
 
                     <div class="d-flex justify-content-between">
                         <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
-                        <a href="/QLDA_HSSV/student/ThongtinSinhVien" class="btn btn-secondary">Hủy</a>
+                        <a href="/student/ThongtinSinhVien" class="btn btn-secondary">Hủy</a>
                     </div>
                     <?php endif; ?>
               

@@ -105,7 +105,7 @@
                 <?php $this->view("admin/layout/topHead", []) ?>
 
     <div class="container">
-                <a href="/QLDA_HSSV/admin/tuition/create" class="btn btn-success" style="width: 100px;">Thêm</a>
+                <a href="/admin/tuition/create" class="btn btn-success" style="width: 100px;">Thêm</a>
                 <div class="table-container">
                     <h3 class="text-center mb-4">Học phí</h3>
                     <table class="table table-bordered table-striped mt-4">
@@ -133,8 +133,8 @@
                                         <td><?php echo $row['department_id'] ?></td> 
                                         <td><?php echo $row['fee_per_credit'] ?></td> 
                                         <td>
-                                            <a href="/QLDA_HSSV/admin/tuition/edit/<?= $row['id'] ?>" class="btn btn-warning btn-sm">Sửa</a>
-                                            <a href="/QLDA_HSSV/admin/tuition/delete/<?= $row['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Xác nhận xóa!')">Xóa</a>
+                                            <a href="/admin/tuition/edit/<?= $row['id'] ?>" class="btn btn-warning btn-sm">Sửa</a>
+                                            <a href="/admin/tuition/delete/<?= $row['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Xác nhận xóa!')">Xóa</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

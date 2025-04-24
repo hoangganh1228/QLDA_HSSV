@@ -27,6 +27,7 @@ SET time_zone = "+00:00";
 -- Cấu trúc bảng cho bảng `classes`
 --
 
+
 CREATE TABLE `classes` (
   `id` int(11) NOT NULL,
   `class_id` varchar(9) NOT NULL,
@@ -141,11 +142,7 @@ INSERT INTO `majors` (`id`, `major_id`, `major_name`, `department_id`) VALUES
 --
 -- Cấu trúc bảng cho bảng `semesters`
 --
-<<<<<<< HEAD
--- hoc ky
-=======
 
->>>>>>> d2a1f1f15bfcddb260b48e41c5b5b7b115614ed3
 CREATE TABLE `semesters` (
   `id` int(9) NOT NULL,
   `semester_id` varchar(9) NOT NULL,
@@ -282,6 +279,11 @@ CREATE TABLE `users` (
   `phone` varchar(10) NOT NULL,
   `created_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `users` (`id`, `user_id`, `username`, `password`, `role`, `email`, `phone`, `created_date`)
+VALUES
+(1, 'QL001', 'admin', 'admin', 'Quản lý', 'admin@qlda.local', '0909123456', '2024-01-01'),
+(2, 'GV001', 'giangvien', '123456', 'Giảng viên', 'gv1@qlda.local', '0912123456', '2024-02-01'),
+(3, 'SV001', 'nghia', '123456', 'Sinh viên', 'sv1@qlda.local', '0933123456', '2024-03-01');
 
 -- --------------------------------------------------------
 
@@ -414,6 +416,8 @@ ALTER TABLE `tuition_fee`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `uq_userId` (`user_id`);
+
+       
 
 --
 -- Chỉ mục cho bảng `years`

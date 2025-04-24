@@ -14,4 +14,11 @@ require_once 'core/Model.php';
 require_once 'core/Functions.php';
 require_once 'configs/config.php';
 
+<<<<<<< HEAD
+=======
+// dsdsdsds
+
+
+
+>>>>>>> 82c559a68c975ba92cd746b127e4aabde6ac1458
 $app = new App();

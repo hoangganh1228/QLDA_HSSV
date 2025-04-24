@@ -29,7 +29,7 @@
                 if (!$this->model->isDuplicateBy_SemesterId($filteredPost['semester_id'])) {
                     $this->model->add_HK($filteredPost);
                     echo "<script>alert('Thêm học kỳ thành công')</script>";
-                    echo "<script>window.location.href = '/QLDA_HSSV/admin/hocky/list_HK'</script>";
+                    echo "<script>window.location.href = '/admin/hocky/list_HK'</script>";
                 } else {
                     echo "<script>alert('Trùng mã học kỳ!')</script>";
                 }
@@ -47,7 +47,7 @@
             $this->model->updateHocky($semester_id, $filteredPost);
 
             echo "<script>alert('Cập nhật thông tin học kỳ thành công')</script>";
-            echo "<script>window.location.href = '/QLDA_HSSV/admin/hocky/list_HK'</script>";
+            echo "<script>window.location.href = '/admin/hocky/list_HK'</script>";
         } else {
            
             $result = $this->model->getHockyById($semester_id);
@@ -70,7 +70,7 @@
         } else {
             echo "<script>alert('Xóa thất bại')</script>";
         }
-        echo "<script>window.location.href = '/QLDA_HSSV/admin/hocky/list_HK'</script>";
+        echo "<script>window.location.href = '/admin/hocky/list_HK'</script>";
     }
     }
     

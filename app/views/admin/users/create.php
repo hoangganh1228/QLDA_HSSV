@@ -76,13 +76,23 @@
                     </select>
                 </div>
             </div>
+<<<<<<< HEAD
 
 
 
             <!-- Nút Submit -->
             <button type="submit" class="btn btn-outline-secondary mt-3">Thêm mới</button>
         </form>
+=======
+        </div>
+        <br>
+        <div>
+            <button type="submit" id="btnThem" class="btn btn-outline-secondary">Thêm</button>
+            <a href="/admin/users/index" class="btn btn-outline-secondary">Quay lại</a>
+        </div>
+    </form>
+>>>>>>> 82c559a68c975ba92cd746b127e4aabde6ac1458
   </div>
-  <script src="/QLDA_HSSV/app/public/js/script.js"></script>
+  <script src="/app/public/js/script.js"></script>
 </body>
 </html>

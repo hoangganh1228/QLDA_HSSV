@@ -8,7 +8,7 @@ class Index{
     function index()
     {
 
-        redirect("student/users/login");
+        redirect("admin/Users/login");
 
     }
 }

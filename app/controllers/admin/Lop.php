@@ -33,7 +33,7 @@ class Lop extends Controller {
             if (!$this->model->isDuplicateLopId($filteredPost['class_id'])) {
                 $this->model->addLop($filteredPost);
                 echo "<script>alert('Thêm lớp thành công!')</script>";
-                echo "<script>window.location.href = '/QLDA_HSSV/admin/lop/list_lop'</script>";
+                echo "<script>window.location.href = '/admin/lop/list_lop'</script>";
             } else {
                 echo "<script>alert('Thêm lớp thất bại, trùng mã lớp!')</script>";
             }
@@ -47,7 +47,7 @@ class Lop extends Controller {
             $filteredPost = filter(); 
             $this->model->updateLop($id, $filteredPost); 
             echo "<script>alert('Sửa lớp thành công')</script>";
-            echo "<script>window.location.href = '/QLDA_HSSV/admin/lop/list_lop'</script>";
+            echo "<script>window.location.href = '/admin/lop/list_lop'</script>";
         } else {
             $result = $this->model->getLopById($id); 
             if (!$result) {
@@ -67,6 +67,6 @@ class Lop extends Controller {
         } else {
             echo "<script>alert('Xóa thất bại')</script>";
         }
-        echo "<script>window.location.href = '/QLDA_HSSV/admin/lop/list_lop'</script>";
+        echo "<script>window.location.href = '/admin/lop/list_lop'</script>";
     }
 }

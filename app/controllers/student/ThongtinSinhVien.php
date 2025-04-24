@@ -28,7 +28,7 @@ private $data,$model;
             $filteredPost = filter(); // Lọc dữ liệu đầu vào
             $this->model->updateSinhVien($student_id, $filteredPost); // Cập nhật thông tin sinh viên
             echo "<script>alert('Sửa thông tin sinh viên thành công')</script>";
-            echo "<script>window.location.href = '/QLDA_HSSV/student/thongtinSinhVien'</script>";
+            echo "<script>window.location.href = '/student/thongtinSinhVien'</script>";
         } else {
             $result = $this->model->getSinhVienById($student_id); // Lấy thông tin sinh viên theo ID
             

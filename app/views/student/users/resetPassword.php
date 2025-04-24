@@ -33,7 +33,7 @@
   
     <div class="reset-password-container">
         <h3>Reset Password</h3>
-        <form action="/QLDA_HSSV/student/Trang_chu/resetPasswordPost" method="POST">
+        <form action="/student/Trang_chu/resetPasswordPost" method="POST">
     <div class="mb-3">
         <label for="username" class="form-label">Tên đăng nhập</label>
         <input type="text" name="username" id="username" class="form-control" placeholder="Nhập tên đăng nhập" required>

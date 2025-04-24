@@ -74,7 +74,7 @@
             <br>
             <div>
                 <button type="submit" id="btnSua" class="btn btn-outline-secondary">Sửa</button>
-                <a href="/QLDA_HSSV/admin/DangKyMonHoc" class="btn btn-outline-secondary">Quay lại</a>
+                <a href="/admin/DangKyMonHoc" class="btn btn-outline-secondary">Quay lại</a>
             </div>
         </form>
     </div>

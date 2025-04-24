@@ -53,7 +53,7 @@ class DangKyMonHoc extends Controller {
             if (!$this->model->isDuplicateRegId($filteredPost['reg_id'])) {
                 $this->model->addDangKyMonHoc($filteredPost);
                 echo "<script>alert('Thêm đăng ký thành công!')</script>";
-                echo "<script>window.location.href = '/QLDA_HSSV/admin/DangKyMonHoc/'</script>";
+                echo "<script>window.location.href = '/admin/DangKyMonHoc/'</script>";
             } else {
                 echo "<script>alert('Thêm đăng ký thất bại, trùng mã đăng ký!')</script>";
             }
@@ -73,7 +73,7 @@ class DangKyMonHoc extends Controller {
             $filteredPost = filter();
             $this->model->updateDangKyMonHoc($id, $filteredPost);
             echo "<script>alert('Sửa đăng ký thành công')</script>";
-            echo "<script>window.location.href = '/QLDA_HSSV/admin/DangKyMonHoc/'</script>";
+            echo "<script>window.location.href = '/admin/DangKyMonHoc/'</script>";
         } else {
             $result = $this->model->getDangKyById($id);
             if (!$result) {
@@ -97,6 +97,6 @@ class DangKyMonHoc extends Controller {
         } else {
             echo "<script>alert('Xóa thất bại')</script>";
         }
-        echo "<script>window.location.href = '/QLDA_HSSV/admin/DangKyMonHoc/'</script>";
+        echo "<script>window.location.href = '/admin/DangKyMonHoc/'</script>";
     }
 }

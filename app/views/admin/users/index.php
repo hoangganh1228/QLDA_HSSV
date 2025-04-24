@@ -111,7 +111,7 @@
                 <button class="btn btn-primary" type="submit">Tìm kiếm</button>
             </div>
         </form>
-                    <a href="/QLDA_HSSV/admin/users/create" class="btn btn-success" style="width: 100px;">Thêm</a>
+                    <a href="/admin/users/create" class="btn btn-success" style="width: 100px;">Thêm</a>
                     
                     <div class="table-container">
                         <h3 class="text-center mb-4">Người dùng</h3>
@@ -152,8 +152,13 @@
                                             <td><?php echo $row['class_id'] ?></td> 
                                             <td><?php echo $row['start_year'] . '-' . $row['end_year']; ?></td>
                                             <td>
+<<<<<<< HEAD
                                                 <a href="/QLDA_HSSV/admin/users/edit/<?= $row['student_id'] ?>" class="btn btn-warning btn-sm">Sửa</a>
                                                 <a href="/QLDA_HSSV/admin/users/delete/<?= $row['student_id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Xác nhận xóa!')">Xóa</a>
+=======
+                                                <a href="/admin/users/edit/<?= $row['user_id'] ?>" class="btn btn-warning btn-sm">Sửa</a>
+                                                <a href="/admin/users/delete/<?= $row['user_id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Xác nhận xóa!')">Xóa</a>
+>>>>>>> 82c559a68c975ba92cd746b127e4aabde6ac1458
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

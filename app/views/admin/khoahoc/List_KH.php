@@ -109,7 +109,7 @@
             <hr>
             <div class="container_css">
                 <div class="">
-                    <a href="/QLDA_HSSV/admin/khoahoc/add_KH" class="btn btn-success btn-sm">Thêm mới <i
+                    <a href="/admin/khoahoc/add_KH" class="btn btn-success btn-sm">Thêm mới <i
                             class="fa-solid fa-plus"></i></a>
                 </div>
                 <div class="">
@@ -160,11 +160,11 @@
 
 
                                     <td>
-                                        <a href="/QLDA_HSSV/admin/khoahoc/edit_KH/<?= $row['id'] ?>"
+                                        <a href="/admin/khoahoc/edit_KH/<?= $row['id'] ?>"
                                             class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i>Cập
                                             nhật</a>
 
-                                        <a href="/QLDA_HSSV/admin/khoahoc/delete_KH/<?= $row['id'] ?>"
+                                        <a href="/admin/khoahoc/delete_KH/<?= $row['id'] ?>"
                                             class="btn btn-danger" onclick="return confirm('Xác nhận xóa!')"><i
                                                 class="fa-solid fa-trash"></i>Xóa</a>
 

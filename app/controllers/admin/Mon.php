@@ -33,7 +33,7 @@ class Mon extends Controller {
             if (!$this->model->isDuplicateMonId($filteredPost['subject_id'])) {
                 $this->model->addMon($filteredPost);
                 echo "<script>alert('Thêm môn thành công!')</script>";
-                echo "<script>window.location.href = '/QLDA_HSSV/admin/mon/list_mon'</script>";
+                echo "<script>window.location.href = '/admin/mon/list_mon'</script>";
             } else {
                 echo "<script>alert('Thêm môn thất bại, trùng mã môn!')</script>";
             }
@@ -47,7 +47,7 @@ class Mon extends Controller {
             $filteredPost = filter(); 
             $this->model->updateMon($id, $filteredPost); 
             echo "<script>alert('Sửa môn thành công')</script>";
-            echo "<script>window.location.href = '/QLDA_HSSV/admin/mon/list_mon'</script>";
+            echo "<script>window.location.href = '/admin/mon/list_mon'</script>";
         } else {
             $result = $this->model->getMonById($id); 
             if (!$result) {
@@ -69,6 +69,6 @@ class Mon extends Controller {
         } else {
             echo "<script>alert('Xóa thất bại')</script>";
         }
-        echo "<script>window.location.href = '/QLDA_HSSV/admin/mon/list_mon'</script>";
+        echo "<script>window.location.href = '/admin/mon/list_mon'</script>";
     }
 }

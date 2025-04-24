@@ -32,7 +32,7 @@
         <br>
         <div>
             <button type="submit" id="btnThem" class="btn btn-outline-secondary">Thêm</button>
-            <a href="/QLDA_HSSV/admin/users/index" class="btn btn-outline-secondary">Quay lại</a>
+            <a href="/admin/users/index" class="btn btn-outline-secondary">Quay lại</a>
         </div>
     </form>
   </div>

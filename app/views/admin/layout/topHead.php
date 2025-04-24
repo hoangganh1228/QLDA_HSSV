@@ -12,8 +12,13 @@
             </span>
         </button>
         <ul class="dropdown-menu">
+<<<<<<< HEAD
            
             <li><a class="dropdown-item" href="/QLDA_HSSV/admin/users/logout">Đăng xuất</a></li>
+=======
+            <li><a class="dropdown-item" href="/admin/Users/resetPassword">Thay đổi mật khẩu</a></li>
+            <li><a class="dropdown-item" href="/admin/Users/logout">Đăng xuất</a></li>
+>>>>>>> 82c559a68c975ba92cd746b127e4aabde6ac1458
         </ul>
     </div>
 </div>

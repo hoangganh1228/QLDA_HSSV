@@ -85,10 +85,17 @@
     </style>
 </head>
 <body>
+<<<<<<< HEAD
     <div class="container d-flex justify-content-center align-items-center">
         <div class="login-container col-md-4">
             <h3>Đăng nhập</h3>
             <form action="/QLDA_HSSV/admin/users/loginPost" method="post">
+=======
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="col-md-4">
+            <h3 class="text-center mb-4">Đăng nhập</h3>
+            <form action="/admin/Users/loginPost" method="post">
+>>>>>>> 82c559a68c975ba92cd746b127e4aabde6ac1458
                 <div class="form-group mb-3">
                     <label for="username">Tên đăng nhập:</label>
                     <input type="text" name="username" id="username" class="form-control" required>

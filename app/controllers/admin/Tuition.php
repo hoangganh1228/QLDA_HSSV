@@ -35,7 +35,7 @@ class Tuition extends Controller
           if (!$this->model->isDuplicateTuitionId($filteredPost['user_id'])) {
             $this->model->addTuition($filteredPost);
             echo "<script>alert('Thêm học phí thành công!')</script>";
-            echo "<script>window.location.href = '/QLDA_HSSV/admin/tuition/index'</script>";
+            echo "<script>window.location.href = '/admin/tuition/index'</script>";
           } else {
             echo "<script>alert('Thêm ngành thất bại, trùng mã ngành!')</script>";
           }
@@ -54,7 +54,7 @@ class Tuition extends Controller
             $filteredPost = filter(); 
             $this->model->updateTuition($id, $filteredPost); 
             echo "<script>alert('Sửa học phí thành công')</script>";
-            echo "<script>window.location.href = '/QLDA_HSSV/admin/tuition'</script>";
+            echo "<script>window.location.href = '/admin/tuition'</script>";
         } else {
             $result = $this->model->getTuitionById($id); 
             if (!$result) {
@@ -75,7 +75,7 @@ class Tuition extends Controller
         } else {
             echo "<script>alert('Xóa thất bại')</script>";
         }
-        echo "<script>window.location.href = '/QLDA_HSSV/admin/tuition'</script>";
+        echo "<script>window.location.href = '/admin/tuition'</script>";
     }
 
 

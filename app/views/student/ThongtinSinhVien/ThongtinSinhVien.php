@@ -166,7 +166,11 @@
                             <input type="text" class="form-control" id="khoa_hoc_id" value="<?php echo $khoahoc_name?>" readonly>
                         </div>
 
+<<<<<<< HEAD
                         <button type="button" class="btn btn-warning" onclick="window.location.href='/QLDA_HSSV/student/ThongtinSinhVien/edit_sinhvien/<?php echo $SinhVien['student_id']; ?>'">Sửa</button>
+=======
+                        <button type="button" class="btn btn-warning" onclick="window.location.href='/student/ThongtinSinhVien/edit_sinhvien/<?php echo $SinhVien['user_id']; ?>'">Sửa</button>
+>>>>>>> 82c559a68c975ba92cd746b127e4aabde6ac1458
 
 
                         <?php endif; ?>
