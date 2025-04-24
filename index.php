@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-//test hi456
+//test
 
 require_once 'app/App.php';
 
