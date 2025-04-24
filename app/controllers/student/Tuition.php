@@ -62,9 +62,9 @@ class Tuition extends Controller
     public function payTuition() {
         if(isPost()) {
             $filter = filter();
-            echo '<pre>';   
-            print_r($filter);
-            echo '</pre>';
+            // echo '<pre>';   
+            // print_r($filter);
+            // echo '</pre>';
             $student_id = $filter['student_id'];
             $payment_amount = $filter['payment_amount'];
             $owingSemesters = $this->model->getTuitionASC($student_id);
@@ -78,12 +78,10 @@ class Tuition extends Controller
                 if ($payment_amount <= 0) break; // Nếu không còn tiền để thanh toán
             
                 if ($payment_amount >= $remainingAmount) {
-                    // Đủ trả hết kỳ này
                     $data = ['paid' => $semester['total']];
                     $this->model->updateTuitionPaid($semester['semester_id'], $data); // Sử dụng semester_id
                     $payment_amount -= $remainingAmount;
                 } else {
-                    // Chỉ trả được một phần kỳ này
                     $data = ['paid' => $semester['paid'] + $payment_amount];
                     $this->model->updateTuitionPaid($semester['semester_id'], $data); // Sử dụng semester_id
                     $payment_amount = 0;
