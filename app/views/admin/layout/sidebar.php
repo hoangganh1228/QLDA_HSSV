@@ -22,9 +22,13 @@
             <div class="collapse multi-collapse" id="quanlyHocTap">
                 <ul class="list-unstyled ps-3">
                     <li><a href="/admin/Nganh" class="text-white">Quản lý ngành</a></li>
+<<<<<<< HEAD
                     <li><a href="/admin/mon" class="text-white">Quản lý môn</a></li>
+=======
+                    <li><a href="/admin/Mon" class="text-white">Quản lý môn</a></li>
+>>>>>>> 1f816be85338ee79c85f4452b3886b720de56410
                     <li><a href="/admin/DangKyMonHoc" class="text-white">Quản lý đăng ký học</a></li>
-                    <li><a href="/admin/lop" class="text-white">Quản lý lớp</a></li>
+                    <li><a href="/admin/Lop" class="text-white">Quản lý lớp</a></li>
                     <li><a href="/admin/Diem" class="text-white">Quản lý điểm</a></li>
                 </ul>
             </div>
@@ -37,7 +41,7 @@
             </button>
             <div class="collapse multi-collapse" id="quanlyHocKy">
                 <ul class="list-unstyled ps-3">
-                    <li><a href="/admin/khoa" class="text-white">Quản lý khoa</a></li>
+                    <li><a href="/admin/Khoa" class="text-white">Quản lý khoa</a></li>
                     <li><a href="/admin/Hocky" class="text-white">Quản lý kỳ học</a></li>
                     <li><a href="/admin/Khoahoc" class="text-white">Quản lý khóa học</a></li>
                 </ul>
@@ -51,7 +55,7 @@
             </button>
             <div class="collapse" id="quanlyTaiChinh">
                 <ul class="list-unstyled ps-3">
-                    <li><a href="/admin/tuition" class="text-white">Quản lý học phí</a></li>
+                    <li><a href="/admin/Tuition" class="text-white">Quản lý học phí</a></li>
                 </ul>
             </div>
         </li>

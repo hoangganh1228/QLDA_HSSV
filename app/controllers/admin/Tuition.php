@@ -24,7 +24,7 @@ class Tuition extends Controller
         }
 
         $this->data['table'] = $result; 
-        $this->view('/admin/tuition/index', [
+        $this->view('/admin/Tuition/index', [
             'table' => $this->data['table']
         ]);
     }

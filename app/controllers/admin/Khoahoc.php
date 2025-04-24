@@ -20,7 +20,7 @@
             die("Lỗi truy vẫn csdl");
         }
         $this->data['table'] = $result;
-        $this->view('/admin/khoahoc/list_KH', [
+        $this->view('/admin/khoahoc/List_KH', [
             'table' => $this->data['table']
         ]);
     }
@@ -30,12 +30,12 @@
             if (!$this->model->isDuplicateKhoahocId($filteredPost['khoa_hoc_id'])) {
                 $this->model->addKhoahoc($filteredPost);
                 echo "<script>alert('Thêm khóa học thành công!')</script>";
-                echo "<script>window.location.href = '/admin/khoahoc/list_KH'</script>";
+                echo "<script>window.location.href = '/admin/Khoahoc/list_KH'</script>";
             } else {
                 echo "<script>alert('Thêm khoa thất bại, trùng mã khóa học!')</script>";
             }
         }
-        $this->view('/admin/khoahoc/add_KH', []); 
+        $this->view('/admin/khoahoc/Add_KH', []); 
     }
 
 
@@ -45,14 +45,14 @@
             $filteredPost = filter(); 
             $this->model->updateKhoahoc($id, $filteredPost); 
             echo "<script>alert('Cập nhật thông tin khóa học thành công')</script>";
-            echo "<script>window.location.href = '/admin/khoahoc/list_KH'</script>";
+            echo "<script>window.location.href = '/admin/Khoahoc/list_KH'</script>";
         } else {
             $result = $this->model->getKhoahocById($id);
            // var_dump($result); 
             if (!$result) {
                 die("Không tìm thấy khóa học.");
             }
-            $this->view('/admin/khoahoc/edit_KH', [
+            $this->view('/admin/khoahoc/Edit_KH', [
                 'data' => $result
             ]);
         }
@@ -66,7 +66,7 @@
         } else {
             echo "<script>alert('Xóa thất bại')</script>";
         }
-        echo "<script>window.location.href = '/admin/khoahoc/list_KH'</script>";
+        echo "<script>window.location.href = '/admin/Khoahoc/list_KH'</script>";
     }
     }
 ?>

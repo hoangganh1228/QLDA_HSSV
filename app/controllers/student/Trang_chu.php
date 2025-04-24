@@ -60,16 +60,16 @@
                     } else {
                         // Mật khẩu mới và xác nhận không khớp
                         echo "<script>alert('Mật khẩu mới và xác nhận mật khẩu không khớp!')</script>";
-                        echo "<script>window.location.href = '/Trang_chu/resetPassword'</script>";
+                        echo "<script>window.location.href = '/trang_chu/resetPassword'</script>";
                     }
                 } else {
                     // Sai tên đăng nhập hoặc mật khẩu cũ
                     echo "<script>alert('Tên đăng nhập hoặc mật khẩu cũ không đúng!')</script>";
-                    echo "<script>window.location.href = '/student/Trang_chu/resetPassword'</script>";
+                    echo "<script>window.location.href = '/student/trang_chu/resetPassword'</script>";
                 }
             } else {
                 // Nếu không phải POST, chuyển hướng về trang resetPassword
-                header("Location: /student/users/resetPassword");
+                header("Location: /student/Users/resetPassword");
             }
         }
     }

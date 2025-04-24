@@ -116,7 +116,11 @@
             </div>
         </form>
         <div>
+<<<<<<< HEAD:app/views/admin/Nganh/List_Nganh.php
             <a href="/admin/Nganh/Add_Nganh" class="btn btn-success" style="width: 100px;">Thêm</a>
+=======
+            <a href="/admin/Nganh/add_nganh" class="btn btn-success" style="width: 100px;">Thêm</a>
+>>>>>>> 1f816be85338ee79c85f4452b3886b720de56410:app/views/admin/nganh/List_Nganh.php
         </div>
         <table class="table table-bordered table-striped mt-4">
             <thead class="table-dark">
@@ -143,7 +147,11 @@
                             <td><?php echo $row['major_name'] ?></td> 
                             <td><?php echo $row['department_name'] ?></td> 
                             <td>
+<<<<<<< HEAD:app/views/admin/Nganh/List_Nganh.php
                                 <a href="/admin/Nganh/Edit_Nganh/<?= $row['id'] ?>" class="btn btn-warning btn-sm">Sửa</a>
+=======
+                                <a href="/admin/Nganh/edit_nganh/<?= $row['id'] ?>" class="btn btn-warning btn-sm">Sửa</a>
+>>>>>>> 1f816be85338ee79c85f4452b3886b720de56410:app/views/admin/nganh/List_Nganh.php
                                 <a href="/admin/Nganh/delete_nganh/<?= $row['id'] ?>" class="btn btn-danger btn-sm    " onclick="return confirm('Xác nhận xóa!')">Xóa</a>
                             </td>
                         </tr>

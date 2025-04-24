@@ -10,7 +10,7 @@
 <body>
     <div class="container p-3 my-3">
         <div class="display-6 text-center">Thêm Khoa</div>
-        <form action="/admin/khoa/add_khoa" method="post">
+        <form action="/admin/Khoa/add_khoa" method="post">
             <div class="form-group mt-3">
                 <label for="">Mã Khoa:</label>
                 <input type="text" name="department_id" class="form-control" placeholder="Nhập mã khoa" required>
@@ -22,7 +22,7 @@
             <br>
             <div>
                 <button type="submit" class="btn btn-outline-secondary">Lưu</button>
-                <a href="/admin/khoa/list_khoa" class="btn btn-outline-secondary">Quay lại</a>
+                <a href="/admin/Khoa/list_khoa" class="btn btn-outline-secondary">Quay lại</a>
             </div>
         </form>
     </div>

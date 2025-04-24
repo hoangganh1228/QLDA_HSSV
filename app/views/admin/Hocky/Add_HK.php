@@ -48,7 +48,7 @@
 
             <div class="mt-4  align-items-center">
                 <button type="submit" id="btnThem" class="btn btn-success mx-auto">Lưu thông tin</button>
-                <a href="/admin/hocky/list_HK" class="btn btn-danger">Quay lại</a>
+                <a href="/admin/Hocky/list_HK" class="btn btn-danger">Quay lại</a>
             </div>
         </form>
     </div>

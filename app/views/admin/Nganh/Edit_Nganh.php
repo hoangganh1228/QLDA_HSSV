@@ -39,7 +39,11 @@
     <br>
     <div>
         <button type="submit" id="btnThem" class="btn btn-outline-secondary">Sửa</button>
+<<<<<<< HEAD:app/views/admin/Nganh/Edit_Nganh.php
         <a href="/admin/Nganh/list_Nganh" class="btn btn-outline-secondary">Quay lại</a>
+=======
+        <a href="/admin/Nganh/list_nganh" class="btn btn-outline-secondary">Quay lại</a>
+>>>>>>> 1f816be85338ee79c85f4452b3886b720de56410:app/views/admin/nganh/Edit_Nganh.php
     </div>
 </form>
     </div>

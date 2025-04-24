@@ -43,13 +43,21 @@ class Nganh extends Controller {
             if (!$this->model->isDuplicateNganhId($filteredPost['major_id'])) {
                 $this->model->addNganh($filteredPost);
                 echo "<script>alert('Thêm ngành thành công!')</script>";
+<<<<<<< HEAD
                 echo "<script>window.location.href = '/admin/Nganh/list_Nganh'</script>";
+=======
+                echo "<script>window.location.href = '/admin/Nganh/list_nganh'</script>";
+>>>>>>> 1f816be85338ee79c85f4452b3886b720de56410
             } else {
                 echo "<script>alert('Thêm ngành thất bại, trùng mã ngành!')</script>";
             }
         }
         $departments = $this->model->getAllKhoa();
+<<<<<<< HEAD
         $this->view('/admin/Nganh/add_Nganh', ['departments' => $departments]);
+=======
+        $this->view('/admin/nganh/Add_Nganh', ['departments' => $departments]);
+>>>>>>> 1f816be85338ee79c85f4452b3886b720de56410
     }
 
     public function Edit_Nganh($id = '') {
@@ -62,14 +70,18 @@ class Nganh extends Controller {
             $filteredPost = filter(); 
             $this->model->updateNganh($id, $filteredPost); 
             echo "<script>alert('Sửa ngành thành công')</script>";
-            echo "<script>window.location.href = '/admin/nganh/list_nganh'</script>";
+            echo "<script>window.location.href = '/admin/Nganh/list_nganh'</script>";
         } else {
             $result = $this->model->getNganhById($id); 
             if (!$result) {
                 die("Không tìm thấy ngành.");
             }
             $departments = $this->model->getAllKhoa();
+<<<<<<< HEAD
             $this->view('/admin/Nganh/edit_Nganh', [
+=======
+            $this->view('/admin/nganh/Edit_Nganh', [
+>>>>>>> 1f816be85338ee79c85f4452b3886b720de56410
                 'data' => $result,
                 'departments' => $departments
             ]);
@@ -87,6 +99,10 @@ class Nganh extends Controller {
         } else {
             echo "<script>alert('Xóa thất bại')</script>";
         }
+<<<<<<< HEAD
         echo "<script>window.location.href = '/admin/Nganh/list_Nganh'</script>";
+=======
+        echo "<script>window.location.href = '/admin/Nganh/list_nganh'</script>";
+>>>>>>> 1f816be85338ee79c85f4452b3886b720de56410
     }
 }

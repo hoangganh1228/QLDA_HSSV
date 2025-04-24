@@ -299,7 +299,11 @@ class Users extends Controller
             } else {
                 // Sai tên đăng nhập hoặc mật khẩu cũ
                 echo "<script>alert('Tên đăng nhập hoặc mật khẩu cũ không đúng!')</script>";
+<<<<<<< HEAD
                 echo "<script>window.location.href = '/student/admin/users/resetPassword'</script>";
+=======
+                echo "<script>window.location.href = 'admin/Users/resetPassword'</script>";
+>>>>>>> 1f816be85338ee79c85f4452b3886b720de56410
             }
         } else {
             // Nếu không phải POST, chuyển hướng về trang resetPassword

@@ -142,6 +142,7 @@ class Users extends Controller
                 $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['role'] = $user['role'];
+<<<<<<< HEAD:app/controllers/student/users.php
                 header('Location: /student/users/Trang_chu');
                 exit;
             } else {
@@ -154,6 +155,14 @@ class Users extends Controller
                 echo "<script>alert('Tên đăng nhập hoặc mật khẩu không đúng!')</script>";
                 echo "<script>window.location.href = '/admin/Users/login'</script>";
 
+=======
+               
+                header('Location: /student/trang_chu');
+            } else {
+                // Đăng nhập thất bại
+                echo "<script>alert('Tên đăng nhập hoặc mật khẩu không đúng!')</script>";
+                echo "<script>window.location.href = '/admin/users/login'</script>";
+>>>>>>> 1f816be85338ee79c85f4452b3886b720de56410:app/controllers/student/Users.php
             }
         }
     }
@@ -162,11 +171,15 @@ class Users extends Controller
         session_start();
         session_unset();
         session_destroy();
+<<<<<<< HEAD:app/controllers/student/users.php
 
         header('Location: /student/users/login');
 
         header('Location: /admin/Users/login');
 
+=======
+        header('Location: /admin/users/login');
+>>>>>>> 1f816be85338ee79c85f4452b3886b720de56410:app/controllers/student/Users.php
     }
 
 }

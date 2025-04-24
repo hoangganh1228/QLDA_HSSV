@@ -31,7 +31,11 @@
     <br>
     <div>
         <button type="submit" id="btnThem" class="btn btn-outline-secondary">Thêm</button>
+<<<<<<< HEAD:app/views/admin/Nganh/Add_Nganh.php
         <a href="/admin/Nganh/list_Nganh" class="btn btn-outline-secondary">Quay lại</a>
+=======
+        <a href="/admin/Nganh/list_nganh" class="btn btn-outline-secondary">Quay lại</a>
+>>>>>>> 1f816be85338ee79c85f4452b3886b720de56410:app/views/admin/nganh/Add_Nganh.php
     </div>
 </form>
     </div>

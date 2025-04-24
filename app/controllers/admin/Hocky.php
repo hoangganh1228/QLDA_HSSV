@@ -29,13 +29,13 @@
                 if (!$this->model->isDuplicateBy_SemesterId($filteredPost['semester_id'])) {
                     $this->model->add_HK($filteredPost);
                     echo "<script>alert('Thêm học kỳ thành công')</script>";
-                    echo "<script>window.location.href = '/admin/hocky/list_HK'</script>";
+                    echo "<script>window.location.href = '/admin/Hocky/list_HK'</script>";
                 } else {
                     echo "<script>alert('Trùng mã học kỳ!')</script>";
                 }
             }          
        // Truyền danh sách mã lớp đến view
-            $this->view('/admin/hocky/add_HK', []);
+            $this->view('/admin/hocky/Add_HK', []);
         }
         function edit_HK($semester_id = '')
     {
@@ -47,7 +47,7 @@
             $this->model->updateHocky($semester_id, $filteredPost);
 
             echo "<script>alert('Cập nhật thông tin học kỳ thành công')</script>";
-            echo "<script>window.location.href = '/admin/hocky/list_HK'</script>";
+            echo "<script>window.location.href = '/admin/Hocky/list_HK'</script>";
         } else {
            
             $result = $this->model->getHockyById($semester_id);
@@ -55,7 +55,7 @@
                 die("Không tìm thấy học kỳ.");
             }
             
-            $this->view('/admin/hocky/edit_HK', [
+            $this->view('/admin/hocky/Edit_HK', [
                 'data' => $result,
                 
             ]);
@@ -70,7 +70,7 @@
         } else {
             echo "<script>alert('Xóa thất bại')</script>";
         }
-        echo "<script>window.location.href = '/admin/hocky/list_HK'</script>";
+        echo "<script>window.location.href = '/admin/Hocky/list_HK'</script>";
     }
     }
     
